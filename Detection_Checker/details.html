@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Details Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #2e0202, #4a0303);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            color: #FFD700;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #FFD700;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .tab:hover {
+            background: rgba(255, 215, 0, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #FFD700;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        select option {
+            background: #2e0202;
+            color: white;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.6) 100%);
+            color: #2e0202;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, #FFD700 0%, rgba(255, 215, 0, 0.8) 100%);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 100%);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.8) 0%, rgba(200, 35, 51, 0.8) 100%);
+            color: white;
+            border: 1px solid rgba(220, 53, 69, 0.5);
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.8) 0%, rgba(32, 201, 151, 0.8) 100%);
+            color: white;
+            border: 1px solid rgba(40, 167, 69, 0.5);
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .search-filters input, .search-filters select {
+            min-width: 150px;
+        }
+        
+        .persons-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .persons-table th {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.2) 100%);
+            color: #FFD700;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .persons-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .persons-table tr:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .page-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .page-btn:hover, .page-btn.active {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+        
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message.success {
+            background: rgba(40, 167, 69, 0.9);
+            color: white;
+            border: 1px solid rgba(40, 167, 69, 0.4);
+        }
+        
+        .message.error {
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: 1px solid rgba(220, 53, 69, 0.4);
+        }
+        
+        .message.info {
+            background: rgba(23, 162, 184, 0.9);
+            color: white;
+            border: 1px solid rgba(23, 162, 184, 0.4);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .loading::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #FFD700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .bulk-area {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .bulk-area h3 {
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .bulk-area p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* FIXED: File input wrapper styling */
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.6) 100%);
+            color: #2e0202;
+            padding: 12px 24px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .file-input-wrapper:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, #FFD700 0%, rgba(255, 215, 0, 0.8) 100%);
+        }
+        
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            font-size: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(46, 2, 2, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .close-modal:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .search-filters {
+                flex-direction: column;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .persons-table {
+                font-size: 0.9rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+
+            .message {
+                position: relative;
+                top: 0;
+                right: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Person Details Management</h1>
+            <p>Manage person details for face recognition system</p>
+        </div>
+        
+        <div class="stats-bar" id="statsBar">
+            <div class="stat-item">
+                <div class="stat-value" id="totalRecords">-</div>
+                <div class="stat-label">Total Records</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="fileStatus">-</div>
+                <div class="stat-label">File Status</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="lastUpdated">-</div>
+                <div class="stat-label">Last Updated</div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('view')">View & Search</button>
+            <button class="tab" onclick="showTab('add')">Add Person</button>
+            <button class="tab" onclick="showTab('bulk')">Bulk Operations</button>
+            <button class="tab" onclick="showTab('export')">Export</button>
+        </div>
+        
+        <div id="viewTab" class="tab-content active">
+            <div class="search-filters">
+                <input type="text" id="nameFilter" placeholder="Search by name..." oninput="searchPersons()">
+                <select id="typeFilter" onchange="searchPersons()">
+                    <option value="">All Types</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Guest">Guest</option>
+                </select>
+                <select id="priorityFilter" onchange="searchPersons()">
+                    <option value="">All Priorities</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Banned">Banned</option>
+                </select>
+                <input type="text" id="rankingFilter" placeholder="Search by ranking..." oninput="searchPersons()">
+                <button class="btn btn-secondary" onclick="clearFilters()">Clear Filters</button>
+                <button class="btn" onclick="refreshData()">Refresh</button>
+            </div>
+            
+            <div id="personsContainer">
+                <div class="loading">Loading persons data...</div>
+            </div>
+            
+            <div class="pagination" id="pagination"></div>
+        </div>
+        
+        <div id="addTab" class="tab-content">
+            <form id="addPersonForm" onsubmit="addPerson(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="addMid">MID *</label>
+                        <input type="text" id="addMid" required placeholder="e.g., EMP001">
+                    </div>
+                    <div class="form-group">
+                        <label for="addName">Name *</label>
+                        <input type="text" id="addName" required placeholder="e.g., John Doe">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="addRanking">Ranking *</label>
+                        <input type="text" id="addRanking" required placeholder="e.g., Diamond, Manager">
+                    </div>
+                    <div class="form-group">
+                        <label for="addType">Type *</label>
+                        <select id="addType" required>
+                            <option value="">Select Type</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Guest">Guest</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="addPriority">Priority *</label>
+                    <select id="addPriority" required>
+                        <option value="">Select Priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Banned">Banned</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn" id="addBtn">Add Person</button>
+                <button type="button" class="btn btn-secondary" onclick="clearAddForm()">Clear Form</button>
+            </form>
+        </div>
+        
+        <div id="bulkTab" class="tab-content">
+            <div class="bulk-area">
+                <h3>🚀 Bulk Import from CSV</h3>
+                <p style="margin-bottom: 10px;"><strong>Supports large files (1M+ records)</strong> with progress tracking and error handling.</p>
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
+                    Required CSV columns: <code style="background: rgba(255, 255, 255, 0.1); padding: 2px 5px; border-radius: 3px;">MID, Name, Ranking, Type, Priority</code><br>
+                    ⚡ Processing: 10K records/chunk | 📤 Upload: 1K records/batch | 💾 Memory optimized
+                </p>
+                <div class="file-input-wrapper">
+                    <input type="file" id="csvFile" accept=".csv" onchange="handleCSVUpload(event)">
+                    📁 Choose CSV File
+                </div>
+                <div style="margin-top: 10px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.6);">
+                    <div>📊 <strong>Performance Guide:</strong></div>
+                    <div>• Files up to 100MB: Instant processing</div>
+                    <div>• Files 100MB-1GB: 1-5 minutes</div>
+                    <div>• Files 1GB+: 5-30 minutes</div>
+                    <div>• Memory usage: ~50MB regardless of file size</div>
+                </div>
+                <div id="csvPreview"></div>
+            </div>
+            
+            <div class="bulk-area">
+                <h3>Bulk Delete</h3>
+                <p>Enter MIDs to delete (one per line or comma-separated)</p>
+                <textarea id="bulkDeleteMids" rows="5" placeholder="EMP001&#10;EMP002&#10;EMP003"></textarea>
+                <br>
+                <button class="btn btn-danger" onclick="bulkDeletePersons()">Delete Selected</button>
+            </div>
+        </div>
+        
+        <div id="exportTab" class="tab-content">
+            <h3 style="color: #FFD700;">Export Data</h3>
+            <p style="color: rgba(255, 255, 255, 0.8);">Export all person details in your preferred format.</p>
+            
+            <div class="form-group">
+                <label for="exportFormat">Export Format</label>
+                <select id="exportFormat">
+                    <option value="json">JSON</option>
+                    <option value="csv">CSV</option>
+                </select>
+            </div>
+            
+            <button class="btn" onclick="exportData()">📥 Download Export</button>
+            
+            <div id="exportPreview" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeEditModal()">&times;</button>
+            <h3>Edit Person Details</h3>
+            <form id="editPersonForm" onsubmit="updatePerson(event)">
+                <input type="hidden" id="editMidHidden">
+                
+                <div class="form-group">
+                    <label for="editMid">MID</label>
+                    <input type="text" id="editMid" readonly style="background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 215, 0, 0.2);">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editName">Name *</label>
+                    <input type="text" id="editName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editRanking">Ranking *</label>
+                    <input type="text" id="editRanking" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editType">Type *</label>
+                    <select id="editType" required>
+                        <option value="Staff">Staff</option>
+                        <option value="Guest">Guest</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPriority">Priority *</label>
+                    <select id="editPriority" required>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Banned">Banned</option>
+                    </select>
+                </div>
+                
+                <div style="text-align: right; margin-top: 20px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/api/parquet';
+        let currentPage = 1;
+        let totalPages = 1;
+        let allPersons = [];
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStats();
+            loadPersons();
+        });
+
+        // Tab management
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load data for specific tabs
+            if (tabName === 'view') {
+                loadPersons();
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/stats`);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    const stats = data.parquet_stats;
+                    document.getElementById('totalRecords').textContent = stats.total_records;
+                    document.getElementById('fileStatus').textContent = stats.file_exists ? '✅ OK' : '❌ Missing';
+                    
+                    if (stats.last_modified) {
+                        const date = new Date(stats.last_modified * 1000);
+                        document.getElementById('lastUpdated').textContent = date.toLocaleString();
+                    } else {
+                        document.getElementById('lastUpdated').textContent = 'Never';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                showMessage('Error loading statistics', 'error');
+            }
+        }
+
+        // Load persons with filters and pagination
+        async function loadPersons(page = 1) {
+            try {
+                showLoading('personsContainer');
+                
+                const filters = {
+                    page: page,
+                    per_page: 10,
+                    name: document.getElementById('nameFilter')?.value || '',
+                    type: document.getElementById('typeFilter')?.value || '',
+                    priority: document.getElementById('priorityFilter')?.value || '',
+                    ranking: document.getElementById('rankingFilter')?.value || ''
+                };
+                
+                const queryParams = new URLSearchParams();
+                Object.keys(filters).forEach(key => {
+                    if (filters[key]) queryParams.append(key, filters[key]);
+                });
+                
+                const response = await fetch(`${API_BASE}/persons?${queryParams}`);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    allPersons = data.persons;
+                    currentPage = data.pagination.page;
+                    totalPages = data.pagination.total_pages;
+                    
+                    renderPersonsTable(data.persons);
+                    renderPagination(data.pagination);
+                } else {
+                    showMessage('Error loading persons: ' + (data.error || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                console.error('Error loading persons:', error);
+                showMessage('Error loading persons: ' + error.message, 'error');
+            }
+        }
+
+        // Render persons table
+        function renderPersonsTable(persons) {
+            const container = document.getElementById('personsContainer');
+            
+            if (persons.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 40px; color: rgba(255, 255, 255, 0.6);">No persons found</div>';
+                return;
+            }
+            
+            let html = `
+                <table class="persons-table">
+                    <thead>
+                        <tr>
+                            <th>MID</th>
+                            <th>Name</th>
+                            <th>Ranking</th>
+                            <th>Type</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            persons.forEach(person => {
+                html += `
+                    <tr>
+                        <td><strong>${person.mid}</strong></td>
+                        <td>${person.name}</td>
+                        <td>${person.ranking}</td>
+                        <td><span style="background: ${getTypeColor(person.type)}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${person.type}</span></td>
+                        <td><span style="background: ${getPriorityColor(person.priority)}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${person.priority}</span></td>
+                        <td>
+                            <div class="actions">
+                                <button class="btn btn-small" onclick="editPerson('${person.mid}')">Edit</button>
+                                <button class="btn btn-danger btn-small" onclick="deletePerson('${person.mid}')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // Render pagination
+        function renderPagination(pagination) {
+            const container = document.getElementById('pagination');
+            let html = '';
+            
+            if (pagination.total_pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            
+            // Previous button
+            if (pagination.has_prev) {
+                html += `<button class="page-btn" onclick="loadPersons(${pagination.page - 1})">← Previous</button>`;
+            }
+            
+            // Page numbers
+            const startPage = Math.max(1, pagination.page - 2);
+            const endPage = Math.min(pagination.total_pages, pagination.page + 2);
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const activeClass = i === pagination.page ? 'active' : '';
+                html += `<button class="page-btn ${activeClass}" onclick="loadPersons(${i})">${i}</button>`;
+            }
+            
+            // Next button
+            if (pagination.has_next) {
+                html += `<button class="page-btn" onclick="loadPersons(${pagination.page + 1})">Next →</button>`;
+            }
+            
+            // Page info
+            html += `<span style="margin-left: 20px; color: rgba(255, 255, 255, 0.6);">Page ${pagination.page} of ${pagination.total_pages} (${pagination.total_count} total)</span>`;
+            
+            container.innerHTML = html;
+        }
+
+        // Search persons (debounced)
+        let searchTimeout;
+        function searchPersons() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentPage = 1;
+                loadPersons(1);
+            }, 300);
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.getElementById('nameFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            document.getElementById('priorityFilter').value = '';
+            document.getElementById('rankingFilter').value = '';
+            searchPersons();
+        }
+
+        // Refresh data
+        function refreshData() {
+            loadStats();
+            loadPersons(currentPage);
+        }
+
+        // Add person with improved error handling
+        async function addPerson(event) {
+            event.preventDefault();
+            
+            const addBtn = document.getElementById('addBtn');
+            addBtn.disabled = true;
+            addBtn.textContent = 'Adding...';
+            
+            const formData = {
+                MID: document.getElementById('addMid').value.trim(),
+                Name: document.getElementById('addName').value.trim(),
+                Ranking: document.getElementById('addRanking').value.trim(),
+                Type: document.getElementById('addType').value,
+                Priority: document.getElementById('addPriority').value
+            };
+            
+            // Client-side validation
+            if (!formData.MID || !formData.Name || !formData.Ranking || !formData.Type || !formData.Priority) {
+                showMessage('All fields are required', 'error');
+                addBtn.disabled = false;
+                addBtn.textContent = 'Add Person';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/persons`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (data.status === 'created') {
+                        showMessage(`✅ Person "${formData.Name}" added successfully!`, 'success');
+                    } else if (data.status === 'updated') {
+                        showMessage(`✅ Person "${formData.Name}" updated successfully! (MID already existed)`, 'info');
+                    } else {
+                        showMessage(`✅ Person "${formData.Name}" processed successfully!`, 'success');
+                    }
+                    
+                    clearAddForm();
+                    loadStats();
+                    loadPersons(currentPage);
+                    
+                    // Switch to view tab to see the result
+                    setTimeout(() => {
+                        showTab('view');
+                    }, 1000);
+                    
+                } else {
+                    const errorMessage = data.error || data.message || 'Unknown error occurred';
+                    showMessage('❌ Error: ' + errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Error adding person:', error);
+                showMessage('❌ Network error: Unable to add person. Please check your connection.', 'error');
+            } finally {
+                addBtn.disabled = false;
+                addBtn.textContent = 'Add Person';
+            }
+        }
+
+        // Clear add form
+        function clearAddForm() {
+            document.getElementById('addPersonForm').reset();
+        }
+
+        // Edit person
+        function editPerson(mid) {
+            const person = allPersons.find(p => p.mid === mid);
+            if (!person) {
+                showMessage('Person not found', 'error');
+                return;
+            }
+            
+            document.getElementById('editMidHidden').value = mid;
+            document.getElementById('editMid').value = mid;
+            document.getElementById('editName').value = person.name;
+            document.getElementById('editRanking').value = person.ranking;
+            document.getElementById('editType').value = person.type;
+            document.getElementById('editPriority').value = person.priority;
+            
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        // Update person
+        async function updatePerson(event) {
+            event.preventDefault();
+            
+            const mid = document.getElementById('editMidHidden').value;
+            const formData = {
+                Name: document.getElementById('editName').value.trim(),
+                Ranking: document.getElementById('editRanking').value.trim(),
+                Type: document.getElementById('editType').value,
+                Priority: document.getElementById('editPriority').value
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/persons/${mid}`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.status === 'success') {
+                    showMessage(`✅ Person "${formData.Name}" updated successfully!`, 'success');
+                    closeEditModal();
+                    loadStats();
+                    loadPersons(currentPage);
+                } else {
+                    const errorMessage = data.error || data.message || 'Unknown error occurred';
+                    showMessage('❌ Error: ' + errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Error updating person:', error);
+                showMessage('❌ Network error: Unable to update person', 'error');
+            }
+        }
+
+        // Close edit modal
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // Delete person
+        async function deletePerson(mid) {
+            const person = allPersons.find(p => p.mid === mid);
+            if (!person) {
+                showMessage('Person not found', 'error');
+                return;
+            }
+            
+            if (!confirm(`Are you sure you want to delete "${person.name}" (${mid})?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/persons/${mid}`, {
+                    method: 'DELETE',
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.status === 'success') {
+                    showMessage(`✅ Person "${person.name}" deleted successfully!`, 'success');
+                    loadStats();
+                    loadPersons(currentPage);
+                } else {
+                    const errorMessage = data.error || data.message || 'Unknown error occurred';
+                    showMessage('❌ Error: ' + errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting person:', error);
+                showMessage('❌ Network error: Unable to delete person', 'error');
+            }
+        }
+
+        // Enhanced CSV upload for large files (million+ records)
+        async function handleCSVUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Check file size and warn for large files
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+            if (file.size > 100 * 1024 * 1024) { // 100MB+
+                if (!confirm(`⚠️ Large file detected (${fileSizeMB}MB). This may take several minutes to process. Continue?`)) {
+                    event.target.value = ''; // Reset file input
+                    return;
+                }
+            }
+            
+            showMessage(`📁 Processing ${fileSizeMB}MB file...`, 'info');
+            
+            try {
+                await processLargeCSV(file);
+            } catch (error) {
+                console.error('CSV processing error:', error);
+                showMessage('❌ Error processing CSV: ' + error.message, 'error');
+                event.target.value = ''; // Reset file input
+            }
+        }
+
+        // Process large CSV files with streaming and chunking
+        async function processLargeCSV(file) {
+            const CHUNK_SIZE = 10000; // Process 10K records per chunk
+            const BATCH_SIZE = 1000;  // Upload 1K records per batch
+            
+            let csvData = '';
+            let headers = [];
+            let totalRecords = 0;
+            let processedRecords = 0;
+            let validRecords = 0;
+            let errors = [];
+            
+            // Create progress display
+            const progressHtml = `
+                <div id="csvProgress" style="background: rgba(255, 215, 0, 0.1); padding: 20px; border-radius: 8px; margin: 10px 0;">
+                    <h4 style="color: #FFD700; margin-bottom: 15px;">📊 Processing Large CSV File</h4>
+                    <div style="margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.8); margin-bottom: 5px;">
+                            <span>Reading File...</span>
+                            <span id="readProgress">0%</span>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.2); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div id="readProgressBar" style="background: #FFD700; height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                        </div>
+                    </div>
+                    <div id="processingStats" style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                        <div>📄 File Size: ${(file.size / (1024 * 1024)).toFixed(2)}MB</div>
+                        <div>⏳ Estimated Time: Calculating...</div>
+                    </div>
+                    <div id="uploadProgress" style="display: none; margin-top: 15px;">
+                        <div style="display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.8); margin-bottom: 5px;">
+                            <span>Uploading Records...</span>
+                            <span id="uploadProgressText">0%</span>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.2); height: 8px; border-radius: 4px; overflow: hidden;">
+                            <div id="uploadProgressBar" style="background: #28a745; height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                        </div>
+                    </div>
+                    <div id="uploadStats" style="margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; display: none;"></div>
+                    <button id="cancelUpload" class="btn btn-danger" style="margin-top: 10px; display: none;" onclick="cancelCSVUpload()">❌ Cancel Upload</button>
+                </div>
+            `;
+            document.getElementById('csvPreview').innerHTML = progressHtml;
+            
+            const startTime = Date.now();
+            let uploadCanceled = false;
+            window.csvUploadCanceled = false;
+            
+            // Read file with progress tracking
+            try {
+                csvData = await readFileWithProgress(file);
+            } catch (error) {
+                throw new Error('Failed to read file: ' + error.message);
+            }
+            
+            // Parse CSV headers
+            const lines = csvData.split('\n');
+            if (lines.length < 2) {
+                throw new Error('CSV file must have header and at least one data row');
+            }
+            
+            headers = parseCSVLine(lines[0]);
+            const requiredHeaders = ['MID', 'Name', 'Ranking', 'Type', 'Priority'];
+            const missingHeaders = requiredHeaders.filter(h => !headers.includes(h));
+            
+            if (missingHeaders.length > 0) {
+                throw new Error(`Missing required headers: ${missingHeaders.join(', ')}`);
+            }
+            
+            totalRecords = lines.length - 1; // Exclude header
+            
+            // Update progress display
+            document.getElementById('processingStats').innerHTML = `
+                <div>📄 File Size: ${(file.size / (1024 * 1024)).toFixed(2)}MB</div>
+                <div>📊 Total Records: ${totalRecords.toLocaleString()}</div>
+                <div>⚡ Processing in chunks of ${CHUNK_SIZE.toLocaleString()}</div>
+            `;
+            
+            // Show upload progress section
+            document.getElementById('uploadProgress').style.display = 'block';
+            document.getElementById('uploadStats').style.display = 'block';
+            document.getElementById('cancelUpload').style.display = 'inline-block';
+            
+            // Process and upload in chunks
+            const chunks = [];
+            for (let i = 1; i < lines.length; i += CHUNK_SIZE) {
+                if (window.csvUploadCanceled) {
+                    showMessage('Upload canceled by user', 'info');
+                    return;
+                }
+                
+                const chunkLines = lines.slice(i, i + CHUNK_SIZE);
+                const chunkPersons = [];
+                
+                for (const line of chunkLines) {
+                    if (!line.trim()) continue;
+                    
+                    try {
+                        const values = parseCSVLine(line);
+                        if (values.length === headers.length && values[0]?.trim()) {
+                            const person = {};
+                            headers.forEach((header, index) => {
+                                person[header] = values[index]?.trim() || '';
+                            });
+                            
+                            // Validate required fields
+                            if (person.MID && person.Name && person.Ranking && person.Type && person.Priority) {
+                                chunkPersons.push(person);
+                                validRecords++;
+                            } else {
+                                errors.push(`Row ${processedRecords + 1}: Missing required fields`);
+                            }
+                        }
+                    } catch (error) {
+                        errors.push(`Row ${processedRecords + 1}: ${error.message}`);
+                    }
+                    processedRecords++;
+                }
+                
+                if (chunkPersons.length > 0) {
+                    chunks.push(chunkPersons);
+                }
+                
+                // Update progress
+                const progressPercent = Math.min(100, (processedRecords / totalRecords) * 100);
+                document.getElementById('uploadProgressText').textContent = `${progressPercent.toFixed(1)}%`;
+                document.getElementById('uploadProgressBar').style.width = `${progressPercent}%`;
+                
+                // Update stats
+                document.getElementById('uploadStats').innerHTML = `
+                    <div>✅ Valid Records: ${validRecords.toLocaleString()}</div>
+                    <div>❌ Errors: ${errors.length.toLocaleString()}</div>
+                    <div>⚡ Processing Speed: ${Math.round(processedRecords / ((Date.now() - startTime) / 1000)).toLocaleString()} records/sec</div>
+                `;
+                
+                // Add small delay to prevent UI blocking
+                await new Promise(resolve => setTimeout(resolve, 10));
+            }
+            
+            if (window.csvUploadCanceled) {
+                showMessage('Upload canceled by user', 'info');
+                return;
+            }
+            
+            if (validRecords === 0) {
+                throw new Error('No valid records found in CSV file');
+            }
+            
+            // Upload chunks in batches
+            await uploadChunksInBatches(chunks, BATCH_SIZE, validRecords);
+            
+            // Complete
+            const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
+            document.getElementById('csvPreview').innerHTML = `
+                <div style="background: rgba(40, 167, 69, 0.2); padding: 20px; border-radius: 8px; margin: 10px 0; border: 1px solid rgba(40, 167, 69, 0.5);">
+                    <h4 style="color: #28a745; margin-bottom: 15px;">✅ Upload Complete!</h4>
+                    <div style="color: rgba(255, 255, 255, 0.9);">
+                        <div>📊 Total Records Processed: ${totalRecords.toLocaleString()}</div>
+                        <div>✅ Successfully Uploaded: ${validRecords.toLocaleString()}</div>
+                        <div>❌ Errors: ${errors.length.toLocaleString()}</div>
+                        <div>⏱️ Total Time: ${totalTime}s</div>
+                        <div>⚡ Average Speed: ${Math.round(validRecords / totalTime).toLocaleString()} records/sec</div>
+                    </div>
+                    ${errors.length > 0 && errors.length < 20 ? `
+                        <details style="margin-top: 15px;">
+                            <summary style="color: #ffc107; cursor: pointer;">⚠️ View Errors (${errors.length})</summary>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 10px; margin-top: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto;">
+                                ${errors.slice(0, 20).map(error => `<div style="font-size: 0.85rem; margin-bottom: 5px;">${error}</div>`).join('')}
+                            </div>
+                        </details>
+                    ` : ''}
+                </div>
+            `;
+            
+            // Reset file input and refresh data
+            document.getElementById('csvFile').value = '';
+            showMessage(`✅ Successfully uploaded ${validRecords.toLocaleString()} records in ${totalTime}s!`, 'success');
+            loadStats();
+            loadPersons(currentPage);
+        }
+
+        // Read file with progress tracking
+        function readFileWithProgress(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    document.getElementById('readProgress').textContent = '100%';
+                    document.getElementById('readProgressBar').style.width = '100%';
+                    resolve(e.target.result);
+                };
+                
+                reader.onerror = function() {
+                    reject(new Error('Failed to read file'));
+                };
+                
+                reader.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        const progress = (e.loaded / e.total) * 100;
+                        document.getElementById('readProgress').textContent = `${progress.toFixed(1)}%`;
+                        document.getElementById('readProgressBar').style.width = `${progress}%`;
+                    }
+                };
+                
+                reader.readAsText(file);
+            });
+        }
+
+        // Improved CSV line parser to handle quoted fields
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    if (inQuotes && line[i + 1] === '"') {
+                        current += '"';
+                        i++; // Skip next quote
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            result.push(current.trim());
+            return result;
+        }
+
+        // Upload chunks in batches to prevent overwhelming the server
+        async function uploadChunksInBatches(chunks, batchSize, totalRecords) {
+            let uploadedRecords = 0;
+            const startTime = Date.now();
+            
+            for (let i = 0; i < chunks.length; i += batchSize) {
+                if (window.csvUploadCanceled) {
+                    throw new Error('Upload canceled by user');
+                }
+                
+                const batchChunks = chunks.slice(i, i + batchSize);
+                const batchPersons = batchChunks.flat();
+                
+                try {
+                    const response = await fetch(`${API_BASE}/persons/bulk`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ persons: batchPersons })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!response.ok || data.status !== 'success') {
+                        throw new Error(data.error || 'Server error during upload');
+                    }
+                    
+                    uploadedRecords += batchPersons.length;
+                    
+                    // Update progress
+                    const progressPercent = Math.min(100, (uploadedRecords / totalRecords) * 100);
+                    document.getElementById('uploadProgressText').textContent = `${progressPercent.toFixed(1)}%`;
+                    document.getElementById('uploadProgressBar').style.width = `${progressPercent}%`;
+                    
+                    // Update stats
+                    const elapsed = (Date.now() - startTime) / 1000;
+                    const speed = Math.round(uploadedRecords / elapsed);
+                    const eta = speed > 0 ? Math.round((totalRecords - uploadedRecords) / speed) : 0;
+                    
+                    document.getElementById('uploadStats').innerHTML = `
+                        <div>✅ Uploaded: ${uploadedRecords.toLocaleString()} / ${totalRecords.toLocaleString()}</div>
+                        <div>⚡ Upload Speed: ${speed.toLocaleString()} records/sec</div>
+                        <div>⏳ ETA: ${eta > 0 ? `${eta}s` : 'Almost done...'}</div>
+                    `;
+                    
+                } catch (error) {
+                    console.error('Batch upload error:', error);
+                    throw new Error(`Upload failed at batch ${i + 1}: ${error.message}`);
+                }
+                
+                // Small delay between batches to prevent overwhelming the server
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
+
+        // Cancel CSV upload
+        function cancelCSVUpload() {
+            window.csvUploadCanceled = true;
+            document.getElementById('cancelUpload').style.display = 'none';
+            document.getElementById('csvPreview').innerHTML = `
+                <div style="background: rgba(220, 53, 69, 0.2); padding: 15px; border-radius: 8px; margin: 10px 0; border: 1px solid rgba(220, 53, 69, 0.5);">
+                    <h4 style="color: #dc3545;">❌ Upload Canceled</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8);">The CSV upload has been canceled by the user.</p>
+                </div>
+            `;
+            document.getElementById('csvFile').value = '';
+        }
+
+        // Upload CSV data
+        async function uploadCSVData(persons) {
+            try {
+                const response = await fetch(`${API_BASE}/persons/bulk`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ persons: persons })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.status === 'success') {
+                    showMessage(`✅ Successfully uploaded ${data.added_count} persons!`, 'success');
+                    if (data.errors && data.errors.length > 0) {
+                        showMessage(`⚠️ Warnings: ${data.errors.join(', ')}`, 'info');
+                    }
+                    document.getElementById('csvPreview').innerHTML = '';
+                    document.getElementById('csvFile').value = '';
+                    loadStats();
+                    loadPersons(currentPage);
+                } else {
+                    const errorMessage = data.error || data.message || 'Unknown error occurred';
+                    showMessage('❌ Error: ' + errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Error uploading CSV:', error);
+                showMessage('❌ Network error: Unable to upload CSV', 'error');
+            }
+        }
+
+        // Bulk delete persons
+        async function bulkDeletePersons() {
+            const midsText = document.getElementById('bulkDeleteMids').value.trim();
+            if (!midsText) {
+                showMessage('Please enter MIDs to delete', 'error');
+                return;
+            }
+            
+            const mids = midsText.split(/[\n,]/).map(mid => mid.trim()).filter(mid => mid);
+            
+            if (mids.length === 0) {
+                showMessage('No valid MIDs found', 'error');
+                return;
+            }
+            
+            if (!confirm(`Are you sure you want to delete ${mids.length} persons?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/persons/bulk`, {
+                    method: 'DELETE',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ mids: mids })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.status === 'success') {
+                    showMessage(`✅ Successfully deleted ${data.deleted_count} persons!`, 'success');
+                    if (data.not_found && data.not_found.length > 0) {
+                        showMessage(`⚠️ Not found: ${data.not_found.join(', ')}`, 'info');
+                    }
+                    document.getElementById('bulkDeleteMids').value = '';
+                    loadStats();
+                    loadPersons(currentPage);
+                } else {
+                    const errorMessage = data.error || data.message || 'Unknown error occurred';
+                    showMessage('❌ Error: ' + errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Error bulk deleting:', error);
+                showMessage('❌ Network error: Unable to delete persons', 'error');
+            }
+        }
+
+        // Export data
+        async function exportData() {
+            const format = document.getElementById('exportFormat').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/export?format=${format}`);
+                
+                if (format === 'csv') {
+                    const csvData = await response.text();
+                    downloadFile(csvData, `persons_${new Date().toISOString().split('T')[0]}.csv`, 'text/csv');
+                    showMessage('✅ CSV file downloaded successfully!', 'success');
+                } else {
+                    const data = await response.json();
+                    if (data.status === 'success') {
+                        const jsonData = JSON.stringify(data, null, 2);
+                        downloadFile(jsonData, `persons_${new Date().toISOString().split('T')[0]}.json`, 'application/json');
+                        showMessage('✅ JSON file downloaded successfully!', 'success');
+                        
+                        document.getElementById('exportPreview').innerHTML = `
+                            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 8px;">
+                                <h4 style="color: #FFD700;">Export Preview (${data.total_records} records):</h4>
+                                <pre style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 5px; max-height: 300px; overflow: auto; color: rgba(255, 255, 255, 0.9);">${jsonData.substring(0, 1000)}${jsonData.length > 1000 ? '...' : ''}</pre>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                showMessage('❌ Error exporting data: ' + error.message, 'error');
+            }
+        }
+
+        // Utility functions
+        function downloadFile(content, filename, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function getTypeColor(type) {
+            const colors = {
+                'Guest': '#28a745',
+                'Staff': '#ffc107'
+            };
+            return colors[type] || '#6c757d';
+        }
+
+        function getPriorityColor(priority) {
+            const colors = {
+                'Low': '#28a745',
+                'Medium': '#ffc107',
+                'High': '#fd7e14',
+                'Banned': '#dc3545'
+            };
+            return colors[priority] || '#6c757d';
+        }
+
+        function showMessage(message, type = 'info') {
+            // Remove existing messages
+            document.querySelectorAll('.message').forEach(msg => msg.remove());
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: inherit; cursor: pointer; font-size: 1.2rem; padding: 0 5px;">×</button>
+                </div>
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.remove();
+                }
+            }, 5000);
+        }
+
+        function showLoading(containerId) {
+            document.getElementById(containerId).innerHTML = '<div class="loading">Loading...</div>';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('editModal');
+            if (e.target === modal) {
+                closeEditModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeEditModal();
+            }
+        });
+
+        // Handle form submission with Enter key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                const activeTab = document.querySelector('.tab-content.active');
+                if (activeTab && activeTab.id === 'addTab') {
+                    e.preventDefault();
+                    document.getElementById('addPersonForm').dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+    </script>
+</body>
+</html>

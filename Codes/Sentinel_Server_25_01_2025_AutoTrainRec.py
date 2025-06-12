@@ -1,0 +1,408 @@
+from flask import Flask, request, jsonify
+import os
+import cv2
+import pickle
+import numpy as np
+from insightface.app import FaceAnalysis
+import base64
+from datetime import datetime
+import configparser
+import shutil
+import uuid
+import queue
+import threading
+import time
+
+app = Flask(__name__)
+
+class FaceRecognitionServer:
+    def __init__(self):
+        self.config_file = 'config.ini'
+        self.config = self.load_config()
+        self.threshold = float(self.config.get('Settings', 'threshold', fallback=0.5))
+        
+        # Initialize face analyzer
+        self.face_analyzer = FaceAnalysis(
+            name='buffalo_l',
+            root='models',
+            providers=['CUDAExecutionProvider', 'CPUExecutionProvider']
+        )
+        self.face_analyzer.prepare(ctx_id=0, det_size=(640, 640))
+        
+        # Load embeddings
+        self.embeddings_file = 'Database/face_embeddings.pkl'
+        self.face_db = self.load_embeddings()
+        
+        # Ensure directories exist
+        os.makedirs("Get/In", exist_ok=True)
+        os.makedirs("Get/Out", exist_ok=True)
+        os.makedirs("Database/UnrecognizedFaces", exist_ok=True)
+        os.makedirs("Logs", exist_ok=True)
+        
+        # Define the single log file path
+        self.log_file_path = os.path.join("Logs", "face_recognition_log.txt")
+        
+        # Initialize request queue and processing thread
+        self.request_queue = queue.Queue(maxsize=100)  # Limit queue size
+        self.response_queue = {}  # Store responses for each request
+        self.queue_thread = threading.Thread(target=self.process_queue, daemon=True)
+        self.queue_thread.start()
+
+    def process_queue(self):
+        """
+        Continuously process requests from the queue
+        """
+        while True:
+            try:
+                # Block and wait for a request
+                request_id, image_data = self.request_queue.get()
+                
+                # Process the image
+                result = self.recognize_face(image_data)
+                
+                # Store the result with the request ID
+                self.response_queue[request_id] = result
+                
+                # Mark task as done
+                self.request_queue.task_done()
+            
+            except Exception as e:
+                print(f"Error processing queue: {e}")
+                time.sleep(1)  # Prevent tight loop on errors
+
+    def get_recognition_result(self, request_id, timeout=30):
+        """
+        Retrieve recognition result for a specific request ID
+        """
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            if request_id in self.response_queue:
+                result = self.response_queue.pop(request_id)
+                return result
+            time.sleep(0.1)
+        
+        return {"status": "error", "message": "Request processing timed out"}
+
+    def log_recognition_details(self, result):
+        """
+        Append recognition details to a single log file
+        """
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        with open(self.log_file_path, 'a') as log_file:
+            log_file.write("\n\n" + "="*50 + "\n")
+            log_file.write(f"Recognition Log: {timestamp}\n")
+            log_file.write("="*50 + "\n\n")
+            
+            log_file.write(f"Status: {result.get('status', 'Unknown')}\n")
+            
+            # Log input image details
+            log_file.write("\nInput Image:\n")
+            log_file.write(f"Filename: {result.get('input_filename', 'N/A')}\n")
+            log_file.write(f"Path: {os.path.join('Get/In', result.get('input_filename', 'N/A'))}\n")
+            
+            # Log output image details
+            log_file.write("\nOutput Image:\n")
+            log_file.write(f"Filename: {result.get('output_filename', 'N/A')}\n")
+            log_file.write(f"Path: {os.path.join('Get/Out', result.get('output_filename', 'N/A'))}\n")
+            
+            # Additional recognition details based on status
+            if result.get('status') == 'matched':
+                log_file.write("\nMatch Details:\n")
+                log_file.write(f"Confidence: {result.get('confidence', 'N/A')}\n")
+                log_file.write(f"Matched Filename: {result.get('matched_filename', 'N/A')}\n")
+                log_file.write(f"Multi-Image Saved: {result.get('multi_image_saved', 'N/A')}\n")
+            
+            elif result.get('status') == 'unrecognized_saved':
+                log_file.write("\nUnrecognized Face Details:\n")
+                log_file.write(f"Face ID: {result.get('face_id', 'N/A')}\n")
+                log_file.write(f"Saved Path: {result.get('saved_path', 'N/A')}\n")
+
+    def load_config(self):
+        config = configparser.ConfigParser()
+        if not os.path.exists(self.config_file):
+            config['Settings'] = {'threshold': '0.5'}
+            with open(self.config_file, 'w') as f:
+                config.write(f)
+        else:
+            config.read(self.config_file)
+        return config
+
+    def save_embeddings(self):
+        with open(self.embeddings_file, 'wb') as f:
+            pickle.dump({'embeddings': self.face_db}, f)
+        print(f"Saved {len(self.face_db)} embeddings to database.")
+
+    def load_embeddings(self):
+        if os.path.exists(self.embeddings_file):
+            with open(self.embeddings_file, 'rb') as f:
+                data = pickle.load(f)
+                print(f"Loaded {len(data['embeddings'])} embeddings.")
+                return data['embeddings']
+        return {}
+
+    def calculate_similarity(self, embedding1, embedding2):
+        embedding1 = embedding1 / np.linalg.norm(embedding1)
+        embedding2 = embedding2 / np.linalg.norm(embedding2)
+        return float(np.dot(embedding1, embedding2))
+
+    def save_image(self, img, folder, prefix):
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{prefix}_{timestamp}.jpg"
+        filepath = os.path.join(folder, filename)
+        cv2.imwrite(filepath, img)
+        return filename
+
+    def save_unrecognized_face(self, img, face, input_filename):
+        # Extract filename without extension as the face ID
+        face_id = os.path.splitext(input_filename)[0]
+        
+        # Create a filename based on the input filename and timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"unrecognized_{os.path.splitext(input_filename)[0]}_{timestamp}.jpg"
+        filepath = os.path.join("Database/UnrecognizedFaces", filename)
+        
+        # Save the image
+        cv2.imwrite(filepath, img)
+        
+        # Add to database
+        self.face_db[face_id] = {
+            'embedding': face.embedding,
+            'image_path': filepath,
+            'timestamp': timestamp,
+            'original_input': input_filename
+        }
+        
+        # Save updated embeddings
+        self.save_embeddings()
+        
+        return filepath, face_id
+
+    def _get_next_available_multi_image_key(self, base_identity):
+        """
+        Find the next available multi-image key for a given identity.
+        Returns a key like 'Identity@1', 'Identity@2', etc.
+        """
+        # Remove any existing @X suffix
+        base_identity = base_identity.split('@')[0]
+        
+        existing_keys = [
+            key for key in self.face_db.keys() 
+            if key.startswith(f"{base_identity}@")
+        ]
+        
+        if not existing_keys:
+            return f"{base_identity}@1"
+        
+        # Find existing numeric suffixes
+        existing_suffixes = [
+            int(key.split('@')[1]) 
+            for key in existing_keys 
+            if len(key.split('@')) > 1 and key.split('@')[1].isdigit()
+        ]
+        
+        # If less than 5 variants, add a new one
+        if len(existing_suffixes) < 5:
+            return f"{base_identity}@{max(existing_suffixes) + 1}"
+        
+        # If 5 variants exist, return None to indicate no more storage
+        return None
+
+    def _save_multi_image_variant(self, img, base_identity, multi_image_key):
+        """
+        Save a multi-image variant with the given key.
+        """
+        if not multi_image_key:
+            return None
+        
+        # Define save path
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{multi_image_key}.jpg"
+        filepath = os.path.join("Database/UnrecognizedFaces", filename)
+        
+        # Save the image
+        cv2.imwrite(filepath, img)
+        
+        # Add to database
+        self.face_db[multi_image_key] = {
+            'embedding': self.face_analyzer.get(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))[0].embedding,
+            'image_path': filepath,
+            'timestamp': timestamp,
+            'original_input': base_identity
+        }
+        
+        # Save updated embeddings
+        self.save_embeddings()
+        
+        return filepath
+
+    def recognize_face(self, image_data):
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Convert base64 to image
+        nparr = np.frombuffer(base64.b64decode(image_data), np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        
+        if img is None:
+            return {"status": "error", "message": "Invalid image data"}
+
+        # Save input image
+        input_filename = self.save_image(img, "Get/In", "input")
+
+        # Convert to RGB for face analysis
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        faces = self.face_analyzer.get(img_rgb)
+
+        if len(faces) == 0:
+            # Read and use the placeholder UNRECOGNIZED.png
+            unrecognized_img = cv2.imread("Database/UNRECOGNIZED.png")
+            if unrecognized_img is None:
+                result = {
+                    "status": "error",
+                    "message": "UNRECOGNIZED.png placeholder not found",
+                    "input_filename": input_filename
+                }
+                self.log_recognition_details(result)
+                return result
+            
+            output_filename = self.save_image(unrecognized_img, "Get/Out", "unrecognized")
+            _, buffer = cv2.imencode('.jpg', unrecognized_img)
+            unrecognized_image_base64 = base64.b64encode(buffer).decode('utf-8')
+            
+            result = {
+                "status": "unrecognized", 
+                "message": "No face detected",
+                "input_filename": input_filename,
+                "output_filename": output_filename,
+                "matched_image": unrecognized_image_base64
+            }
+            self.log_recognition_details(result)
+            return result
+
+        query_embedding = faces[0].embedding
+
+        # Find best match
+        best_match = None
+        best_similarity = -1
+        best_identity = None
+
+        for identity, data in self.face_db.items():
+            # Remove @X suffix if present
+            base_identity = identity.split('@')[0]
+            
+            # Calculate similarity
+            similarity = self.calculate_similarity(query_embedding, data['embedding'])
+            if similarity > best_similarity:
+                best_match = data
+                best_similarity = similarity
+                best_identity = base_identity
+
+        # Process multi-image variant
+        multi_image_key = None
+
+        if best_match and best_similarity > self.threshold:
+            # Try to save multi-image variant
+            multi_image_key = self._get_next_available_multi_image_key(best_identity)
+            if multi_image_key:
+                self._save_multi_image_variant(img, best_identity, multi_image_key)
+            
+            # Use the base identity without @X suffix
+            base_identity = best_identity.split('@')[0]
+            
+            # Find the primary image for this identity
+            primary_image_path = next(
+                (data['image_path'] for identity, data in self.face_db.items() 
+                 if identity.split('@')[0] == base_identity and '@' not in identity), 
+                None
+            )
+            
+            if not primary_image_path:
+                primary_image_path = best_match['image_path']
+            
+            # Save matched image to Out folder
+            matched_image = cv2.imread(primary_image_path)
+            output_filename = self.save_image(matched_image, "Get/Out", "match")
+            
+            # Encode matched image for response
+            _, buffer = cv2.imencode('.jpg', matched_image)
+            matched_image_base64 = base64.b64encode(buffer).decode('utf-8')
+            
+            result = {
+                "status": "matched",
+                "confidence": float(best_similarity),
+                "matched_image": matched_image_base64,
+                "input_filename": input_filename,
+                "output_filename": output_filename,
+                "matched_filename": os.path.basename(primary_image_path),
+                "multi_image_saved": multi_image_key
+            }
+            self.log_recognition_details(result)
+            return result
+        
+        # No match found - save the unrecognized face
+        saved_path, face_id = self.save_unrecognized_face(img, faces[0], input_filename)
+        
+        # Read the saved unrecognized face image
+        unrecognized_img = cv2.imread(saved_path)
+        
+        # Save to Out folder
+        output_filename = self.save_image(unrecognized_img, "Get/Out", "unrecognized")
+        
+        # Encode image for response
+        _, buffer = cv2.imencode('.jpg', unrecognized_img)
+        unrecognized_image_base64 = base64.b64encode(buffer).decode('utf-8')
+        
+        result = {
+            "status": "unrecognized_saved", 
+            "message": "Face not recognized - saved to database",
+            "input_filename": input_filename,
+            "output_filename": output_filename,
+            "matched_image": unrecognized_image_base64,
+            "face_id": face_id,
+            "saved_path": saved_path
+        }
+        self.log_recognition_details(result)
+        return result
+
+# Initialize server
+face_server = FaceRecognitionServer()
+
+@app.route('/recognize', methods=['POST'])
+def recognize():
+    if 'image' not in request.json:
+        return jsonify({"error": "No image data provided"}), 400
+    
+    # Generate unique request ID
+    request_id = str(uuid.uuid4())
+    
+    try:
+        # Add request to queue
+        face_server.request_queue.put_nowait((request_id, request.json['image']))
+    except queue.Full:
+        return jsonify({"error": "Server is at maximum capacity. Please try again later."}), 503
+    
+    # Wait and retrieve result
+    result = face_server.get_recognition_result(request_id)
+    return jsonify(result)
+
+@app.route('/reload_embeddings', methods=['POST'])
+def reload_embeddings():
+    face_server.face_db = face_server.load_embeddings()
+    return jsonify({"status": "success", "message": "Embeddings reloaded"})
+
+@app.route('/set_threshold', methods=['POST'])
+def set_threshold():
+    try:
+        new_threshold = float(request.json['threshold'])
+        if 0 <= new_threshold <= 1:
+            face_server.threshold = new_threshold
+            face_server.config.set('Settings', 'threshold', str(new_threshold))
+            with open(face_server.config_file, 'w') as f:
+                face_server.config.write(f)
+            return jsonify({"status": "success", "message": f"Threshold set to {new_threshold}"})
+    except (KeyError, ValueError):
+        pass
+    return jsonify({"error": "Invalid threshold value"}), 400
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=3005)

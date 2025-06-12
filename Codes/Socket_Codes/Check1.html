@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFace Sentinel - Real-time Monitoring</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #2e0202, #4a0303);
+            height: 100vh;
+            overflow-y: auto;
+            color: #f5d76e;
+            font-size: 80%;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #f5d76e;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+        }
+
+        .stats-panel {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 12px;
+            border-radius: 6.4px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-size: 0.96rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .nav-button {
+            padding: 6.4px 12.8px;
+            background: #f5d76e;
+            color: #4a0303;
+            border-radius: 4px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 3.2px 8px rgba(245, 215, 110, 0.8);
+            color: #4a0303;
+        }
+
+        .filter-buttons button {
+            padding: 8px 16px;
+            background: #f5d76e;
+            color: #4a0303;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 4px;
+        }
+
+        .filter-buttons button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 3.2px 8px rgba(245, 215, 110, 0.8);
+        }
+
+        .four-column-layout {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+        }
+
+        .column {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            padding: 12px;
+        }
+
+        .column-title {
+            text-align: center;
+            color: #f5d76e;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f5d76e;
+            padding-bottom: 8px;
+        }
+
+        .video-feed {
+            width: 100%;
+            height: auto;
+            margin-bottom: 12px;
+            border-radius: 6.4px;
+            border: 1.6px solid #f5d76e;
+        }
+
+        .event-card {
+            display: flex;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6.4px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: scale(1.008);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .event-card.first-entry {
+            padding: 20px;
+            background: rgba(245, 215, 110, 0.1);
+            border: 1.6px solid #f5d76e;
+            box-shadow: 0 0 12px rgba(245, 215, 110, 0.5);
+        }
+
+        .event-card.first-entry .event-image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .event-card.first-entry .event-status {
+            font-size: 0.96rem;
+            padding: 6.4px 12px;
+        }
+
+        .event-card.first-entry .info-item {
+            font-size: 0.88rem;
+            padding: 6.4px 12px;
+        }
+
+        .event-images {
+            display: flex;
+            gap: 12px;
+            margin-right: 16px;
+        }
+
+        .event-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6.4px;
+            border: 1.6px solid #f5d76e;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .event-status {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .status-matched {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-unrecognized {
+            background: #FF9800;
+            color: black;
+        }
+
+        .status-unrecognized_saved {
+            background: #2196F3;
+            color: white;
+        }
+
+        .status-error {
+            background: #F44336;
+            color: white;
+        }
+
+        .event-time {
+            font-size: 0.72rem;
+            color: #aaa;
+        }
+
+        .event-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .info-item {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+        }
+
+        .no-events-message {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.96rem;
+            color: #aaa;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background: linear-gradient(to bottom, #2e0202, #4a0303);
+            margin: 5% auto;
+            padding: 16px;
+            width: 80%;
+            max-width: 640px;
+            border-radius: 8px;
+            box-shadow: 0 3.2px 12px rgba(0, 0, 0, 0.8);
+            color: #f5d76e;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .close {
+            color: #f5d76e;
+            font-size: 22.4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ffcc00;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 16px 0;
+        }
+
+        .image-box {
+            text-align: center;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6.4px;
+            width: 45%;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .person-details {
+            margin-top: 16px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .person-details h3 {
+            margin-bottom: 8px;
+        }
+
+        @keyframes subtleFadeIn {
+            from { opacity: 0.9; }
+            to { opacity: 1; }
+        }
+
+        .new-event {
+            animation: subtleFadeIn 0.3s ease-out;
+        }
+
+        .reconnect-indicator {
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f5d76e;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.64rem;
+        }
+        
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .status-indicator {
+            width: 9.6px;
+            height: 9.6px;
+            border-radius: 50%;
+            margin-right: 6.4px;
+        }
+        
+        .status-connected {
+            background-color: #4CAF50;
+            box-shadow: 0 0 6.4px #4CAF50;
+        }
+        
+        .status-disconnected {
+            background-color: #F44336;
+            box-shadow: 0 0 6.4px #F44336;
+        }
+        
+        .status-connecting {
+            background-color: #FF9800;
+            box-shadow: 0 0 6.4px #FF9800;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SmartFace Sentinel - Real-time Monitoring</h1>
+        <div class="nav-links">
+            <a href="http://192.168.15.65:3006/" class="nav-button">Back to Home</a>
+            <a href="http://192.168.15.65:3005/Check1" class="nav-button">A-Det</a>
+            <a href="http://192.168.15.65:3005/Check2" class="nav-button">S-Det</a>
+        </div>
+        
+        <div class="stats-panel">
+            <div class="connection-status">
+                <div id="status-dot" class="status-indicator status-connecting"></div>
+                <div id="connection-status">Connection Status: Connecting...</div>
+            </div>
+            <div class="filter-buttons">
+                <button id="show-all">All Events</button>
+                <button id="show-matched">Matched</button>
+                <button id="show-unrecognized-saved">Unrecognized Saved</button>
+                <button id="clear-events">Clear Events</button>
+                <button id="force-reconnect">Force Reconnect</button>
+            </div>
+        </div>
+        
+        <div class="four-column-layout">
+            <div class="column" id="column-1">
+                <div class="column-title">Membership Counter Out</div>
+                <img src="http://192.168.14.205:3007/video_feed/cam1" class="video-feed" alt="Membership Counter Out Feed">
+                <div class="no-events-message" id="no-events-column-1">
+                    Waiting for recognition events...
+                </div>
+            </div>
+            <div class="column" id="column-2">
+                <div class="column-title">Membership Counter In</div>
+                <img src="http://192.168.14.205:3007/video_feed/cam2" class="video-feed" alt="Membership Counter In Feed">
+                <div class="no-events-message" id="no-events-column-2">
+                    Waiting for recognition events...
+                </div>
+            </div>
+            <div class="column" id="column-3">
+                <div class="column-title">Travel Counter Out</div>
+                <img src="http://192.168.14.205:3007/video_feed/cam3" class="video-feed" alt="Travel Counter Out Feed">
+                <div class="no-events-message" id="no-events-column-3">
+                    Waiting for recognition events...
+                </div>
+            </div>
+            <div class="column" id="column-4">
+                <div class="column-title">Travel Counter In</div>
+                <img src="http://192.168.14.205:3007/video_feed/cam4" class="video-feed" alt="Travel Counter In Feed">
+                <div class="no-events-message" id="no-events-column-4">
+                    Waiting for recognition events...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reconnect-indicator" id="reconnect-indicator" style="display: none;">
+        <span id="connection-message">Reconnecting automatically...</span>
+    </div>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Event Details</h2>
+                <span class="close" id="modalClose">&times;</span>
+            </div>
+            <div class="image-container">
+                <div class="image-box">
+                    <h3>Input Image</h3>
+                    <img id="modalInputImage" src="" alt="Input Image">
+                </div>
+                <div class="image-box">
+                    <h3>Matched Image</h3>
+                    <img id="modalMatchedImage" src="" alt="Matched Image">
+                </div>
+            </div>
+            <div class="person-details">
+                <h3 id="modalPersonId"></h3>
+                <p><strong>Timestamp:</strong> <span id="modal aspects: all;"></span></p>
+                <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+                <p><strong>Camera:</strong> <span id="modalCamera"></span></p>
+                <p><strong>Confidence:</strong> <span id="modalConfidence"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const column1 = document.getElementById('column-1');
+        const column2 = document.getElementById('column-2');
+        const column3 = document.getElementById('column-3');
+        const column4 = document.getElementById('column-4');
+        const noEventsColumn1 = document.getElementById('no-events-column-1');
+        const noEventsColumn2 = document.getElementById('no-events-column-2');
+        const noEventsColumn3 = document.getElementById('no-events-column-3');
+        const noEventsColumn4 = document.getElementById('no-events-column-4');
+        const connectionStatus = document.getElementById('connection-status');
+        const statusDot = document.getElementById('status-dot');
+        const eventModal = document.getElementById('eventModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalInputImage = document.getElementById('modalInputImage');
+        const modalMatchedImage = document.getElementById('modalMatchedImage');
+        const modalPersonId = document.getElementById('modalPersonId');
+        const modalTimestamp = document.getElementById('modalTimestamp');
+        const modalStatus = document.getElementById('modalStatus');
+        const modalCamera = document.getElementById('modalCamera');
+        const modalConfidence = document.getElementById('modalConfidence');
+        const reconnectIndicator = document.getElementById('reconnect-indicator');
+        const connectionMessage = document.getElementById('connection-message');
+        const forceReconnectButton = document.getElementById('force-reconnect');
+
+        const column1Cameras = [
+            'Membership Counter Out',
+            'Membership Counter In',
+            'Travel Counter Out',
+            'Travel Counter In'
+        ];
+
+        let events = [];
+        let column1Events = [];
+        let column2Events = [];
+        let column3Events = [];
+        let column4Events = [];
+        let currentFilter = 'all';
+        const maxEventsPerColumn = 100;
+        let socket = null;
+        let reconnectTimer = null;
+        let isFirstConnect = true;
+        let missedHeartbeats = 0;
+        let heartbeatInterval = null;
+        let connectionRetryCount = 0;
+        let socketOptions = {
+            reconnection: true,
+            reconnectionAttempts: Infinity,
+            reconnectionDelay: 1000,
+            reconnectionDelayMax: 5000,
+            timeout: 20000,
+            forceNew: false
+        };
+
+        function updateConnectionStatus(status, message) {
+
+            statusDot.className = `status-indicator status-${status}`;
+            connectionStatus.textContent = message || `Connection Status: ${status.charAt(0).toUpperCase() + status.slice(1)}`;
+            
+            if (status === 'connected') {
+                connectionStatus.style.color = '#4CAF50';
+                reconnectIndicator.style.display = 'none';
+                connectionRetryCount = 0;
+            } else if (status === 'disconnected') {
+                connectionStatus.style.color = '#F44336';
+                reconnectIndicator.style.display = 'block';
+                connectionMessage.textContent = 'Reconnecting automatically...';
+            } else if (status === 'connecting') {
+                connectionStatus.style.color = '#FF9800';
+                reconnectIndicator.style.display = 'block';
+                connectionMessage.textContent = `Reconnecting (Attempt ${connectionRetryCount})...`;
+            }
+        }
+
+        function initializeSocket() {
+            if (socket) {
+                if (socket.connected) {
+                    socket.disconnect();
+                }
+                socket = null;
+            }
+            
+            updateConnectionStatus('connecting', 'Connection Status: Connecting to server...');
+            
+            socket = io(socketOptions);
+            
+            socket.on('connect', () => {
+                updateConnectionStatus('connected', 'Connection Status: Connected');
+                startHeartbeat();
+                isFirstConnect = false;
+            });
+            
+            socket.on('disconnect', (reason) => {
+                updateConnectionStatus('disconnected', `Connection Status: Disconnected - ${reason}`);
+                stopHeartbeat();
+                connectionRetryCount++;
+            });
+            
+            socket.on('connect_error', (error) => {
+                updateConnectionStatus('connecting', `Connection Status: Error - ${error.message}`);
+                connectionRetryCount++;
+            });
+            
+            socket.on('reconnect_attempt', (attemptNumber) => {
+                updateConnectionStatus('connecting', `Connection Status: Reconnecting (Attempt ${attemptNumber})...`);
+                connectionRetryCount = attemptNumber;
+            });
+            
+            socket.on('reconnect', () => {
+                updateConnectionStatus('connected', 'Connection Status: Reconnected');
+                startHeartbeat();
+            });
+            
+            socket.on('recognition_event', (eventData) => {
+                console.log("Received event:", eventData);
+                resetHeartbeat();
+                
+                if (eventData.status && eventData.status.toLowerCase() === "unrecognized") {
+                    console.log("Ignoring 'unrecognized' event");
+                    return;
+                }
+
+                if (!column1Cameras.includes(eventData.camera_name)) {
+                    console.log(`Ignoring event from camera: ${eventData.camera_name}`);
+                    return;
+                }
+                
+                const isDuplicate = checkForDuplicate(eventData);
+                if (!isDuplicate) {
+                    addEvent(eventData);
+                } else {
+                    console.log("Duplicate event detected and ignored");
+                }
+            });
+            
+            socket.on('error', (error) => {
+                console.error('Socket error:', error);
+                updateConnectionStatus('disconnected', `Connection Status: Error - ${error.message}`);
+            });
+        }
+
+        function checkForDuplicate(newEvent) {
+            if (events.length === 0) return false;
+            
+            let columnEventsToCheck;
+            if (newEvent.camera_name === 'Membership Counter Out') {
+                columnEventsToCheck = column1Events;
+            } else if (newEvent.camera_name === 'Membership Counter In') {
+                columnEventsToCheck = column2Events;
+            } else if (newEvent.camera_name === 'Travel Counter Out') {
+                columnEventsToCheck = column3Events;
+            } else if (newEvent.camera_name === 'Travel Counter In') {
+                columnEventsToCheck = column4Events;
+            } else {
+                return false;
+            }
+            
+            if (columnEventsToCheck.length === 0) return false;
+            
+            const recentTime = Date.now() - 5000;
+            
+            for (const event of columnEventsToCheck) {
+                const eventTime = new Date(event.timestamp).getTime();
+                if (eventTime < recentTime) continue;
+                
+                if (
+                    event.input_image === newEvent.input_image &&
+                    event.camera_id === newEvent.camera_id &&
+                    event.status === newEvent.status
+                ) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        function startHeartbeat() {
+            stopHeartbeat();
+            
+            missedHeartbeats = 0;
+            heartbeatInterval = setInterval(() => {
+                if (socket.connected) {
+                    missedHeartbeats++;
+                    
+                    if (missedHeartbeats >= 3) {
+                        console.log('Missed too many heartbeats, reconnecting...');
+                        updateConnectionStatus('connecting', 'Connection Status: Connection silent, reconnecting...');
+                        forceReconnect();
+                    }
+                }
+            }, 5000);
+        }
+
+        function stopHeartbeat() {
+            if (heartbeatInterval) {
+                clearInterval(heartbeatInterval);
+                heartbeatInterval = null;
+            }
+        }
+
+        function resetHeartbeat() {
+            missedHeartbeats = 0;
+        }
+
+        function forceReconnect() {
+            if (socket) {
+                if (socket.connected) {
+                    socket.disconnect();
+                }
+                
+                updateConnectionStatus('connecting', 'Connection Status: Forcing reconnection...');
+                
+                socketOptions.forceNew = true;
+                
+                initializeSocket();
+                
+                socketOptions.forceNew = false;
+            }
+        }
+
+        function addEvent(eventData) {
+            const eventCopy = {...eventData};
+            
+            if (!eventCopy.timestamp) eventCopy.timestamp = new Date().toISOString();
+            if (!eventCopy.camera_name && eventCopy.camera_id) {
+                eventCopy.camera_name = `Camera ${eventCopy.camera_id}`;
+            }
+            
+            if (eventCopy.input_image && eventCopy.input_image.startsWith('/')) {
+                // Already has a leading slash
+            } else if (eventCopy.input_image) {
+                eventCopy.input_image = `/${eventCopy.input_image}`;
+            }
+            
+            if (eventCopy.matched_image && eventCopy.matched_image.startsWith('/')) {
+                // Already has a leading slash
+            } else if (eventCopy.matched_image) {
+                eventCopy.matched_image = `/${eventCopy.matched_image}`;
+            }
+            
+            events.unshift(eventCopy);
+            
+            if (eventCopy.camera_name === 'Membership Counter Out') {
+                column1Events.unshift(eventCopy);
+                if (column1Events.length > maxEventsPerColumn) {
+                    column1Events = column1Events.slice(0, maxEventsPerColumn);
+                }
+            } else if (eventCopy.camera_name === 'Membership Counter In') {
+                column2Events.unshift(eventCopy);
+                if (column2Events.length > maxEventsPerColumn) {
+                    column2Events = column2Events.slice(0, maxEventsPerColumn);
+                }
+            } else if (eventCopy.camera_name === 'Travel Counter Out') {
+                column3Events.unshift(eventCopy);
+                if (column3Events.length > maxEventsPerColumn) {
+                    column3Events = column3Events.slice(0, maxEventsPerColumn);
+                }
+            } else if (eventCopy.camera_name === 'Travel Counter In') {
+                column4Events.unshift(eventCopy);
+                if (column4Events.length > maxEventsPerColumn) {
+                    column4Events = column4Events.slice(0, maxEventsPerColumn);
+                }
+            }
+            
+            if (events.length > maxEventsPerColumn * 4) {
+                events = events.slice(0, maxEventsPerColumn * 4);
+            }
+            
+            renderEvents(true);
+        }
+
+        function renderEvents(isNewEvent = false) {
+            const filteredEvents = filterEvents(currentFilter);
+            
+            const filteredColumn1Events = filteredEvents.filter(event => 
+                event.camera_name === 'Membership Counter Out');
+            const filteredColumn2Events = filteredEvents.filter(event => 
+                event.camera_name === 'Membership Counter In');
+            const filteredColumn3Events = filteredEvents.filter(event => 
+                event.camera_name === 'Travel Counter Out');
+            const filteredColumn4Events = filteredEvents.filter(event => 
+                event.camera_name === 'Travel Counter In');
+            
+            if (isNewEvent) {
+                // Clear columns but preserve video feeds
+                clearColumnExceptTitle(column1);
+                clearColumnExceptTitle(column2);
+                clearColumnExceptTitle(column3);
+                clearColumnExceptTitle(column4);
+                
+                // Display events in each column
+                displayColumnEvents(column1, filteredColumn1Events, noEventsColumn1);
+                displayColumnEvents(column2, filteredColumn2Events, noEventsColumn2);
+                displayColumnEvents(column3, filteredColumn3Events, noEventsColumn3);
+                displayColumnEvents(column4, filteredColumn4Events, noEventsColumn4);
+            } else {
+                // Fade effect for non-new events
+                column1.style.opacity = '0.95';
+                column2.style.opacity = '0.95';
+                column3.style.opacity = '0.95';
+                column4.style.opacity = '0.95';
+                
+                setTimeout(() => {
+                    clearColumnExceptTitle(column1);
+                    clearColumnExceptTitle(column2);
+                    clearColumnExceptTitle(column3);
+                    clearColumnExceptTitle(column4);
+                    
+                    displayColumnEvents(column1, filteredColumn1Events, noEventsColumn1);
+                    displayColumnEvents(column2, filteredColumn2Events, noEventsColumn2);
+                    displayColumnEvents(column3, filteredColumn3Events, noEventsColumn3);
+                    displayColumnEvents(column4, filteredColumn4Events, noEventsColumn4);
+                    
+                    setTimeout(() => {
+                        column1.style.opacity = '1';
+                        column2.style.opacity = '1';
+                        column3.style.opacity = '1';
+                        column4.style.opacity = '1';
+                    }, 50);
+                }, 50);
+            }
+        }
+
+        function clearColumnExceptTitle(column) {
+            // Save references to title and video feed
+            const columnTitle = column.querySelector('.column-title');
+            const videoFeed = column.querySelector('.video-feed');
+            
+            // Clear all column content
+            column.innerHTML = '';
+            
+            // Re-add the title and video feed
+            if (columnTitle) column.appendChild(columnTitle);
+            if (videoFeed) column.appendChild(videoFeed);
+        }
+
+        function displayColumnEvents(column, events, noEventsMsg) {
+            if (events.length === 0) {
+                column.appendChild(noEventsMsg);
+                return;
+            }
+            
+            events.forEach((event, index) => {
+                const eventCard = createEventCard(event, index === 0);
+                column.appendChild(eventCard);
+            });
+        }
+
+        function createEventCard(event, isFirst) {
+            const eventCard = document.createElement('div');
+            eventCard.className = `event-card ${isFirst ? 'first-entry new-event' : ''}`;
+            eventCard.addEventListener('click', () => showEventDetails(event));
+            
+            const timestamp = new Date(event.timestamp);
+            const formattedTime = timestamp.toLocaleTimeString();
+            const formattedDate = timestamp.toLocaleDateString();
+            
+            const statusClass = `status-${event.status.toLowerCase()}`;
+            
+            eventCard.innerHTML = `
+                <div class="event-images">
+                    <img class="event-image" src="${event.input_image || 'https://via.placeholder.com/100?text=No+Image'}" alt="Input Image" onerror="this.src='https://via.placeholder.com/100?text=Image+Error'">
+                    ${event.matched_image ? `<img class="event-image" src="${event.matched_image}" alt="Matched Image" onerror="this.src='https://via.placeholder.com/100?text=Match+Error'">` : ''}
+                </div>
+                <div class="event-details">
+                    <div class="event-header">
+                        <span class="event-status ${statusClass}">${event.status}</span>
+                        <span class="event-time">${formattedDate} ${formattedTime}</span>
+                    </div>
+                    <div class="event-info">
+                        <div class="info-item">Camera: ${event.camera_name || `Camera ${event.camera_id || 'Unknown'}`}</div>
+                        ${event.identity ? `<div class="info-item">Identity: ${event.identity}</div>` : ''}
+                        ${event.confidence ? `<div class="info-item">Confidence: ${(event.confidence * 100).toFixed(2)}%</div>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            return eventCard;
+        }
+
+        function filterEvents(filter) {
+            const isValidStatus = status =>
+                status.toLowerCase() !== 'unrecognized' &&
+                status.toLowerCase() !== 'error';
+                
+            if (filter === 'all') {
+                return events.filter(event => isValidStatus(event.status));
+            }
+            if (filter === 'matched') {
+                return events.filter(event =>
+                    event.status.toLowerCase() === 'matched');
+            }
+            if (filter === 'unrecognized-saved') {
+                return events.filter(event =>
+                    event.status.toLowerCase() === 'unrecognized_saved');
+            }
+
+            return events.filter(event => isValidStatus(event.status));
+        }
+
+        function showEventDetails(event) {
+            modalInputImage.src = event.input_image || 'https://via.placeholder.com/300?text=No+Image';
+            modalInputImage.onerror = () => { modalInputImage.src = 'https://via.placeholder.com/300?text=Image+Error'; };
+            
+            modalMatchedImage.src = event.matched_image || 'https://via.placeholder.com/300?text=No+Match';
+            modalMatchedImage.onerror = () => { modalMatchedImage.src = 'https://via.placeholder.com/300?text=Match+Error'; };
+            
+            modalPersonId.textContent = event.identity || 'Unknown Person';
+            
+            const timestamp = new Date(event.timestamp);
+            modalTimestamp.textContent = `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
+            
+            modalStatus.textContent = event.status;
+            modalCamera.textContent = event.camera_name || `Camera ${event.camera_id || 'Unknown'}`;
+            modalConfidence.textContent = event.confidence ? `${(event.confidence * 100).toFixed(2)}%` : 'N/A';
+            
+            eventModal.style.display = 'block';
+        }
+
+        document.getElementById('show-all').addEventListener('click', () => {
+            currentFilter = 'all';
+            renderEvents();
+        });
+        
+        document.getElementById('show-matched').addEventListener('click', () => {
+            currentFilter = 'matched';
+            renderEvents();
+        });
+        
+        document.getElementById('show-unrecognized-saved').addEventListener('click', () => {
+            currentFilter = 'unrecognized-saved';
+            renderEvents();
+        });
+        
+        document.getElementById('clear-events').addEventListener('click', () => {
+            events = [];
+            column1Events = [];
+            column2Events = [];
+            column3Events = [];
+            column4Events = [];
+            renderEvents();
+        });
+        
+        forceReconnectButton.addEventListener('click', () => {
+            forceReconnect();
+        });
+        
+        modalClose.addEventListener('click', () => {
+            eventModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === eventModal) {
+                eventModal.style.display = 'none';
+            }
+        });
+
+        function checkServerStatus() {
+            fetch('/api/heartbeat')
+                .then(response => {
+                    if (response.ok) {
+                        if (socket && !socket.connected) {
+                            forceReconnect();
+                        }
+                        resetHeartbeat();
+                    }
+                })
+                .catch(error => {
+                    console.log('Heartbeat error:', error);
+                    missedHeartbeats++;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSocket();
+            
+            setInterval(checkServerStatus, 15000);
+            
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    if (socket && !socket.connected) {
+                        console.log('Tab became visible, reconnecting...');
+                        forceReconnect();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

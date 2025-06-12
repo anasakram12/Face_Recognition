@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFace Sentinel - A - Det Grouped Monitoring</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #2e0202, #4a0303);
+            height: 100vh;
+            overflow: hidden;
+            color: #f5d76e;
+            font-size: 80%;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Reduced header size - 4x smaller */
+        .header-section {
+            flex-shrink: 0;
+            height: auto;
+            max-height: 15vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1rem;
+            color: #f5d76e;
+            margin: 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .stats-panel {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-size: 0.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .nav-button {
+            padding: 3px 6px;
+            background: #f5d76e;
+            color: #4a0303;
+            border-radius: 2px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            font-size: 0.6rem;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 2px 4px rgba(245, 215, 110, 0.8);
+            color: #4a0303;
+        }
+
+        .filter-buttons button {
+            padding: 3px 6px;
+            background: #f5d76e;
+            color: #4a0303;
+            border: none;
+            border-radius: 2px;
+            font-size: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 2px;
+        }
+
+        .filter-buttons button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 2px 4px rgba(245, 215, 110, 0.8);
+        }
+
+        /* Main content area with proper height */
+        .main-content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 8 column layout with specified proportions */
+        .eight-column-layout {
+            display: flex;
+            width: 100%;
+            gap: 4px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .column {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Camera columns (1 proportion) */
+        .camera-column {
+            flex: 6;
+        }
+
+        /* Unrecognized columns (1/6 proportion) */
+        .unrecognized-column {
+            flex: 1;
+            border: 1px solid #FF9800;
+        }
+
+        .column-title {
+            text-align: center;
+            color: #f5d76e;
+            font-size: 0.7rem;
+            margin-bottom: 4px;
+            border-bottom: 1px solid #f5d76e;
+            padding: 3px;
+            flex-shrink: 0;
+        }
+
+        .unrecognized-column .column-title {
+            color: #FF9800;
+            border-bottom-color: #FF9800;
+        }
+
+        .video-feed {
+            width: 100%;
+            height: auto;
+            max-height: 240px;
+            margin-bottom: 4px;
+            border-radius: 3px;
+            border: 1px solid #f5d76e;
+            flex-shrink: 0;
+        }
+
+        /* Events container with custom scrollbar */
+        .events-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px;
+            /* Hide scrollbar but keep functionality */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .events-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        /* Enhanced identity group styling based on type and priority */
+        .identity-group {
+            margin-bottom: 6px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(245, 215, 110, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Person type styling - Staff = Green, Guest = Yellow */
+        .identity-group.type-staff {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .identity-group.type-guest {
+            border-color: #FFD700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Priority styling - Banned = Red everything */
+        .identity-group.priority-banned {
+            border-color: #F44336 !important;
+            background: rgba(244, 67, 54, 0.2) !important;
+            box-shadow: 0 0 12px rgba(244, 67, 54, 0.5) !important;
+        }
+
+        .identity-group.priority-banned .identity-header {
+            background: rgba(244, 67, 54, 0.4) !important;
+        }
+
+        .identity-group.priority-banned .identity-name {
+            color: #FF5722 !important;
+            font-weight: 900 !important;
+            text-shadow: 0 0 4px rgba(255, 87, 34, 0.8);
+        }
+
+        .identity-header {
+            display: flex;
+            padding: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .identity-header:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: scale(1.02);
+        }
+
+        .identity-header.expanded {
+            background: rgba(245, 215, 110, 0.1);
+            border-bottom: 1px solid #f5d76e;
+        }
+
+        .identity-images {
+            display: flex;
+            gap: 4px;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+
+        .identity-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #f5d76e;
+        }
+
+        .identity-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        /* Enhanced identity name styling */
+        .identity-name {
+            font-weight: 900;
+            font-size: 0.8rem;
+            color: #f5d76e;
+            text-shadow: 0 0 2px rgba(245, 215, 110, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .identity-stats {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .identity-stat {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 0.5rem;
+        }
+
+        /* Enhanced person name styling to match identity size */
+        .person-name-display {
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #f5d76e;
+            text-shadow: 0 0 2px rgba(245, 215, 110, 0.5);
+            letter-spacing: 0.5px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        /* Person details styling */
+        .person-details-inline {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 3px;
+        }
+
+        .person-detail-row {
+            display: flex;
+            gap: 4px;
+            font-size: 0.5rem;
+            align-items: center;
+        }
+
+        /* Enhanced ranking styling */
+        .detail-ranking {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .ranking-infinity {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
+            border: 1px solid #FFD700;
+        }
+
+        .ranking-diamond {
+            background: linear-gradient(45deg, #E8E8E8, #C0C0C0);
+            color: #000;
+            text-shadow: 0 0 4px rgba(232, 232, 232, 0.8);
+            border: 1px solid #E8E8E8;
+        }
+
+        .ranking-platinum {
+            background: linear-gradient(45deg, #E5E4E2, #BCC6CC);
+            color: #000;
+            text-shadow: 0 0 4px rgba(229, 228, 226, 0.8);
+            border: 1px solid #E5E4E2;
+        }
+
+        .ranking-gold {
+            background: linear-gradient(45deg, #FFD700, #DAA520);
+            color: #000;
+            text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
+            border: 1px solid #FFD700;
+        }
+
+        .ranking-silver {
+            background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
+            color: #000;
+            text-shadow: 0 0 4px rgba(192, 192, 192, 0.8);
+            border: 1px solid #C0C0C0;
+        }
+
+        .ranking-classic {
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            color: #FFF;
+            text-shadow: 0 0 4px rgba(139, 69, 19, 0.8);
+            border: 1px solid #8B4513;
+        }
+
+        /* Enhanced type styling */
+        .detail-type {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .type-staff {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            text-shadow: 0 0 4px rgba(76, 175, 80, 0.8);
+            border: 1px solid #4CAF50;
+        }
+
+        .type-guest {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            text-shadow: 0 0 4px rgba(255, 215, 0, 0.8);
+            border: 1px solid #FFD700;
+        }
+
+        /* Enhanced priority styling */
+        .detail-priority {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .priority-low {
+            background: rgba(0, 0, 0, 0.5);
+            color: #3498db;
+            border: 1px solid #3498db;
+        }
+
+        .priority-medium {
+            background: linear-gradient(45deg, #FF9800, #F57C00);
+            color: white;
+            border: 1px solid #FF9800;
+        }
+
+        .priority-high {
+            background: linear-gradient(45deg, #FF5722, #D84315);
+            color: white;
+            border: 1px solid #FF5722;
+            animation: pulse-priority 2s infinite;
+        }
+
+        .priority-banned {
+            background: linear-gradient(45deg, #F44336, #C62828);
+            color: white;
+            border: 1px solid #F44336;
+            animation: danger-pulse 1s infinite;
+            box-shadow: 0 0 8px rgba(244, 67, 54, 0.8);
+        }
+
+        @keyframes pulse-priority {
+            0% { box-shadow: 0 0 4px rgba(255, 87, 34, 0.5); }
+            50% { box-shadow: 0 0 8px rgba(255, 87, 34, 0.8); }
+            100% { box-shadow: 0 0 4px rgba(255, 87, 34, 0.5); }
+        }
+
+        @keyframes danger-pulse {
+            0% { box-shadow: 0 0 6px rgba(244, 67, 54, 0.8); }
+            50% { box-shadow: 0 0 12px rgba(244, 67, 54, 1); }
+            100% { box-shadow: 0 0 6px rgba(244, 67, 54, 0.8); }
+        }
+
+        .detail-mid {
+            background: rgba(155, 89, 182, 0.3);
+            color: #9b59b6;
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        .parquet-indicator {
+            background: rgba(26, 188, 156, 0.3);
+            color: #1abc9c;
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 0.4rem;
+        }
+
+        .identity-count {
+            background: #4CAF50;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .expand-indicator {
+            margin-left: 4px;
+            color: #f5d76e;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            font-size: 0.6rem;
+        }
+
+        .expand-indicator.expanded {
+            transform: rotate(90deg);
+        }
+
+        .identity-events {
+            display: none;
+            border-top: 1px solid rgba(245, 215, 110, 0.3);
+            max-height: 0;
+            overflow-y: auto;
+            transition: max-height 0.3s ease-out;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .identity-events::-webkit-scrollbar {
+            display: none;
+        }
+
+        .identity-events.expanded {
+            display: block;
+            max-height: 200px;
+        }
+
+        /* Unrecognized person styles - square images */
+        .unrecognized-person {
+            margin-bottom: 4px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .unrecognized-person:hover {
+            transform: scale(1.02);
+            background: rgba(255, 152, 0, 0.2);
+        }
+
+        .unrecognized-content {
+            padding: 4px;
+            text-align: center;
+        }
+
+        .unrecognized-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #FF9800;
+            margin-bottom: 3px;
+        }
+
+        .unrecognized-time {
+            font-size: 0.4rem;
+            color: #FF9800;
+            margin-bottom: 2px;
+        }
+
+        .unrecognized-camera {
+            font-size: 0.35rem;
+            color: #aaa;
+        }
+
+        /* Enhanced event card styling */
+        .event-card {
+            display: flex;
+            padding: 4px 6px;
+            margin: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+        }
+
+        .event-card:hover {
+            transform: scale(1.02);
+            background: rgba(0, 0, 0, 0.4);
+            border-left-color: #f5d76e;
+        }
+
+        .event-card.latest {
+            border-left-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* Event card styling based on priority - only banned gets special background */
+        .event-card.priority-banned {
+            border-left-color: #F44336 !important;
+            background: rgba(244, 67, 54, 0.2) !important;
+            border: 2px solid rgba(244, 67, 54, 0.8) !important;
+        }
+
+        /* Person type border styling - full border for staff/guest */
+        .event-card.type-staff {
+            border: 2px solid #4CAF50;
+            border-left-color: #4CAF50;
+        }
+
+        .event-card.type-guest {
+            border: 2px solid #FFD700;
+            border-left-color: #FFD700;
+        }
+
+        /* Override for banned - red takes priority */
+        .event-card.priority-banned.type-staff,
+        .event-card.priority-banned.type-guest {
+            border: 2px solid #F44336 !important;
+        }
+
+        .event-images {
+            display: flex;
+            gap: 4px;
+            margin-right: 6px;
+        }
+
+        .event-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #f5d76e;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .event-status {
+            font-weight: bold;
+            padding: 1px 3px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 2px;
+            font-size: 0.5rem;
+        }
+
+        .status-matched {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-unrecognized {
+            background: #FF9800;
+            color: black;
+        }
+
+        .status-unrecognized_saved {
+            background: #2196F3;
+            color: white;
+        }
+
+        .status-error {
+            background: #F44336;
+            color: white;
+        }
+
+        .event-time {
+            font-size: 0.4rem;
+            color: #aaa;
+        }
+
+        .event-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .info-item {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 0.4rem;
+        }
+
+        .no-events-message {
+            text-align: center;
+            padding: 12px;
+            font-size: 0.6rem;
+            color: #aaa;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background: linear-gradient(to bottom, #2e0202, #4a0303);
+            margin: 5% auto;
+            padding: 16px;
+            width: 80%;
+            max-width: 640px;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 3.2px 12px rgba(0, 0, 0, 0.8);
+            color: #f5d76e;
+            overflow-y: auto;
+            /* Hide scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .close {
+            color: #f5d76e;
+            font-size: 22.4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ffcc00;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin: 16px 0;
+        }
+
+        .image-box {
+            text-align: center;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6.4px;
+            width: 45%;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .person-details {
+            margin-top: 16px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .person-details h3 {
+            margin-bottom: 8px;
+        }
+
+        /* Modal person details grid */
+        .modal-person-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+        }
+
+        .modal-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-detail-label {
+            font-weight: bold;
+            color: #f5d76e;
+            font-size: 0.8rem;
+        }
+
+        .modal-detail-value {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        @keyframes subtleFadeIn {
+            from { opacity: 0.9; }
+            to { opacity: 1; }
+        }
+
+        .new-event {
+            animation: subtleFadeIn 0.3s ease-out;
+        }
+
+        .reconnect-indicator {
+            position: fixed;
+            top: 4px;
+            right: 4px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f5d76e;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 0.5rem;
+        }
+        
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .status-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+        
+        .status-connected {
+            background-color: #4CAF50;
+            box-shadow: 0 0 3px #4CAF50;
+        }
+        
+        .status-disconnected {
+            background-color: #F44336;
+            box-shadow: 0 0 3px #F44336;
+        }
+        
+        .status-connecting {
+            background-color: #FF9800;
+            box-shadow: 0 0 3px #FF9800;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .polling-info {
+            font-size: 0.5rem;
+            color: #aaa;
+            margin-left: 5px;
+        }
+
+        .server-metrics {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.5rem;
+            margin-top: 4px;
+            color: #ccc;
+        }
+
+        .metric-item {
+            text-align: center;
+        }
+
+        .cache-indicator {
+            display: inline-block;
+            margin-left: 3px;
+            padding: 1px 3px;
+            background: rgba(76, 175, 80, 0.3);
+            border-radius: 2px;
+            font-size: 0.4rem;
+        }
+
+        /* Placeholder cards for maintaining 10 cards always */
+        .placeholder-card {
+            margin-bottom: 6px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(245, 215, 110, 0.1);
+            opacity: 0.5;
+        }
+
+        .placeholder-header {
+            display: flex;
+            padding: 6px;
+            align-items: center;
+        }
+
+        .placeholder-image {
+            width: 30px;
+            height: 30px;
+            background: rgba(245, 215, 110, 0.1);
+            border-radius: 2px;
+            margin-right: 6px;
+        }
+
+        .placeholder-info {
+            flex: 1;
+        }
+
+        .placeholder-name {
+            font-size: 0.7rem;
+            color: rgba(245, 215, 110, 0.3);
+            margin-bottom: 2px;
+        }
+
+        .placeholder-stat {
+            font-size: 0.5rem;
+            color: rgba(245, 215, 110, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>SmartFace Sentinel - A Det Monitoring</h1>
+            <div class="nav-links">
+                <a href="http://192.168.15.65:3006/" class="nav-button">Home</a>
+                <a href="http://192.168.15.65:3005/realtime" class="nav-button">All</a>
+                <a href="http://192.168.15.65:3005/Check1" class="nav-button">A-Det</a>
+                <a href="http://192.168.15.65:3005/Check2" class="nav-button">S-Det</a>
+            </div>
+            
+            <div class="stats-panel">
+                <div class="connection-status">
+                    <div id="status-dot" class="status-indicator status-connecting"></div>
+                    <div id="connection-status">Connecting...</div>
+                    <span class="polling-info" id="polling-info">Polling every 2s</span>
+                </div>
+                <div class="server-metrics" id="server-metrics">
+                    <div class="metric-item">
+                        <div>RPS</div>
+                        <div id="rps-value">--</div>
+                    </div>
+                    <div class="metric-item">
+                        <div>Cache Hit</div>
+                        <div id="cache-hit-rate">--</div>
+                    </div>
+                    <div class="metric-item">
+                        <div>Queue</div>
+                        <div id="queue-size">--</div>
+                    </div>
+                    <div class="metric-item">
+                        <div>Events</div>
+                        <div id="event-count">0</div>
+                    </div>
+                </div>
+                <div class="filter-buttons">
+                    <button id="show-all">All</button>
+                    <button id="show-matched">Match</button>
+                    <button id="show-unrecognized">Unrec</button>
+                    <button id="clear-events">Clear</button>
+                    <button id="force-refresh">Refresh</button>
+                    <button id="pause-polling">Pause</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="eight-column-layout">
+                <div class="column camera-column" id="column-1">
+                    <div class="column-title">Travel Counter Out</div>
+                    <img src="http://192.168.14.205:3007/video_feed/cam1" class="video-feed" alt="Travel Counter Out Feed">
+                    <div class="events-container" id="events-container-1">
+                        <div class="no-events-message" id="no-events-column-1">
+                            Waiting for recognition events...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column unrecognized-column" id="unrecognized-column-1">
+                    <div class="column-title">Det</div>
+                    <div class="events-container" id="unrecognized-container-1">
+                        <div class="no-events-message" id="no-events-unrecognized-1">
+                            No unrecognized persons...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column camera-column" id="column-2">
+                    <div class="column-title">Travel Counter In</div>
+                    <img src="http://192.168.14.205:3007/video_feed/cam2" class="video-feed" alt="Travel Counter In Feed">
+                    <div class="events-container" id="events-container-2">
+                        <div class="no-events-message" id="no-events-column-2">
+                            Waiting for recognition events...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column unrecognized-column" id="unrecognized-column-2">
+                    <div class="column-title">Det</div>
+                    <div class="events-container" id="unrecognized-container-2">
+                        <div class="no-events-message" id="no-events-unrecognized-2">
+                            No unrecognized persons...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column camera-column" id="column-3">
+                    <div class="column-title">Membership Counter Out</div>
+                    <img src="http://192.168.14.205:3007/video_feed/cam3" class="video-feed" alt="Membership Counter Out Feed">
+                    <div class="events-container" id="events-container-3">
+                        <div class="no-events-message" id="no-events-column-3">
+                            Waiting for recognition events...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column unrecognized-column" id="unrecognized-column-3">
+                    <div class="column-title">Det</div>
+                    <div class="events-container" id="unrecognized-container-3">
+                        <div class="no-events-message" id="no-events-unrecognized-3">
+                            No unrecognized persons...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column camera-column" id="column-4">
+                    <div class="column-title">Membership Counter In</div>
+                    <img src="http://192.168.14.205:3007/video_feed/cam4" class="video-feed" alt="Membership Counter In Feed">
+                    <div class="events-container" id="events-container-4">
+                        <div class="no-events-message" id="no-events-column-4">
+                            Waiting for recognition events...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="column unrecognized-column" id="unrecognized-column-4">
+                    <div class="column-title">Det</div>
+                    <div class="events-container" id="unrecognized-container-4">
+                        <div class="no-events-message" id="no-events-unrecognized-4">
+                            No unrecognized persons...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reconnect-indicator" id="reconnect-indicator" style="display: none;">
+        <span id="connection-message">Fetching updates...</span>
+    </div>
+
+    <div id="addToDbModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Person to Database</h2>
+                <span class="close" id="addToDbModalClose">&times;</span>
+            </div>
+            <div class="image-container">
+                <div class="image-box" style="width: 100%;">
+                    <h3>Image to Add</h3>
+                    <img id="addToDbImage" src="" alt="Image to Add" style="max-width: 300px; max-height: 300px;">
+                </div>
+            </div>
+            <div class="person-details">
+                <div style="margin: 20px 0;">
+                    <label for="identityInput" style="display: block; margin-bottom: 8px; font-weight: bold; color: #f5d76e;">Enter Person Identity:</label>
+                    <input type="text" id="identityInput" placeholder="Enter person name/ID..." 
+                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #f5d76e; 
+                                  background: rgba(0, 0, 0, 0.7); color: #f5d76e; font-size: 1rem;">
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button id="addToDbButton" 
+                            style="padding: 10px 20px; background: #4CAF50; color: white; border: none; 
+                                   border-radius: 4px; font-size: 1rem; cursor: pointer; margin-right: 10px;">
+                        Add to Database
+                    </button>
+                    <button id="cancelAddToDb" 
+                            style="padding: 10px 20px; background: #f44336; color: white; border: none; 
+                                   border-radius: 4px; font-size: 1rem; cursor: pointer;">
+                        Cancel
+                    </button>
+                </div>
+                <div id="addToDbStatus" style="margin-top: 15px; text-align: center; font-size: 0.9rem;"></div>
+            </div>
+        </div>
+    </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Event Details</h2>
+                <span class="close" id="modalClose">&times;</span>
+            </div>
+            <div class="image-container">
+                <div class="image-box">
+                    <h3>Input Image</h3>
+                    <img id="modalInputImage" src="" alt="Input Image">
+                </div>
+                <div class="image-box">
+                    <h3>Matched Image</h3>
+                    <img id="modalMatchedImage" src="" alt="Matched Image">
+                </div>
+            </div>
+            <div class="person-details">
+                <h3 id="modalPersonId"></h3>
+                <div class="modal-person-details" id="modalPersonDetails">
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Timestamp</div>
+                        <div class="modal-detail-value" id="modalTimestamp"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Status</div>
+                        <div class="modal-detail-value" id="modalStatus"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Camera</div>
+                        <div class="modal-detail-value" id="modalCamera"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Confidence</div>
+                        <div class="modal-detail-value" id="modalConfidence"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Person Name</div>
+                        <div class="modal-detail-value" id="modalPersonName"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Ranking</div>
+                        <div class="modal-detail-value detail-ranking" id="modalPersonRanking"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Type</div>
+                        <div class="modal-detail-value detail-type" id="modalPersonType"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Priority</div>
+                        <div class="modal-detail-value detail-priority" id="modalPersonPriority"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">MID</div>
+                        <div class="modal-detail-value detail-mid" id="modalPersonMid"></div>
+                    </div>
+                    <div class="modal-detail-item">
+                        <div class="modal-detail-label">Request ID</div>
+                        <div class="modal-detail-value" id="modalRequestId"></div>
+                    </div>
+                </div>
+                <div id="modalCacheInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const eventsContainer1 = document.getElementById('events-container-1');
+        const eventsContainer2 = document.getElementById('events-container-2');
+        const eventsContainer3 = document.getElementById('events-container-3');
+        const eventsContainer4 = document.getElementById('events-container-4');
+        
+        const unrecognizedContainer1 = document.getElementById('unrecognized-container-1');
+        const unrecognizedContainer2 = document.getElementById('unrecognized-container-2');
+        const unrecognizedContainer3 = document.getElementById('unrecognized-container-3');
+        const unrecognizedContainer4 = document.getElementById('unrecognized-container-4');
+        
+        const noEventsColumn1 = document.getElementById('no-events-column-1');
+        const noEventsColumn2 = document.getElementById('no-events-column-2');
+        const noEventsColumn3 = document.getElementById('no-events-column-3');
+        const noEventsColumn4 = document.getElementById('no-events-column-4');
+        
+        const connectionStatus = document.getElementById('connection-status');
+        const statusDot = document.getElementById('status-dot');
+        const eventModal = document.getElementById('eventModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalInputImage = document.getElementById('modalInputImage');
+        const modalMatchedImage = document.getElementById('modalMatchedImage');
+        const modalPersonId = document.getElementById('modalPersonId');
+        const modalTimestamp = document.getElementById('modalTimestamp');
+        const modalStatus = document.getElementById('modalStatus');
+        const modalCamera = document.getElementById('modalCamera');
+        const modalConfidence = document.getElementById('modalConfidence');
+        const modalRequestId = document.getElementById('modalRequestId');
+        const modalCacheInfo = document.getElementById('modalCacheInfo');
+        
+        // New person detail modal elements
+        const modalPersonName = document.getElementById('modalPersonName');
+        const modalPersonRanking = document.getElementById('modalPersonRanking');
+        const modalPersonType = document.getElementById('modalPersonType');
+        const modalPersonPriority = document.getElementById('modalPersonPriority');
+        const modalPersonMid = document.getElementById('modalPersonMid');
+        
+        // Add to Database Modal Elements
+        const addToDbModal = document.getElementById('addToDbModal');
+        const addToDbModalClose = document.getElementById('addToDbModalClose');
+        const addToDbImage = document.getElementById('addToDbImage');
+        const identityInput = document.getElementById('identityInput');
+        const addToDbButton = document.getElementById('addToDbButton');
+        const cancelAddToDb = document.getElementById('cancelAddToDb');
+        const addToDbStatus = document.getElementById('addToDbStatus');
+        
+        let currentImageForDb = null;
+        
+        const reconnectIndicator = document.getElementById('reconnect-indicator');
+        const connectionMessage = document.getElementById('connection-message');
+        const forceRefreshButton = document.getElementById('force-refresh');
+        const pausePollingButton = document.getElementById('pause-polling');
+        const pollingInfo = document.getElementById('polling-info');
+
+        // Metric elements
+        const rpsValue = document.getElementById('rps-value');
+        const cacheHitRate = document.getElementById('cache-hit-rate');
+        const queueSize = document.getElementById('queue-size');
+        const eventCount = document.getElementById('event-count');
+
+        // Define camera mappings
+        const cameraMapping = {
+            31: { name: 'Travel Counter Out', column: 1 },
+            32: { name: 'Travel Counter In', column: 2 },
+            61: { name: 'Membership Counter Out', column: 3 },
+            62: { name: 'Membership Counter In', column: 4 }
+        };
+
+        // Variables
+        let allEvents = [];
+        let column1Events = [];
+        let column2Events = [];
+        let column3Events = [];
+        let column4Events = [];
+        let unrecognizedEvents1 = [];
+        let unrecognizedEvents2 = [];
+        let unrecognizedEvents3 = [];
+        let unrecognizedEvents4 = [];
+        let currentFilter = 'all';
+        const maxEventsPerColumn = 100;
+        const maxCardsPerColumn = 10;
+        const maxEventsPerCard = 10;
+        let expandedIdentities = new Set();
+        let lastEventTimestamp = null;
+        let pollingInterval = null;
+        let isPolling = true;
+        let pollingRate = 200;
+        let connectionRetryCount = 0;
+        let lastKnownEvents = new Set();
+
+        // HTTP Polling Configuration
+        const API_BASE = '';
+        const ENDPOINTS = {
+            events: '/api/recognition_events',
+            metrics: '/api/metrics',
+            heartbeat: '/api/heartbeat'
+        };
+
+        // Enhanced function to get priority class for styling
+        function getPriorityClass(priority) {
+            if (!priority) return 'priority-low';
+            const p = priority.toLowerCase();
+            if (p === 'banned') return 'priority-banned';
+            if (p === 'high') return 'priority-high';
+            if (p === 'medium') return 'priority-medium';
+            return 'priority-low';
+        }
+
+        // Enhanced function to get ranking class for styling
+        function getRankingClass(ranking) {
+            if (!ranking) return '';
+            const r = ranking.toLowerCase();
+            if (r === 'infinity') return 'ranking-infinity';
+            if (r === 'diamond') return 'ranking-diamond';
+            if (r === 'platinum') return 'ranking-platinum';
+            if (r === 'gold') return 'ranking-gold';
+            if (r === 'silver') return 'ranking-silver';
+            if (r === 'classic') return 'ranking-classic';
+            return 'ranking-classic';
+        }
+
+        // Enhanced function to get type class for styling
+        function getTypeClass(type) {
+            if (!type) return '';
+            const t = type.toLowerCase();
+            if (t === 'staff') return 'type-staff';
+            if (t === 'guest') return 'type-guest';
+            return '';
+        }
+
+        // Enhanced function to create person details HTML
+        function createPersonDetailsHTML(event) {
+            if (!event.person_name && !event.person_ranking && !event.person_type && !event.person_priority && !event.person_mid) {
+                return '';
+            }
+
+            const rankingClass = getRankingClass(event.person_ranking);
+            const typeClass = getTypeClass(event.person_type);
+            const priorityClass = getPriorityClass(event.person_priority);
+
+            return `
+                <div class="person-details-inline">
+                    <div class="person-detail-row">
+                        ${event.person_name ? `<span class="person-name-display">${event.person_name}</span>` : ''}
+                    </div>
+                    <div class="person-detail-row">
+                        ${event.person_ranking ? `<span class="detail-ranking ${rankingClass}">${event.person_ranking}</span>` : ''}
+                        ${event.person_type ? `<span class="detail-type ${typeClass}">${event.person_type}</span>` : ''}
+                        ${event.person_priority ? `<span class="detail-priority ${priorityClass}">${event.person_priority}</span>` : ''}
+                    </div>
+                    ${event.person_mid && event.person_mid !== event.identity ? `
+                    <div class="person-detail-row">
+                        <span class="detail-mid">MID: ${event.person_mid}</span>
+                    </div>` : ''}
+                </div>
+            `;
+        }
+
+        // Function to create placeholder cards
+        function createPlaceholderCard() {
+            const placeholderDiv = document.createElement('div');
+            placeholderDiv.className = 'placeholder-card';
+            
+            placeholderDiv.innerHTML = `
+                <div class="placeholder-header">
+                    <div class="placeholder-image"></div>
+                    <div class="placeholder-info">
+                        <div class="placeholder-name">Waiting for person...</div>
+                        <div class="placeholder-stat">No events yet</div>
+                    </div>
+                </div>
+            `;
+            
+            return placeholderDiv;
+        }
+
+        // Function to update the connection status UI
+        function updateConnectionStatus(status, message) {
+            statusDot.className = `status-indicator status-${status}`;
+            connectionStatus.textContent = message || `${status.charAt(0).toUpperCase() + status.slice(1)}`;
+            
+            if (status === 'connected') {
+                connectionStatus.style.color = '#4CAF50';
+                reconnectIndicator.style.display = 'none';
+                connectionRetryCount = 0;
+                pollingInfo.textContent = `Polling every ${pollingRate}ms`;
+            } else if (status === 'disconnected') {
+                connectionStatus.style.color = '#F44336';
+                reconnectIndicator.style.display = 'block';
+                connectionMessage.textContent = 'Server unreachable, retrying...';
+                pollingInfo.textContent = 'Polling paused';
+            } else if (status === 'connecting') {
+                connectionStatus.style.color = '#FF9800';
+                reconnectIndicator.style.display = 'block';
+                connectionMessage.textContent = `Reconnecting (${connectionRetryCount})...`;
+                pollingInfo.textContent = 'Attempting to connect...';
+            }
+        }
+
+        // Function to make HTTP requests with error handling
+        async function makeRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    timeout: 5000,
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error(`Request failed for ${url}:`, error);
+                throw error;
+            }
+        }
+
+        // Function to fetch recognition events
+        async function fetchRecognitionEvents() {
+            try {
+                const params = new URLSearchParams({
+                    limit: maxEventsPerColumn * 5,
+                    offset: 0
+                });
+
+                const data = await makeRequest(`${ENDPOINTS.events}?${params}`);
+                
+                if (data.status === 'success' && data.events) {
+                    processNewEvents(data.events);
+                    updateConnectionStatus('connected');
+                    return true;
+                }
+            } catch (error) {
+                console.error('Failed to fetch events:', error);
+                updateConnectionStatus('disconnected', `Error - ${error.message}`);
+                connectionRetryCount++;
+                return false;
+            }
+        }
+
+        // Function to fetch server metrics
+        async function fetchServerMetrics() {
+            try {
+                const data = await makeRequest(ENDPOINTS.metrics);
+                updateMetricsDisplay(data);
+            } catch (error) {
+                console.error('Failed to fetch metrics:', error);
+            }
+        }
+
+        // Function to update metrics display
+        function updateMetricsDisplay(metrics) {
+            rpsValue.textContent = metrics.requests_per_second ? metrics.requests_per_second.toFixed(1) : '--';
+            
+            if (metrics.smart_cache && metrics.smart_cache.hit_rate !== undefined) {
+                cacheHitRate.textContent = `${metrics.smart_cache.hit_rate}%`;
+            } else {
+                cacheHitRate.textContent = '--';
+            }
+            
+            const totalQueueSize = (metrics.recognition_queue_size || 0) + 
+                                   (metrics.batch_queue_size || 0);
+            queueSize.textContent = totalQueueSize;
+            
+            eventCount.textContent = allEvents.length;
+        }
+
+        // Function to process new events from the API
+        function processNewEvents(newEvents) {
+            let hasNewEvent = false;
+            
+            const sortedEvents = newEvents.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+            
+            for (const eventData of sortedEvents) {
+                // Map camera ID to column
+                const cameraInfo = cameraMapping[eventData.camera_id];
+                if (!cameraInfo) {
+                    continue;
+                }
+                
+                const eventId = `${eventData.timestamp}-${eventData.camera_id}-${eventData.status}-${eventData.request_id || ''}`;
+                
+                if (lastKnownEvents.has(eventId)) {
+                    continue;
+                }
+                
+                lastKnownEvents.add(eventId);
+                
+                if (lastKnownEvents.size > 1000) {
+                    const eventsArray = Array.from(lastKnownEvents);
+                    lastKnownEvents.clear();
+                    eventsArray.slice(-500).forEach(id => lastKnownEvents.add(id));
+                }
+                
+                addEvent(eventData, cameraInfo);
+                hasNewEvent = true;
+            }
+            
+            if (hasNewEvent) {
+                renderAllEvents();
+            }
+        }
+
+        // Function to start HTTP polling
+        function startPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+            }
+            
+            if (!isPolling) return;
+            
+            updateConnectionStatus('connecting', 'Starting polling...');
+            
+            fetchRecognitionEvents();
+            fetchServerMetrics();
+            
+            pollingInterval = setInterval(async () => {
+                if (!isPolling) return;
+                
+                try {
+                    await fetchRecognitionEvents();
+                    if (Date.now() % 2000 < pollingRate) {
+                        await fetchServerMetrics();
+                    }
+                } catch (error) {
+                    console.error('Polling error:', error);
+                }
+            }, pollingRate);
+            
+            console.log(`Started HTTP polling every ${pollingRate}ms`);
+        }
+
+        // Function to stop polling
+        function stopPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+                pollingInterval = null;
+            }
+            updateConnectionStatus('disconnected', 'Polling stopped');
+        }
+
+        // Function to toggle polling
+        function togglePolling() {
+            isPolling = !isPolling;
+            
+            if (isPolling) {
+                startPolling();
+                pausePollingButton.textContent = 'Pause';
+                pausePollingButton.style.background = '#f5d76e';
+            } else {
+                stopPolling();
+                pausePollingButton.textContent = 'Resume';
+                pausePollingButton.style.background = '#4CAF50';
+            }
+        }
+
+        function addEvent(eventData, cameraInfo) {
+            const eventCopy = {...eventData};
+            
+            if (!eventCopy.timestamp) eventCopy.timestamp = new Date().toISOString();
+            eventCopy.camera_name = cameraInfo.name;
+            eventCopy.column = cameraInfo.column;
+            
+            // Fix image paths
+            if (eventCopy.input_image && !eventCopy.input_image.startsWith('http') && !eventCopy.input_image.startsWith('/')) {
+                eventCopy.input_image = `/${eventCopy.input_image}`;
+            }
+            
+            if (eventCopy.matched_image && !eventCopy.matched_image.startsWith('http') && !eventCopy.matched_image.startsWith('/')) {
+                eventCopy.matched_image = `/${eventCopy.matched_image}`;
+            }
+            
+            allEvents.unshift(eventCopy);
+            
+            // Categorize events by camera and status
+            const isUnrecognized = eventCopy.status && 
+                (eventCopy.status.toLowerCase() === 'unrecognized' || 
+                 eventCopy.status.toLowerCase() === 'unrecognized_saved');
+            
+            if (isUnrecognized) {
+                // Add to appropriate unrecognized column
+                switch(eventCopy.column) {
+                    case 1:
+                        unrecognizedEvents1.unshift(eventCopy);
+                        if (unrecognizedEvents1.length > maxEventsPerColumn) {
+                            unrecognizedEvents1 = unrecognizedEvents1.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 2:
+                        unrecognizedEvents2.unshift(eventCopy);
+                        if (unrecognizedEvents2.length > maxEventsPerColumn) {
+                            unrecognizedEvents2 = unrecognizedEvents2.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 3:
+                        unrecognizedEvents3.unshift(eventCopy);
+                        if (unrecognizedEvents3.length > maxEventsPerColumn) {
+                            unrecognizedEvents3 = unrecognizedEvents3.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 4:
+                        unrecognizedEvents4.unshift(eventCopy);
+                        if (unrecognizedEvents4.length > maxEventsPerColumn) {
+                            unrecognizedEvents4 = unrecognizedEvents4.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                }
+            } else {
+                // Only add matched events to camera columns
+                switch(eventCopy.column) {
+                    case 1:
+                        column1Events.unshift(eventCopy);
+                        if (column1Events.length > maxEventsPerColumn) {
+                            column1Events = column1Events.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 2:
+                        column2Events.unshift(eventCopy);
+                        if (column2Events.length > maxEventsPerColumn) {
+                            column2Events = column2Events.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 3:
+                        column3Events.unshift(eventCopy);
+                        if (column3Events.length > maxEventsPerColumn) {
+                            column3Events = column3Events.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                    case 4:
+                        column4Events.unshift(eventCopy);
+                        if (column4Events.length > maxEventsPerColumn) {
+                            column4Events = column4Events.slice(0, maxEventsPerColumn);
+                        }
+                        break;
+                }
+            }
+            
+            // Limit total events
+            if (allEvents.length > maxEventsPerColumn * 8) {
+                allEvents = allEvents.slice(0, maxEventsPerColumn * 8);
+            }
+        }
+
+        function groupEventsByIdentity(events) {
+            const groups = {};
+            
+            events.forEach(event => {
+                const identity = event.identity || event.matched_identity || 'Unknown Person';
+                if (!groups[identity]) {
+                    groups[identity] = [];
+                }
+                groups[identity].push(event);
+            });
+            
+            // Sort events within each group by timestamp (newest first)
+            Object.keys(groups).forEach(identity => {
+                groups[identity].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                // Limit events per identity
+                if (groups[identity].length > maxEventsPerCard) {
+                    groups[identity] = groups[identity].slice(0, maxEventsPerCard);
+                }
+            });
+            
+            return groups;
+        }
+
+        function renderAllEvents() {
+            const filteredEvents = filterEvents(currentFilter);
+            
+            // Separate events by column and filter
+            const filteredColumn1Events = filteredEvents.filter(event => 
+                event.column === 1 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn2Events = filteredEvents.filter(event => 
+                event.column === 2 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn3Events = filteredEvents.filter(event => 
+                event.column === 3 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn4Events = filteredEvents.filter(event => 
+                event.column === 4 && event.status && event.status.toLowerCase() === 'matched');
+            
+            // Unrecognized events by column
+            const filteredUnrecognized1 = filteredEvents.filter(event => 
+                event.column === 1 && event.status && 
+                (event.status.toLowerCase() === 'unrecognized' || 
+                 event.status.toLowerCase() === 'unrecognized_saved'));
+            const filteredUnrecognized2 = filteredEvents.filter(event => 
+                event.column === 2 && event.status && 
+                (event.status.toLowerCase() === 'unrecognized' || 
+                 event.status.toLowerCase() === 'unrecognized_saved'));
+            const filteredUnrecognized3 = filteredEvents.filter(event => 
+                event.column === 3 && event.status && 
+                (event.status.toLowerCase() === 'unrecognized' || 
+                 event.status.toLowerCase() === 'unrecognized_saved'));
+            const filteredUnrecognized4 = filteredEvents.filter(event => 
+                event.column === 4 && event.status && 
+                (event.status.toLowerCase() === 'unrecognized' || 
+                 event.status.toLowerCase() === 'unrecognized_saved'));
+            
+            // Update each column
+            updateColumnContent(eventsContainer1, filteredColumn1Events, noEventsColumn1, 'camera');
+            updateColumnContent(eventsContainer2, filteredColumn2Events, noEventsColumn2, 'camera');
+            updateColumnContent(eventsContainer3, filteredColumn3Events, noEventsColumn3, 'camera');
+            updateColumnContent(eventsContainer4, filteredColumn4Events, noEventsColumn4, 'camera');
+            
+            // Update unrecognized columns
+            updateColumnContent(unrecognizedContainer1, filteredUnrecognized1, null, 'unrecognized');
+            updateColumnContent(unrecognizedContainer2, filteredUnrecognized2, null, 'unrecognized');
+            updateColumnContent(unrecognizedContainer3, filteredUnrecognized3, null, 'unrecognized');
+            updateColumnContent(unrecognizedContainer4, filteredUnrecognized4, null, 'unrecognized');
+        }
+
+        function updateColumnContent(container, events, noEventsMsg, columnType) {
+            // Preserve expanded state
+            const currentlyExpanded = new Set();
+            container.querySelectorAll('.identity-header.expanded').forEach(header => {
+                const identity = header.querySelector('.identity-name').textContent.trim().replace(/CACHE|PARQUET/g, '').trim();
+                currentlyExpanded.add(identity);
+            });
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            if (columnType === 'unrecognized') {
+                displayUnrecognizedEvents(container, events);
+            } else {
+                displayGroupedEventsWithPlaceholders(container, events, currentlyExpanded);
+            }
+        }
+
+        function displayGroupedEventsWithPlaceholders(container, events, currentlyExpanded) {
+            const groupedEvents = groupEventsByIdentity(events);
+            const identities = Object.keys(groupedEvents);
+            
+            // Sort identities by the timestamp of their most recent event
+            identities.sort((a, b) => {
+                const aLatest = new Date(groupedEvents[a][0].timestamp);
+                const bLatest = new Date(groupedEvents[b][0].timestamp);
+                return bLatest - aLatest;
+            });
+            
+            // Limit to maxCardsPerColumn and create identity groups
+            const limitedIdentities = identities.slice(0, maxCardsPerColumn);
+            
+            limitedIdentities.forEach(identity => {
+                const groupEvents = groupedEvents[identity];
+                const identityGroup = createIdentityGroup(identity, groupEvents, currentlyExpanded);
+                container.appendChild(identityGroup);
+            });
+            
+            // Fill remaining slots with placeholders
+            const remainingSlots = maxCardsPerColumn - limitedIdentities.length;
+            for (let i = 0; i < remainingSlots; i++) {
+                const placeholder = createPlaceholderCard();
+                container.appendChild(placeholder);
+            }
+        }
+
+        function displayUnrecognizedEvents(container, events) {
+            // Show recent unrecognized events without placeholders
+            events.slice(0, 20).forEach((event, index) => {
+                const unrecognizedCard = createUnrecognizedCard(event, index === 0);
+                container.appendChild(unrecognizedCard);
+            });
+        }
+
+        function createIdentityGroup(identity, events, currentlyExpanded) {
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'identity-group';
+            
+            const isExpanded = currentlyExpanded.has(identity) || expandedIdentities.has(identity);
+            
+            // Get the latest event for display
+            const latestEvent = events[0];
+            const latestTimestamp = new Date(latestEvent.timestamp);
+            const formattedTime = latestTimestamp.toLocaleTimeString();
+            
+            // Calculate statistics
+            const avgConfidence = events.reduce((sum, event) => sum + (event.confidence || 0), 0) / events.length;
+            
+            // Add enhanced styling based on person attributes
+            const typeClass = getTypeClass(latestEvent.person_type);
+            const priorityClass = getPriorityClass(latestEvent.person_priority);
+            
+            // Apply styling classes to the group
+            if (typeClass) groupDiv.classList.add(typeClass.replace('type-', 'type-'));
+            if (priorityClass) groupDiv.classList.add(priorityClass.replace('priority-', 'priority-'));
+            
+            // Add cache indicator if applicable
+            const cacheIndicator = latestEvent.cache_hit || latestEvent.processing_source === 'CACHE' ? 
+                `<span class="cache-indicator">CACHE</span>` : '';
+            
+            // Create group header
+            const groupHeader = document.createElement('div');
+            groupHeader.className = `identity-header ${isExpanded ? 'expanded' : ''}`;
+            groupHeader.addEventListener('click', () => toggleIdentityGroup(identity, groupDiv));
+            
+            // Create person details HTML
+            const personDetailsHTML = createPersonDetailsHTML(latestEvent);
+            
+            groupHeader.innerHTML = `
+                <div class="identity-images">
+                    <img class="identity-image" src="${latestEvent.input_image || 'https://via.placeholder.com/30?text=No'}" alt="Latest" onerror="this.src='https://via.placeholder.com/30?text=Err'">
+                    ${latestEvent.matched_image ? `<img class="identity-image" src="${latestEvent.matched_image}" alt="Match" onerror="this.src='https://via.placeholder.com/30?text=Match'">` : ''}
+                </div>
+                <div class="identity-info">
+                    <div class="identity-name">${identity}${cacheIndicator}</div>
+                    <div class="identity-stats">
+                        <div class="identity-stat">${formattedTime}</div>
+                        <div class="identity-stat">${(avgConfidence * 100).toFixed(0)}%</div>
+                    </div>
+                    ${personDetailsHTML}
+                </div>
+                <div class="identity-count">${events.length}</div>
+                <div class="expand-indicator ${isExpanded ? 'expanded' : ''}">▶</div>
+            `;
+            
+            // Create events container
+            const groupEventsDiv = document.createElement('div');
+            groupEventsDiv.className = `identity-events ${isExpanded ? 'expanded' : ''}`;
+            
+            if (isExpanded) {
+                events.forEach((event, index) => {
+                    const eventCard = createEventCard(event, index === 0);
+                    groupEventsDiv.appendChild(eventCard);
+                });
+            }
+            
+            groupDiv.appendChild(groupHeader);
+            groupDiv.appendChild(groupEventsDiv);
+            
+            return groupDiv;
+        }
+
+        function createUnrecognizedCard(event, isLatest) {
+            const cardDiv = document.createElement('div');
+            cardDiv.className = `unrecognized-person ${isLatest ? 'latest' : ''}`;
+            
+            // Add click handler for Add to DB modal
+            cardDiv.addEventListener('click', () => showAddToDbModal(event));
+            
+            const timestamp = new Date(event.timestamp);
+            const formattedTime = timestamp.toLocaleTimeString();
+            
+            cardDiv.innerHTML = `
+                <div class="unrecognized-content">
+                    <img class="unrecognized-image" src="${event.input_image || 'https://via.placeholder.com/80?text=No'}" alt="Unrecognized" onerror="this.src='https://via.placeholder.com/80?text=Err'">
+                    <div class="unrecognized-time">${formattedTime}</div>
+                </div>
+            `;
+            
+            return cardDiv;
+        }
+
+        function toggleIdentityGroup(identity, groupDiv) {
+            const groupEvents = groupDiv.querySelector('.identity-events');
+            const expandIndicator = groupDiv.querySelector('.expand-indicator');
+            const groupHeader = groupDiv.querySelector('.identity-header');
+            
+            if (expandedIdentities.has(identity)) {
+                // Collapse
+                expandedIdentities.delete(identity);
+                groupEvents.classList.remove('expanded');
+                expandIndicator.classList.remove('expanded');
+                groupHeader.classList.remove('expanded');
+                groupEvents.style.maxHeight = '0';
+                setTimeout(() => {
+                    groupEvents.style.display = 'none';
+                }, 300);
+            } else {
+                // Expand
+                expandedIdentities.add(identity);
+                groupEvents.classList.add('expanded');
+                expandIndicator.classList.add('expanded');
+                groupHeader.classList.add('expanded');
+                
+                // Load events if not already loaded
+                if (groupEvents.children.length === 0) {
+                    const columnEvents = getEventsForIdentity(identity);
+                    columnEvents.forEach((event, index) => {
+                        const eventCard = createEventCard(event, index === 0);
+                        groupEvents.appendChild(eventCard);
+                    });
+                }
+                
+                groupEvents.style.display = 'block';
+                setTimeout(() => {
+                    groupEvents.style.maxHeight = '200px';
+                }, 10);
+            }
+        }
+
+        function getEventsForIdentity(identity) {
+            return allEvents.filter(event => {
+                const eventIdentity = event.identity || event.matched_identity || 'Unknown Person';
+                return eventIdentity === identity && filterEvents([event]).length > 0;
+            }).slice(0, maxEventsPerCard);
+        }
+
+        function createEventCard(event, isLatest) {
+            const eventCard = document.createElement('div');
+            eventCard.className = `event-card ${isLatest ? 'latest' : ''}`;
+            
+            // Add enhanced styling based on person attributes
+            const typeClass = getTypeClass(event.person_type);
+            const priorityClass = getPriorityClass(event.person_priority);
+            
+            if (typeClass) eventCard.classList.add(typeClass.replace('type-', 'type-'));
+            if (priorityClass) eventCard.classList.add(priorityClass.replace('priority-', 'priority-'));
+            
+            eventCard.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showEventDetails(event);
+            });
+            
+            const timestamp = new Date(event.timestamp);
+            const formattedTime = timestamp.toLocaleTimeString();
+            
+            const statusClass = `status-${event.status.toLowerCase()}`;
+            
+            // Add cache indicator if applicable
+            const cacheIndicator = event.cache_hit || event.processing_source === 'CACHE' ? 
+                `<span class="cache-indicator">CACHE</span>` : '';
+            
+            // Add parquet indicator if applicable
+            const parquetIndicator = event.parquet_lookup === 'success' ? 
+                `<span class="parquet-indicator">PARQUET</span>` : '';
+            
+            eventCard.innerHTML = `
+                <div class="event-images">
+                    <img class="event-image" src="${event.input_image || 'https://via.placeholder.com/25?text=No'}" alt="Input" onerror="this.src='https://via.placeholder.com/25?text=Err'">
+                    ${event.matched_image ? `<img class="event-image" src="${event.matched_image}" alt="Match" onerror="this.src='https://via.placeholder.com/25?text=Match'">` : ''}
+                </div>
+                <div class="event-details">
+                    <div class="event-header">
+                        <span class="event-status ${statusClass}">${event.status}${cacheIndicator}${parquetIndicator}</span>
+                        <span class="event-time">${formattedTime}</span>
+                    </div>
+                    <div class="event-info">
+                        ${event.confidence ? `<div class="info-item">${(event.confidence * 100).toFixed(0)}%</div>` : ''}
+                        ${event.person_priority ? `<div class="info-item detail-priority ${getPriorityClass(event.person_priority)}">${event.person_priority}</div>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            return eventCard;
+        }
+
+        function filterEvents(filter) {
+            if (filter === 'all') {
+                return allEvents;
+            }
+            if (filter === 'matched') {
+                return allEvents.filter(event =>
+                    event.status && event.status.toLowerCase() === 'matched');
+            }
+            if (filter === 'unrecognized') {
+                return allEvents.filter(event =>
+                    event.status && 
+                    (event.status.toLowerCase() === 'unrecognized' || 
+                     event.status.toLowerCase() === 'unrecognized_saved'));
+            }
+
+            return allEvents;
+        }
+
+        function showEventDetails(event) {
+            modalInputImage.src = event.input_image || 'https://via.placeholder.com/300?text=No+Image';
+            modalInputImage.onerror = () => { modalInputImage.src = 'https://via.placeholder.com/300?text=Image+Error'; };
+            
+            modalMatchedImage.src = event.matched_image || 'https://via.placeholder.com/300?text=No+Match';
+            modalMatchedImage.onerror = () => { modalMatchedImage.src = 'https://via.placeholder.com/300?text=Match+Error'; };
+            
+            modalPersonId.textContent = event.identity || event.matched_identity || 'Unknown Person';
+            
+            const timestamp = new Date(event.timestamp);
+            modalTimestamp.textContent = `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
+            
+            modalStatus.textContent = event.status;
+            modalCamera.textContent = event.camera_name || `Camera ${event.camera_id || 'Unknown'}`;
+            modalConfidence.textContent = event.confidence ? `${(event.confidence * 100).toFixed(2)}%` : 'N/A';
+            modalRequestId.textContent = event.request_id || 'N/A';
+            
+            // Update person details in modal with enhanced styling
+            modalPersonName.textContent = event.person_name || 'N/A';
+            
+            modalPersonRanking.textContent = event.person_ranking || 'N/A';
+            modalPersonRanking.className = `modal-detail-value detail-ranking ${getRankingClass(event.person_ranking)}`;
+            
+            modalPersonType.textContent = event.person_type || 'N/A';
+            modalPersonType.className = `modal-detail-value detail-type ${getTypeClass(event.person_type)}`;
+            
+            modalPersonPriority.textContent = event.person_priority || 'N/A';
+            modalPersonPriority.className = `modal-detail-value detail-priority ${getPriorityClass(event.person_priority)}`;
+            
+            modalPersonMid.textContent = event.person_mid || 'N/A';
+            
+            // Show cache and parquet information if available
+            let cacheInfo = '';
+            if (event.cache_hit || event.processing_source === 'CACHE') {
+                cacheInfo += `
+                    <p><strong>Cache Hit:</strong> Yes</p>
+                    <p><strong>Processing Source:</strong> ${event.processing_source || 'Cache'}</p>
+                    ${event.cache_similarity ? `<p><strong>Cache Similarity:</strong> ${(event.cache_similarity * 100).toFixed(2)}%</p>` : ''}
+                    ${event.cache_age_seconds ? `<p><strong>Cache Age:</strong> ${event.cache_age_seconds.toFixed(1)}s</p>` : ''}
+                `;
+            } else {
+                cacheInfo += '<p><strong>Cache Hit:</strong> No</p>';
+            }
+            
+            if (event.parquet_lookup) {
+                cacheInfo += `<p><strong>Parquet Lookup:</strong> ${event.parquet_lookup === 'success' ? 'Success' : 'Failed'}</p>`;
+            }
+            
+            modalCacheInfo.innerHTML = cacheInfo;
+            
+            eventModal.style.display = 'block';
+        }
+
+        // Function to show Add to Database modal
+        function showAddToDbModal(event) {
+            currentImageForDb = event;
+            addToDbImage.src = event.input_image || 'https://via.placeholder.com/300?text=No+Image';
+            addToDbImage.onerror = () => { addToDbImage.src = 'https://via.placeholder.com/300?text=Image+Error'; };
+            
+            // Clear previous input and status
+            identityInput.value = '';
+            addToDbStatus.innerHTML = '';
+            addToDbStatus.style.color = '#f5d76e';
+            
+            addToDbModal.style.display = 'block';
+            
+            // Focus on input field
+            setTimeout(() => {
+                identityInput.focus();
+            }, 100);
+        }
+
+        // Function to add image to database
+        async function addImageToDatabase() {
+            const identity = identityInput.value.trim();
+            
+            if (!identity) {
+                addToDbStatus.innerHTML = 'Please enter a person identity';
+                addToDbStatus.style.color = '#f44336';
+                return;
+            }
+            
+            if (!currentImageForDb || !currentImageForDb.input_image) {
+                addToDbStatus.innerHTML = 'No image available';
+                addToDbStatus.style.color = '#f44336';
+                return;
+            }
+            
+            // Show loading status
+            addToDbStatus.innerHTML = 'Adding to database...';
+            addToDbStatus.style.color = '#FF9800';
+            addToDbButton.disabled = true;
+            addToDbButton.textContent = 'Adding...';
+            
+            try {
+                // Convert image URL to base64
+                const imageBase64 = await imageUrlToBase64(currentImageForDb.input_image);
+                
+                const response = await fetch('http://192.168.15.65:3005/add_image_to_database_2', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        image: imageBase64,
+                        identity: identity
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.status === 'success') {
+                    addToDbStatus.innerHTML = `✅ Successfully added "${identity}" to database!`;
+                    addToDbStatus.style.color = '#4CAF50';
+                    
+                    // Close modal after 2 seconds
+                    setTimeout(() => {
+                        addToDbModal.style.display = 'none';
+                    }, 2000);
+                } else {
+                    addToDbStatus.innerHTML = `❌ Error: ${result.error || 'Failed to add to database'}`;
+                    addToDbStatus.style.color = '#f44336';
+                }
+            } catch (error) {
+                console.error('Error adding to database:', error);
+                addToDbStatus.innerHTML = `❌ Network error: ${error.message}`;
+                addToDbStatus.style.color = '#f44336';
+            } finally {
+                addToDbButton.disabled = false;
+                addToDbButton.textContent = 'Add to Database';
+            }
+        }
+
+        // Function to convert image URL to base64
+        async function imageUrlToBase64(imageUrl) {
+            try {
+                const response = await fetch(imageUrl);
+                const blob = await response.blob();
+                
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        // Remove data:image/jpeg;base64, prefix
+                        const base64 = reader.result.split(',')[1];
+                        resolve(base64);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(blob);
+                });
+            } catch (error) {
+                throw new Error(`Failed to convert image: ${error.message}`);
+            }
+        }
+
+        // Force refresh function
+        async function forceRefresh() {
+            updateConnectionStatus('connecting', 'Force refreshing...');
+            connectionMessage.textContent = 'Force refreshing data...';
+            reconnectIndicator.style.display = 'block';
+            
+            try {
+                // Clear existing events
+                allEvents = [];
+                column1Events = [];
+                column2Events = [];
+                column3Events = [];
+                column4Events = [];
+                unrecognizedEvents1 = [];
+                unrecognizedEvents2 = [];
+                unrecognizedEvents3 = [];
+                unrecognizedEvents4 = [];
+                expandedIdentities.clear();
+                lastKnownEvents.clear();
+                
+                // Fetch fresh data
+                await fetchRecognitionEvents();
+                await fetchServerMetrics();
+                
+                renderAllEvents();
+                updateConnectionStatus('connected', 'Force refresh completed');
+            } catch (error) {
+                updateConnectionStatus('disconnected', `Force refresh failed - ${error.message}`);
+            }
+        }
+
+        // Check server status
+        async function checkServerStatus() {
+            try {
+                await makeRequest(ENDPOINTS.heartbeat);
+                if (!isPolling) {
+                    updateConnectionStatus('connected', 'Server responding (paused)');
+                }
+            } catch (error) {
+                updateConnectionStatus('disconnected', `Server unreachable - ${error.message}`);
+            }
+        }
+
+        // Event listeners
+        document.getElementById('show-all').addEventListener('click', () => {
+            currentFilter = 'all';
+            renderAllEvents();
+        });
+        
+        document.getElementById('show-matched').addEventListener('click', () => {
+            currentFilter = 'matched';
+            renderAllEvents();
+        });
+        
+        document.getElementById('show-unrecognized').addEventListener('click', () => {
+            currentFilter = 'unrecognized';
+            renderAllEvents();
+        });
+        
+        document.getElementById('clear-events').addEventListener('click', () => {
+            allEvents = [];
+            column1Events = [];
+            column2Events = [];
+            column3Events = [];
+            column4Events = [];
+            unrecognizedEvents1 = [];
+            unrecognizedEvents2 = [];
+            unrecognizedEvents3 = [];
+            unrecognizedEvents4 = [];
+            expandedIdentities.clear();
+            lastKnownEvents.clear();
+            renderAllEvents();
+        });
+        
+        forceRefreshButton.addEventListener('click', forceRefresh);
+        
+        pausePollingButton.addEventListener('click', togglePolling);
+        
+        modalClose.addEventListener('click', () => {
+            eventModal.style.display = 'none';
+        });
+        
+        // Add to Database Modal Event Listeners
+        addToDbModalClose.addEventListener('click', () => {
+            addToDbModal.style.display = 'none';
+        });
+        
+        cancelAddToDb.addEventListener('click', () => {
+            addToDbModal.style.display = 'none';
+        });
+        
+        addToDbButton.addEventListener('click', addImageToDatabase);
+        
+        // Allow Enter key to submit in identity input
+        identityInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addImageToDatabase();
+            }
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === eventModal) {
+                eventModal.style.display = 'none';
+            }
+            if (event.target === addToDbModal) {
+                addToDbModal.style.display = 'none';
+            }
+        });
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Starting 8-column HTTP polling-based monitoring with enhanced styling...');
+            
+            // Initialize with placeholders
+            renderAllEvents();
+            
+            startPolling();
+            
+            // Check server status every 30 seconds
+            setInterval(checkServerStatus, 30000);
+            
+            // Add visibility change detection
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible' && isPolling && !pollingInterval) {
+                    console.log('Tab became visible, resuming polling...');
+                    startPolling();
+                }
+            });
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'r' || event.key === 'R') {
+                    event.preventDefault();
+                    forceRefresh();
+                }
+                if (event.key === 'p' || event.key === 'P') {
+                    event.preventDefault();
+                    togglePolling();
+                }
+                if (event.key === 'c' || event.key === 'C') {
+                    event.preventDefault();
+                    document.getElementById('clear-events').click();
+                }
+                if (event.key === 'e' || event.key === 'E') {
+                    event.preventDefault();
+                    if (expandedIdentities.size > 0) {
+                        expandedIdentities.clear();
+                    } else {
+                        document.querySelectorAll('.identity-name').forEach(nameElement => {
+                            const identity = nameElement.textContent.trim().replace(/CACHE|PARQUET/g, '').trim();
+                            expandedIdentities.add(identity);
+                        });
+                    }
+                    renderAllEvents();
+                }
+            });
+        });
+
+        // Add error recovery mechanism
+        window.addEventListener('online', () => {
+            console.log('Network came back online, resuming polling...');
+            if (isPolling && !pollingInterval) {
+                startPolling();
+            }
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('Network went offline, polling will pause...');
+            updateConnectionStatus('disconnected', 'Network offline');
+        });
+    </script>
+</body>
+</html>

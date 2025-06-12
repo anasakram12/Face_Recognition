@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Camera Monitoring System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2b47;
+            --secondary-color: #0a7bff;
+            --accent-color: #00d0ff;
+            --text-color: #ffffff;
+            --background-color: #0f1a2b;
+            --card-bg: #1f2e4d;
+            --status-online: #4CAF50;
+            --status-offline: #F44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .status-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        .system-status {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin-right: 15px;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .online {
+            background-color: var(--status-online);
+        }
+        
+        .offline {
+            background-color: var(--status-offline);
+        }
+        
+        .cameras-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .camera-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            height: calc(50vh - 65px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .camera-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .camera-title {
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .camera-title i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        .camera-status {
+            display: flex;
+            align-items: center;
+        }
+        
+        .camera-status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .camera-actions {
+            display: flex;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 14px;
+            padding: 4px 8px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .action-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .camera-stream {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .camera-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .camera-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 8px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .camera-time {
+            display: flex;
+            align-items: center;
+        }
+        
+        .camera-time i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        
+        .camera-ip {
+            opacity: 0.8;
+        }
+        
+        .camera-controls {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .camera-stream:hover .camera-controls {
+            opacity: 1;
+        }
+        
+        .control-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .control-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .footer {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .fullscreen-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .fullscreen-stream {
+            max-width: 90%;
+            max-height: 80%;
+        }
+        
+        .fullscreen-actions {
+            margin-top: 20px;
+        }
+        
+        .fullscreen-btn {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+        
+        /* Responsive design adjustments */
+        @media (max-width: 1200px) {
+            .cameras-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cameras-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .camera-card {
+                height: calc(100vh - 180px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-video"></i>
+                <h1>Premium Camera Monitoring System</h1>
+            </div>
+            <div class="status-wrapper">
+                <div class="system-status">
+                    <div class="status-indicator online" id="system-status-indicator"></div>
+                    <span id="system-status-text">System Online</span>
+                </div>
+                <div class="current-time" id="current-time"></div>
+            </div>
+        </div>
+        
+        <div class="cameras-grid">
+            {% for cam_id, config in camera_configs.items() %}
+            <div class="camera-card">
+                <div class="camera-header">
+                    <div class="camera-title">
+                        <i class="fas fa-video"></i>
+                        <span>{{ config.name }}</span>
+                    </div>
+                    <div class="camera-actions">
+                        <button class="action-btn" onclick="refreshCamera('{{ cam_id }}')">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="action-btn" onclick="toggleFullscreen('{{ cam_id }}')">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="camera-stream">
+                    <img class="camera-feed" id="camera-{{ cam_id }}" src="/video_feed/{{ cam_id }}" alt="{{ config.name }}">
+                    <div class="camera-info">
+                        <div class="camera-time">
+                            <i class="far fa-clock"></i>
+                            <span id="camera-time-{{ cam_id }}"></span>
+                        </div>
+                        <div class="camera-ip">
+                            <span>ID: {{ cam_id }}</span>
+                        </div>
+                    </div>
+                    <div class="camera-controls">
+                        <button class="control-btn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="footer">
+            <span>&copy; 2025 Premium Camera Monitoring System. All rights reserved.</span>
+        </div>
+    </div>
+    
+    <div class="fullscreen-view" id="fullscreen-view">
+        <img class="fullscreen-stream" id="fullscreen-stream" src="" alt="Fullscreen Camera">
+        <div class="fullscreen-actions">
+            <button class="fullscreen-btn" onclick="closeFullscreen()">
+                <i class="fas fa-times"></i> Close
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Update system time
+        function updateSystemTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString();
+        }
+        
+        // Initialize and update camera times
+        function updateCameraTimes() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            {% for cam_id in camera_configs %}
+            document.getElementById('camera-time-{{ cam_id }}').textContent = timeStr;
+            {% endfor %}
+        }
+        
+        // Check camera status
+        function checkCameraStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    let allCamerasOnline = true;
+                    
+                    {% for cam_id in camera_configs %}
+                    const status{{ cam_id }} = data['{{ cam_id }}'];
+                    if (!status{{ cam_id }}) {
+                        allCamerasOnline = false;
+                    }
+                    {% endfor %}
+                    
+                    // Update system status
+                    const systemStatusIndicator = document.getElementById('system-status-indicator');
+                    const systemStatusText = document.getElementById('system-status-text');
+                    
+                    if (allCamerasOnline) {
+                        systemStatusIndicator.className = 'status-indicator online';
+                        systemStatusText.textContent = 'System Online';
+                    } else {
+                        systemStatusIndicator.className = 'status-indicator offline';
+                        systemStatusText.textContent = 'Partial Connection';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking camera status:', error);
+                    const systemStatusIndicator = document.getElementById('system-status-indicator');
+                    const systemStatusText = document.getElementById('system-status-text');
+                    systemStatusIndicator.className = 'status-indicator offline';
+                    systemStatusText.textContent = 'Connection Error';
+                });
+        }
+        
+        // Refresh camera stream
+        function refreshCamera(camId) {
+            const cameraImg = document.getElementById(`camera-${camId}`);
+            const currentSrc = cameraImg.src;
+            cameraImg.src = '';
+            setTimeout(() => {
+                cameraImg.src = currentSrc + '&t=' + new Date().getTime();
+            }, 500);
+        }
+        
+        // Toggle fullscreen view
+        function toggleFullscreen(camId) {
+            const fullscreenView = document.getElementById('fullscreen-view');
+            const fullscreenStream = document.getElementById('fullscreen-stream');
+            const streamSrc = `/video_feed/${camId}?t=${new Date().getTime()}`;
+            
+            fullscreenStream.src = streamSrc;
+            fullscreenView.style.display = 'flex';
+        }
+        
+        // Close fullscreen view
+        function closeFullscreen() {
+            const fullscreenView = document.getElementById('fullscreen-view');
+            fullscreenView.style.display = 'none';
+        }
+        
+        // Initialize and set intervals
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSystemTime();
+            updateCameraTimes();
+            checkCameraStatus();
+            
+            // Set intervals for updates
+            setInterval(updateSystemTime, 1000);
+            setInterval(updateCameraTimes, 1000);
+            setInterval(checkCameraStatus, 5000);
+        });
+    </script>
+</body>
+</html>
+    
