@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFace Sentinel - Developer Run Manual</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --success-color: #38a169;
+            --warning-color: #d69e2e;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --border-color: #e2e8f0;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --code-bg: #1a202c;
+            --code-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.75in;
+            background: white;
+            min-height: 11in;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .toc-number {
+            background: var(--accent-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+            break-inside: avoid;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding: 1rem 0 0.5rem 0;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-number {
+            background: var(--accent-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .subsection {
+            margin: 1.5rem 0;
+        }
+
+        .subsection-title {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Content */
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+        }
+
+        .code-header {
+            background: rgba(255,255,255,0.1);
+            color: var(--code-text);
+            padding: 0.5rem 1rem;
+            border-radius: 8px 8px 0 0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .inline-code {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Alerts and callouts */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+            position: relative;
+        }
+
+        .alert-info {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning-color);
+            color: var(--warning-color);
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: var(--success-color);
+            color: var(--success-color);
+        }
+
+        .alert-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Method boxes */
+        .method-box {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .method-box:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .method-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                font-size: 12px;
+            }
+            
+            .container {
+                max-width: none;
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .code-block {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .header {
+                break-after: page;
+            }
+        }
+
+        /* Print button */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">📄 Print to PDF</button>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>SmartFace Sentinel</h1>
+                <div class="subtitle">Developer Run Manual</div>
+                <div class="version-badge">Production Server Operations Guide</div>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul class="toc-list">
+                <li><a href="#section-0">How to Open Terminal in Linux (Ubuntu) <span class="toc-number">0</span></a></li>
+                <li><a href="#section-1">Before You Start <span class="toc-number">1</span></a></li>
+                <li><a href="#section-2">Running Camera Processes <span class="toc-number">2</span></a></li>
+                <li><a href="#section-3">Running Server Processes <span class="toc-number">3</span></a></li>
+                <li><a href="#section-4">Stopping the System <span class="toc-number">4</span></a></li>
+                <li><a href="#section-5">Monitoring System Resources <span class="toc-number">5</span></a></li>
+            </ul>
+        </div>
+
+        <!-- Purpose -->
+        <div class="alert alert-info">
+            <div class="alert-title">🎯 Purpose</div>
+            <p>Commands to start and stop camera and server processes on the production server.</p>
+        </div>
+
+        <!-- Section 0 -->
+        <div class="section" id="section-0">
+            <h2 class="section-title">
+                <span class="section-number">0</span>
+                How to Open Terminal in Linux (Ubuntu)
+            </h2>
+            <p>If you're new to Linux, here's how to open the terminal window where you'll enter commands:</p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">Method 1: Keyboard Shortcut</h3>
+                <div class="method-box">
+                    <div class="method-title">⌨️ Press these keys together:</div>
+                    <div class="code-block">
+                        <div class="code-header">Keyboard Shortcut</div>
+                        Ctrl + Alt + T
+                    </div>
+                    <p>This opens a new terminal window.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Method 2: Using the Application Menu</h3>
+                <div class="method-box">
+                    <div class="method-title">🖱️ GUI Method:</div>
+                    <ol>
+                        <li>Click the <strong>"Activities"</strong> or <strong>"Show Applications"</strong> button on your desktop (usually bottom-left or top-left).</li>
+                        <li>Type <strong>"Terminal"</strong> in the search box.</li>
+                        <li>Click the <strong>Terminal</strong> icon that appears.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section" id="section-1">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                Before You Start
+            </h2>
+            <ul>
+                <li>Close all other terminal windows to free system resources.</li>
+                <li>Run <span class="inline-code">glances</span> in a separate terminal to monitor system usage (CPU, GPU, RAM):</li>
+            </ul>
+            <div class="code-block">
+                <div class="code-header">System Monitoring</div>
+                glances
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section" id="section-2">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                Running Camera Processes
+            </h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">2.1 Run All Cameras at Once</h3>
+                <div class="code-block">
+                    <div class="code-header">All Cameras Script</div>
+                    cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det
+./run_all.sh
+                </div>
+                <div class="alert alert-success">
+                    <div class="alert-title">📹 Camera Configuration</div>
+                    <p>This launches all 8 cameras (4 Front + 4 Paiza).</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">2.2 Run Cameras Individually (Separate Terminals)</h3>
+                
+                <div class="method-box">
+                    <div class="method-title">🎥 Front Cameras (31-32)</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 1</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det
+./run_sentinel_forever_31_32.sh
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">🎥 Front Cameras (61-62)</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 2</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det
+./run_sentinel_forever_61_62.sh
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">🎥 Paiza Camera One</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 3</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det
+./Paizaone.sh
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">🎥 Paiza Camera Two</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 4</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det
+./Paizatwo.sh
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section" id="section-3">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                Running Server Processes
+            </h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">3.1 Run All Server Scripts at Once</h3>
+                <div class="code-block">
+                    <div class="code-header">All Server Scripts</div>
+                    cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server
+./run_all_S.sh
+                </div>
+                <div class="alert alert-info">
+                    <div class="alert-title">🖥️ Server Components</div>
+                    <p>This opens 3 terminals, running:</p>
+                    <ul>
+                        <li><span class="inline-code">Mod_Sentinel_server_Det.pyc</span></li>
+                        <li><span class="inline-code">flask_server.py</span></li>
+                        <li><span class="inline-code">Database_Web.py</span></li>
+                    </ul>
+                    <p>inside the Python virtual environment.</p>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">3.2 Run Server Scripts Individually (Separate Terminals)</h3>
+                <p>Activate the virtual environment and run each script:</p>
+                
+                <div class="method-box">
+                    <div class="method-title">🔧 Main Detection Server</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 1 - Detection Server</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server
+source venv/bin/activate
+python Mod_Sentinel_server_Det.pyc
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">🌐 Flask Web Server</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 2 - Flask Server</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server
+source venv/bin/activate
+python flask_server.py
+                    </div>
+                </div>
+
+                <div class="method-box">
+                    <div class="method-title">🗄️ Database Web Interface</div>
+                    <div class="code-block">
+                        <div class="code-header">Terminal 3 - Database Web</div>
+                        cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server
+source venv/bin/activate
+python Database_Web.py
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section" id="section-4">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                Stopping the System
+            </h2>
+            <p>You can stop the running scripts by either:</p>
+            
+            <div class="method-box">
+                <div class="method-title">⌨️ Method 1: Graceful Shutdown</div>
+                <p>Pressing <span class="inline-code">Ctrl + C</span> inside <strong>each terminal window</strong> running a process to gracefully stop it.</p>
+            </div>
+
+            <div class="alert alert-warning">
+                <div class="alert-title">⚠️ OR</div>
+            </div>
+
+            <div class="method-box">
+                <div class="method-title">🖱️ Method 2: Force Close</div>
+                <p>Simply <strong>close the terminal window</strong> by clicking the <strong>"X" button</strong> at the top corner of the terminal window. This will terminate the running script immediately.</p>
+            </div>
+
+            <div class="subsection">
+                <h3 class="subsection-title">Alternative: Kill Processes by Name</h3>
+                <p>If needed, you can kill all related processes using:</p>
+                <div class="code-block">
+                    <div class="code-header">Force Kill Commands</div>
+                    pkill -f Mod_Sentinel_server_Det.pyc
+pkill -f flask_server.py
+pkill -f Database_Web.py
+pkill -f run_all.sh
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="section" id="section-5">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                Monitoring System Resources
+            </h2>
+            <p>Run <span class="inline-code">glances</span> in a separate terminal to monitor CPU, GPU, RAM, and disk usage:</p>
+            <div class="code-block">
+                <div class="code-header">System Monitor</div>
+                glances
+            </div>
+            <div class="alert alert-info">
+                <div class="alert-title">📊 Monitoring Best Practice</div>
+                <p>Keep the glances monitor running in a separate terminal throughout your session to track system performance and resource utilization.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color); text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+            <p><strong>SmartFace Sentinel</strong> - Developer Run Manual</p>
+            <p>Production Server Operations Guide</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+                Generated on <span id="current-date"></span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

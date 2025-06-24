@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartFace Sentinel - Paiza Grouped Monitoring</title>
+    <title>SmartFace Sentinel - A - Det Grouped Monitoring</title>
 
     <style>
         body {
@@ -890,7 +890,6 @@
                 <a href="http://192.168.15.65:3005/realtime" class="nav-button">All</a>
                 <a href="http://192.168.15.65:3005/Check1" class="nav-button">A-Det</a>
                 <a href="http://192.168.15.65:3005/Check2" class="nav-button">S-Det</a>
-                <a href="http://192.168.15.65:3005/Paiza" class="nav-button">Paiza</a>
             </div>
             
             <div class="stats-panel">
@@ -1011,71 +1010,6 @@
 
     <div class="reconnect-indicator" id="reconnect-indicator" style="display: none;">
         <span id="connection-message">Fetching updates...</span>
-    </div>
-
-    <div id="eventModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Event Details</h2>
-                <span class="close" id="modalClose">&times;</span>
-            </div>
-            <div class="image-container">
-                <div class="image-box">
-                    <h3>Input Image</h3>
-                    <img id="modalInputImage" src="" alt="Input Image">
-                </div>
-                <div class="image-box">
-                    <h3>Matched Image</h3>
-                    <img id="modalMatchedImage" src="" alt="Matched Image">
-                </div>
-            </div>
-            <div class="person-details">
-                <h3 id="modalPersonId"></h3>
-                <div class="modal-person-details" id="modalPersonDetails">
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Timestamp</div>
-                        <div class="modal-detail-value" id="modalTimestamp"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Status</div>
-                        <div class="modal-detail-value" id="modalStatus"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Camera</div>
-                        <div class="modal-detail-value" id="modalCamera"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Confidence</div>
-                        <div class="modal-detail-value" id="modalConfidence"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Person Name</div>
-                        <div class="modal-detail-value" id="modalPersonName"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Ranking</div>
-                        <div class="modal-detail-value detail-ranking" id="modalPersonRanking"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Type</div>
-                        <div class="modal-detail-value detail-type" id="modalPersonType"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Priority</div>
-                        <div class="modal-detail-value detail-priority" id="modalPersonPriority"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">MID</div>
-                        <div class="modal-detail-value detail-mid" id="modalPersonMid"></div>
-                    </div>
-                    <div class="modal-detail-item">
-                        <div class="modal-detail-label">Request ID</div>
-                        <div class="modal-detail-value" id="modalRequestId"></div>
-                    </div>
-                </div>
-                <div id="modalCacheInfo"></div>
-            </div>
-        </div>
     </div>
 
     <div id="addToDbModal" class="modal">
@@ -1256,13 +1190,6 @@
         let unrecognizedEvents2 = [];
         let unrecognizedEvents3 = [];
         let unrecognizedEvents4 = [];
-        
-        // Local memory storage for maintaining 10 cards per column
-        let column1MemoryEvents = [];
-        let column2MemoryEvents = [];
-        let column3MemoryEvents = [];
-        let column4MemoryEvents = [];
-        
         let currentFilter = 'all';
         const maxEventsPerColumn = 100;
         const maxCardsPerColumn = 10;
@@ -1594,32 +1521,28 @@
                         break;
                 }
             } else {
-                // Add matched events to camera columns and update memory storage
+                // Only add matched events to camera columns
                 switch(eventCopy.column) {
                     case 1:
                         column1Events.unshift(eventCopy);
-                        updateColumnMemory(1, eventCopy);
                         if (column1Events.length > maxEventsPerColumn) {
                             column1Events = column1Events.slice(0, maxEventsPerColumn);
                         }
                         break;
                     case 2:
                         column2Events.unshift(eventCopy);
-                        updateColumnMemory(2, eventCopy);
                         if (column2Events.length > maxEventsPerColumn) {
                             column2Events = column2Events.slice(0, maxEventsPerColumn);
                         }
                         break;
                     case 3:
                         column3Events.unshift(eventCopy);
-                        updateColumnMemory(3, eventCopy);
                         if (column3Events.length > maxEventsPerColumn) {
                             column3Events = column3Events.slice(0, maxEventsPerColumn);
                         }
                         break;
                     case 4:
                         column4Events.unshift(eventCopy);
-                        updateColumnMemory(4, eventCopy);
                         if (column4Events.length > maxEventsPerColumn) {
                             column4Events = column4Events.slice(0, maxEventsPerColumn);
                         }
@@ -1630,58 +1553,6 @@
             // Limit total events
             if (allEvents.length > maxEventsPerColumn * 8) {
                 allEvents = allEvents.slice(0, maxEventsPerColumn * 8);
-            }
-        }
-
-        // Function to update column memory with intelligent event management
-        function updateColumnMemory(columnNum, newEvent) {
-            let memoryArray;
-            
-            switch(columnNum) {
-                case 1: memoryArray = column1MemoryEvents; break;
-                case 2: memoryArray = column2MemoryEvents; break;
-                case 3: memoryArray = column3MemoryEvents; break;
-                case 4: memoryArray = column4MemoryEvents; break;
-                default: return;
-            }
-            
-            // Check if this identity already exists in memory
-            const identity = newEvent.identity || newEvent.matched_identity || 'Unknown Person';
-            const existingIndex = memoryArray.findIndex(event => {
-                const eventIdentity = event.identity || event.matched_identity || 'Unknown Person';
-                return eventIdentity === identity;
-            });
-            
-            if (existingIndex !== -1) {
-                // Remove existing identity from its current position
-                memoryArray.splice(existingIndex, 1);
-            }
-            
-            // Always add the new/updated event at the top (index 0)
-            memoryArray.unshift(newEvent);
-            
-            // Keep only 10 most recent unique identities
-            if (memoryArray.length > maxCardsPerColumn) {
-                memoryArray = memoryArray.slice(0, maxCardsPerColumn);
-            }
-            
-            // Update the memory array reference
-            switch(columnNum) {
-                case 1: column1MemoryEvents = memoryArray; break;
-                case 2: column2MemoryEvents = memoryArray; break;
-                case 3: column3MemoryEvents = memoryArray; break;
-                case 4: column4MemoryEvents = memoryArray; break;
-            }
-        }
-
-        // Function to get memory events for a column
-        function getColumnMemoryEvents(columnNum) {
-            switch(columnNum) {
-                case 1: return column1MemoryEvents;
-                case 2: return column2MemoryEvents;
-                case 3: return column3MemoryEvents;
-                case 4: return column4MemoryEvents;
-                default: return [];
             }
         }
 
@@ -1711,11 +1582,15 @@
         function renderAllEvents() {
             const filteredEvents = filterEvents(currentFilter);
             
-            // For matched columns, use memory events to ensure 10 cards always
-            const memoryColumn1Events = getColumnMemoryEvents(1);
-            const memoryColumn2Events = getColumnMemoryEvents(2);
-            const memoryColumn3Events = getColumnMemoryEvents(3);
-            const memoryColumn4Events = getColumnMemoryEvents(4);
+            // Separate events by column and filter
+            const filteredColumn1Events = filteredEvents.filter(event => 
+                event.column === 1 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn2Events = filteredEvents.filter(event => 
+                event.column === 2 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn3Events = filteredEvents.filter(event => 
+                event.column === 3 && event.status && event.status.toLowerCase() === 'matched');
+            const filteredColumn4Events = filteredEvents.filter(event => 
+                event.column === 4 && event.status && event.status.toLowerCase() === 'matched');
             
             // Unrecognized events by column
             const filteredUnrecognized1 = filteredEvents.filter(event => 
@@ -1735,11 +1610,11 @@
                 (event.status.toLowerCase() === 'unrecognized' || 
                  event.status.toLowerCase() === 'unrecognized_saved'));
             
-            // Update each column with memory events
-            updateColumnContent(eventsContainer1, memoryColumn1Events, noEventsColumn1, 'camera');
-            updateColumnContent(eventsContainer2, memoryColumn2Events, noEventsColumn2, 'camera');
-            updateColumnContent(eventsContainer3, memoryColumn3Events, noEventsColumn3, 'camera');
-            updateColumnContent(eventsContainer4, memoryColumn4Events, noEventsColumn4, 'camera');
+            // Update each column
+            updateColumnContent(eventsContainer1, filteredColumn1Events, noEventsColumn1, 'camera');
+            updateColumnContent(eventsContainer2, filteredColumn2Events, noEventsColumn2, 'camera');
+            updateColumnContent(eventsContainer3, filteredColumn3Events, noEventsColumn3, 'camera');
+            updateColumnContent(eventsContainer4, filteredColumn4Events, noEventsColumn4, 'camera');
             
             // Update unrecognized columns
             updateColumnContent(unrecognizedContainer1, filteredUnrecognized1, null, 'unrecognized');
@@ -1749,86 +1624,49 @@
         }
 
         function updateColumnContent(container, events, noEventsMsg, columnType) {
+            // Preserve expanded state
+            const currentlyExpanded = new Set();
+            container.querySelectorAll('.identity-header.expanded').forEach(header => {
+                const identity = header.querySelector('.identity-name').textContent.trim().replace(/CACHE|PARQUET/g, '').trim();
+                currentlyExpanded.add(identity);
+            });
+            
             // Clear container
             container.innerHTML = '';
             
             if (columnType === 'unrecognized') {
                 displayUnrecognizedEvents(container, events);
             } else {
-                displayGroupedEventsWithPlaceholders(container, events, new Set());
+                displayGroupedEventsWithPlaceholders(container, events, currentlyExpanded);
             }
         }
 
         function displayGroupedEventsWithPlaceholders(container, events, currentlyExpanded) {
-            // For camera columns, use memory events to ensure we always have content
-            if (events.length === 0) {
-                // Show "No events" message only if no memory events
-                const noEventsDiv = document.createElement('div');
-                noEventsDiv.className = 'no-events-message';
-                noEventsDiv.textContent = 'Waiting for recognition events...';
-                container.appendChild(noEventsDiv);
-                return;
-            }
+            const groupedEvents = groupEventsByIdentity(events);
+            const identities = Object.keys(groupedEvents);
             
-            // Create individual identity cards from memory events
-            events.forEach(event => {
-                const identity = event.identity || event.matched_identity || 'Unknown Person';
-                const identityGroup = createIdentityGroupFromMemory(identity, [event], currentlyExpanded);
+            // Sort identities by the timestamp of their most recent event
+            identities.sort((a, b) => {
+                const aLatest = new Date(groupedEvents[a][0].timestamp);
+                const bLatest = new Date(groupedEvents[b][0].timestamp);
+                return bLatest - aLatest;
+            });
+            
+            // Limit to maxCardsPerColumn and create identity groups
+            const limitedIdentities = identities.slice(0, maxCardsPerColumn);
+            
+            limitedIdentities.forEach(identity => {
+                const groupEvents = groupedEvents[identity];
+                const identityGroup = createIdentityGroup(identity, groupEvents, currentlyExpanded);
                 container.appendChild(identityGroup);
             });
-        }
-
-        // Function to create identity group from a single memory event
-        function createIdentityGroupFromMemory(identity, events, currentlyExpanded) {
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'identity-group';
             
-            // Get the event for display (should be only one from memory)
-            const latestEvent = events[0];
-            const latestTimestamp = new Date(latestEvent.timestamp);
-            const formattedTime = latestTimestamp.toLocaleTimeString();
-            
-            // Add enhanced styling based on person attributes
-            const typeClass = getTypeClass(latestEvent.person_type);
-            const priorityClass = getPriorityClass(latestEvent.person_priority);
-            
-            // Apply styling classes to the group
-            if (typeClass) groupDiv.classList.add(typeClass.replace('type-', 'type-'));
-            if (priorityClass) groupDiv.classList.add(priorityClass.replace('priority-', 'priority-'));
-            
-            // Add cache indicator if applicable
-            const cacheIndicator = latestEvent.cache_hit || latestEvent.processing_source === 'CACHE' ? 
-                `<span class="cache-indicator">CACHE</span>` : '';
-            
-            // Create person details HTML
-            const personDetailsHTML = createPersonDetailsHTML(latestEvent);
-            
-            // Create the entire card as clickable
-            groupDiv.style.cursor = 'pointer';
-            groupDiv.addEventListener('click', function(e) {
-                console.log('Card clicked, showing event details for:', identity);
-                console.log('Event data:', latestEvent);
-                showEventDetails(latestEvent);
-            });
-            
-            groupDiv.innerHTML = `
-                <div class="identity-header">
-                    <div class="identity-images">
-                        <img class="identity-image" src="${latestEvent.input_image || 'https://via.placeholder.com/30?text=No'}" alt="Latest" onerror="this.src='https://via.placeholder.com/30?text=Err'">
-                        ${latestEvent.matched_image ? `<img class="identity-image" src="${latestEvent.matched_image}" alt="Match" onerror="this.src='https://via.placeholder.com/30?text=Match'">` : ''}
-                    </div>
-                    <div class="identity-info">
-                        <div class="identity-name">${identity}${cacheIndicator}</div>
-                        <div class="identity-stats">
-                            <div class="identity-stat">${formattedTime}</div>
-                            <div class="identity-stat">${(latestEvent.confidence * 100).toFixed(0)}%</div>
-                        </div>
-                        ${personDetailsHTML}
-                    </div>
-                </div>
-            `;
-            
-            return groupDiv;
+            // Fill remaining slots with placeholders
+            const remainingSlots = maxCardsPerColumn - limitedIdentities.length;
+            for (let i = 0; i < remainingSlots; i++) {
+                const placeholder = createPlaceholderCard();
+                container.appendChild(placeholder);
+            }
         }
 
         function displayUnrecognizedEvents(container, events) {
@@ -2040,30 +1878,6 @@
         }
 
         function showEventDetails(event) {
-            console.log('showEventDetails called with event:', event);
-            
-            // Get modal element fresh each time
-            const eventModal = document.getElementById('eventModal');
-            if (!eventModal) {
-                console.error('Event modal not found!');
-                return;
-            }
-            
-            const modalInputImage = document.getElementById('modalInputImage');
-            const modalMatchedImage = document.getElementById('modalMatchedImage');
-            const modalPersonId = document.getElementById('modalPersonId');
-            const modalTimestamp = document.getElementById('modalTimestamp');
-            const modalStatus = document.getElementById('modalStatus');
-            const modalCamera = document.getElementById('modalCamera');
-            const modalConfidence = document.getElementById('modalConfidence');
-            const modalRequestId = document.getElementById('modalRequestId');
-            const modalCacheInfo = document.getElementById('modalCacheInfo');
-            const modalPersonName = document.getElementById('modalPersonName');
-            const modalPersonRanking = document.getElementById('modalPersonRanking');
-            const modalPersonType = document.getElementById('modalPersonType');
-            const modalPersonPriority = document.getElementById('modalPersonPriority');
-            const modalPersonMid = document.getElementById('modalPersonMid');
-            
             modalInputImage.src = event.input_image || 'https://via.placeholder.com/300?text=No+Image';
             modalInputImage.onerror = () => { modalInputImage.src = 'https://via.placeholder.com/300?text=Image+Error'; };
             
@@ -2113,7 +1927,6 @@
             
             modalCacheInfo.innerHTML = cacheInfo;
             
-            console.log('Opening event modal...');
             eventModal.style.display = 'block';
         }
 
@@ -2225,7 +2038,7 @@
             reconnectIndicator.style.display = 'block';
             
             try {
-                // Clear existing events and memory storage
+                // Clear existing events
                 allEvents = [];
                 column1Events = [];
                 column2Events = [];
@@ -2235,11 +2048,6 @@
                 unrecognizedEvents2 = [];
                 unrecognizedEvents3 = [];
                 unrecognizedEvents4 = [];
-                // Clear memory storage
-                column1MemoryEvents = [];
-                column2MemoryEvents = [];
-                column3MemoryEvents = [];
-                column4MemoryEvents = [];
                 expandedIdentities.clear();
                 lastKnownEvents.clear();
                 
@@ -2292,11 +2100,6 @@
             unrecognizedEvents2 = [];
             unrecognizedEvents3 = [];
             unrecognizedEvents4 = [];
-            // Clear memory storage
-            column1MemoryEvents = [];
-            column2MemoryEvents = [];
-            column3MemoryEvents = [];
-            column4MemoryEvents = [];
             expandedIdentities.clear();
             lastKnownEvents.clear();
             renderAllEvents();
@@ -2370,6 +2173,18 @@
                 if (event.key === 'c' || event.key === 'C') {
                     event.preventDefault();
                     document.getElementById('clear-events').click();
+                }
+                if (event.key === 'e' || event.key === 'E') {
+                    event.preventDefault();
+                    if (expandedIdentities.size > 0) {
+                        expandedIdentities.clear();
+                    } else {
+                        document.querySelectorAll('.identity-name').forEach(nameElement => {
+                            const identity = nameElement.textContent.trim().replace(/CACHE|PARQUET/g, '').trim();
+                            expandedIdentities.add(identity);
+                        });
+                    }
+                    renderAllEvents();
                 }
             });
         });

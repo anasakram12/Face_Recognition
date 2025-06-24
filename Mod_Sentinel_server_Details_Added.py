@@ -729,7 +729,7 @@ class OptimizedFaceRecognitionServer:
             os.makedirs(directory, exist_ok=True)
         
         # 6.14 API ENDPOINTS
-        self.log_api_endpoint = "http://192.168.14.102:7578/api/FaceRecognition/Recognize-Logs"
+        self.log_api_endpoint = "http://192.168.20.33:2021/ballys/ImageProcess_Last_Insert"
         self.log_api_endpoint_2 = "http://192.168.15.129:5002/add_log"
 
         
@@ -1391,17 +1391,67 @@ class OptimizedFaceRecognitionServer:
 
                 for endpoint in [self.log_api_endpoint, self.log_api_endpoint_2]:
                     try:
-                        if endpoint == self.log_api_endpoint_2:
+                        # Only send to log_api_endpoint if camera_id is 1, 2, 3, or 4
+                        if endpoint == self.log_api_endpoint and camera_id not in [1, 2, 3, 4]:
+                            continue
+                        
+                        if endpoint == self.log_api_endpoint:
+                            # Create special payload for log_api_endpoint
+                            person_type = result.get('person_type', '')
+                            person_ranking = result.get('person_ranking', '')
+                            
+                            # # Debug prints to see what we're getting
+                            # print(f"DEBUG - person_type: '{person_type}'")
+                            # print(f"DEBUG - person_ranking: '{person_ranking}'")
+                            
+                            # Set G_Type based on person_type
+                            if person_type == "Staff":
+                                g_type = "Staff"
+                            else:
+                                g_type = person_ranking if person_ranking else ""
+                            
+                            # Determine PC_ID based on camera_id
+                            if camera_id in [1, 2]:
+                                pc_id = "192.168.15.131"
+                            elif camera_id in [3, 4]:
+                                pc_id = "192.168.15.130"
+                            else:
+                                pc_id = ""
+                            
+                            special_log_entry = {
+                                "G_Type": g_type,
+                                "MID": result.get('identity', ''),
+                                "MNAME": result.get('person_name', ''),
+                                "PC_ID": pc_id
+                            }
+                            
+                            # print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                            # print(f"DEBUG - special_log_entry JSON: {special_log_entry}")
+                            
+                            response = requests.post(
+                                endpoint,
+                                json=special_log_entry,
+                                headers={'Content-Type': 'application/json'},
+                                timeout=1.0
+                            )
+                            
+                            # print(f"DEBUG - API Response Status: {response.status_code}")
+                            # print(f"DEBUG - API Response Text: {response.text}")
+                            # print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                            
+                        else:
+                            # For log_api_endpoint_2, use original format
                             log_entry["camera_id"] = camera_id
-
-                        requests.post(
-                            endpoint,
-                            json=[log_entry],
-                            headers={'Content-Type': 'application/json'},
-                            timeout=1.0
-                        )
-                    except Exception:
-                        pass
+                            requests.post(
+                                endpoint,
+                                json=[log_entry],
+                                headers={'Content-Type': 'application/json'},
+                                timeout=1.0
+                            )
+                    except Exception as e:
+                        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+                        print(f"DEBUG - API request failed: {e}")
+                        print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
             except Exception as e:
                 print(f"[ERROR] API logging failed: {e}")
         
@@ -3003,6 +3053,10 @@ def Check1_monitor():
 @app.route('/Check2')
 def Check2_monitor():
     return app.send_static_file('Check2.html')
+
+@app.route('/Paiza')
+def Paiza_monitor():
+    return app.send_static_file('Paiza.html')
 
 @app.route('/cache_monitor')
 def cache_monitor():

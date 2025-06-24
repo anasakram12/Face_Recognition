@@ -520,6 +520,7 @@
                 </select>
             </div>
             <button class="btn" onclick="createBackup()">Create Backup</button>
+            <button class="btn" onclick="reloadEmbeddings()">Reload Embeddings</button>
             <button class="btn" onclick="loadStats()">Refresh Stats</button>
         </div>
 
@@ -775,7 +776,26 @@
             document.getElementById('file-input').value = '';
             currentReplaceId = null;
         }
+        // Reload embeddings
+        async function reloadEmbeddings() {
+            try {
+                const response = await fetch('http://192.168.15.65:3005/reload_embeddings', {
+                    method: 'POST'
+                });
 
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                const message = `Embeddings reloaded successfully! Count: ${data.embedding_count}, Cache cleared: ${data.cache_cleared}, GPU: ${data.gpu_accelerated}`;
+                showNotification(message, 'success');
+
+            } catch (error) {
+                showNotification(`Error reloading embeddings: ${error.message}`, 'error');
+            }
+        }
         // Upload replacement image
         async function uploadReplacement() {
             const fileInput = document.getElementById('file-input');

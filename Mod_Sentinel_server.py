@@ -3004,6 +3004,10 @@ def Check1_monitor():
 def Check2_monitor():
     return app.send_static_file('Check2.html')
 
+@app.route('/Paiza')
+def Paiza_monitor():
+    return app.send_static_file('Paiza.html')
+
 @app.route('/cache_monitor')
 def cache_monitor():
     return app.send_static_file('cache_monitor.html')

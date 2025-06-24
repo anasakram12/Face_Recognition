@@ -1,0 +1,183 @@
+=== SYSTEM REPORT ===
+Generated on: 2025-06-22 03:12:01.793329
+
+>>> CPU Info <<<
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        48 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            AuthenticAMD
+Model name:                           AMD Ryzen 9 7950X3D 16-Core Processor
+CPU family:                           25
+Model:                                97
+Thread(s) per core:                   2
+Core(s) per socket:                   16
+Socket(s):                            1
+Stepping:                             2
+Frequency boost:                      enabled
+CPU(s) scaling MHz:                   51%
+CPU max MHz:                          5759.0000
+CPU min MHz:                          545.0000
+BogoMIPS:                             8383.50
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid overflow_recov succor smca fsrm flush_l1d amd_lbr_pmc_freeze
+Virtualization:                       AMD-V
+L1d cache:                            512 KiB (16 instances)
+L1i cache:                            512 KiB (16 instances)
+L2 cache:                             16 MiB (16 instances)
+L3 cache:                             128 MiB (2 instances)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-31
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Mitigation; Safe RET
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+>>> RAM Info <<<
+MemTotal:       31965716 kB
+
+>>> GPU Info <<<
+NVIDIA GeForce RTX 5090, 32607 MiB
+
+>>> Storage Info <<<
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p1  458G  213G  222G  50% /
+
+>>> SSD or HDD <<<
+NAME    ROTA
+loop0      0
+loop1      0
+loop2      0
+loop3      0
+loop4      0
+loop5      0
+loop6      0
+loop7      0
+loop8      0
+loop9      0
+loop10     0
+loop11     0
+loop12     0
+loop13     0
+loop14     0
+loop15     0
+loop16     0
+loop17     0
+loop18     0
+loop19     0
+loop20     0
+loop21     0
+loop22     0
+loop23     0
+loop24     0
+loop25     0
+loop26     0
+nvme0n1    0
+
+>>> OS Info <<<
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.2 LTS
+Release:	24.04
+Codename:	noble
+
+>>> Python Version <<<
+Python 3.11.12
+
+>>> Installed Python Packages <<<
+Package                  Version
+------------------------ ------------------------
+absl-py                  2.2.2
+attrs                    25.3.0
+certifi                  2025.1.31
+cffi                     1.17.1
+charset-normalizer       3.4.1
+click                    8.1.8
+contourpy                1.3.1
+cycler                   0.12.1
+dlib                     19.24.6
+face-recognition         1.3.0
+face_recognition_models  0.3.0
+filelock                 3.18.0
+flatbuffers              25.2.10
+fonttools                4.57.0
+fsspec                   2025.3.2
+idna                     3.10
+jax                      0.5.3
+jaxlib                   0.5.3
+Jinja2                   3.1.6
+kiwisolver               1.4.8
+MarkupSafe               3.0.2
+matplotlib               3.10.1
+mediapipe                0.10.21
+ml_dtypes                0.5.1
+mpmath                   1.3.0
+networkx                 3.4.2
+numpy                    1.26.4
+nvidia-cublas-cu12       12.8.3.14
+nvidia-cuda-cupti-cu12   12.8.57
+nvidia-cuda-nvrtc-cu12   12.8.61
+nvidia-cuda-runtime-cu12 12.8.57
+nvidia-cudnn-cu12        9.8.0.87
+nvidia-cufft-cu12        11.3.3.41
+nvidia-cufile-cu12       1.13.0.11
+nvidia-curand-cu12       10.3.9.55
+nvidia-cusolver-cu12     11.7.2.55
+nvidia-cusparse-cu12     12.5.7.53
+nvidia-cusparselt-cu12   0.6.3
+nvidia-nccl-cu12         2.26.2
+nvidia-nvjitlink-cu12    12.8.61
+nvidia-nvtx-cu12         12.8.55
+opencv-contrib-python    4.11.0.86
+opencv-python            4.11.0.86
+opt_einsum               3.4.0
+packaging                24.2
+pandas                   2.2.3
+pillow                   11.1.0
+pip                      24.0
+protobuf                 4.25.6
+psutil                   7.0.0
+py-cpuinfo               9.0.0
+pycparser                2.22
+pyparsing                3.2.3
+PyQt5                    5.15.11
+PyQt5-Qt5                5.15.16
+PyQt5_sip                12.17.0
+PySide6                  6.9.0
+PySide6_Addons           6.9.0
+PySide6_Essentials       6.9.0
+python-dateutil          2.9.0.post0
+pytorch-triton           3.3.0+git96316ce5
+pytz                     2025.2
+PyYAML                   6.0.2
+requests                 2.32.3
+scipy                    1.15.2
+seaborn                  0.13.2
+sentencepiece            0.2.0
+setuptools               65.5.0
+shiboken6                6.9.0
+six                      1.17.0
+sounddevice              0.5.1
+sympy                    1.13.3
+torch                    2.8.0.dev20250409+cu128
+torchaudio               2.6.0.dev20250409+cu128
+torchvision              0.22.0.dev20250409+cu128
+tqdm                     4.67.1
+triton                   3.2.0
+typing_extensions        4.13.1
+tzdata                   2025.2
+ultralytics              8.3.105
+ultralytics-thop         2.0.14
+urllib3                  2.3.0
+watchdog                 6.0.0
+

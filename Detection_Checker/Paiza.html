@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartFace Sentinel - Paiza Grouped Monitoring</title>
+    <title>SmartFace Sentinel - A - Det Grouped Monitoring</title>
 
     <style>
         body {
@@ -273,8 +273,8 @@
 
         /* Enhanced person name styling to match identity size */
         .person-name-display {
-            font-weight: 700;
-            font-size: 0.7rem;
+            font-weight: 900;
+            font-size: 0.8rem;
             color: #f5d76e;
             text-shadow: 0 0 2px rgba(245, 215, 110, 0.5);
             letter-spacing: 0.5px;
@@ -287,7 +287,7 @@
         .person-details-inline {
             display: flex;
             flex-direction: column;
-            gap: 1px;
+            gap: 2px;
             margin-top: 3px;
         }
 
@@ -931,8 +931,8 @@
         <div class="main-content">
             <div class="eight-column-layout">
                 <div class="column camera-column" id="column-1">
-                    <div class="column-title">Travel Counter Out</div>
-                    <img src="http://192.168.14.205:3007/video_feed/cam1" class="video-feed" alt="Travel Counter Out Feed">
+                    <div class="column-title">Paiza Gate 1 Cam 1</div>
+                    <img src="http://192.168.15.131:5050/video_feed" class="video-feed" alt="Paiza Gate 1 Cam 1 Feed">
                     <div class="events-container" id="events-container-1">
                         <div class="no-events-message" id="no-events-column-1">
                             Waiting for recognition events...
@@ -950,8 +950,8 @@
                 </div>
                 
                 <div class="column camera-column" id="column-2">
-                    <div class="column-title">Travel Counter In</div>
-                    <img src="http://192.168.14.205:3007/video_feed/cam2" class="video-feed" alt="Travel Counter In Feed">
+                    <div class="column-title">Paiza Gate 1 Cam 2</div>
+                    <img src="http://192.168.15.131:5051/video_feed" class="video-feed" alt="Paiza Gate 1 Cam 2 Feed">
                     <div class="events-container" id="events-container-2">
                         <div class="no-events-message" id="no-events-column-2">
                             Waiting for recognition events...
@@ -969,8 +969,8 @@
                 </div>
                 
                 <div class="column camera-column" id="column-3">
-                    <div class="column-title">Membership Counter Out</div>
-                    <img src="http://192.168.14.205:3007/video_feed/cam3" class="video-feed" alt="Membership Counter Out Feed">
+                    <div class="column-title">Paiza Gate 2 Cam 1</div>
+                    <img src="http://192.168.15.130:5050/video_feed" class="video-feed" alt="Paiza Gate 2 Cam 1 Feed">
                     <div class="events-container" id="events-container-3">
                         <div class="no-events-message" id="no-events-column-3">
                             Waiting for recognition events...
@@ -988,8 +988,8 @@
                 </div>
                 
                 <div class="column camera-column" id="column-4">
-                    <div class="column-title">Membership Counter In</div>
-                    <img src="http://192.168.14.205:3007/video_feed/cam4" class="video-feed" alt="Membership Counter In Feed">
+                    <div class="column-title">Paiza Gate 2 Cam 2</div>
+                    <img src="http://192.168.15.130:5051/video_feed" class="video-feed" alt="Paiza Gate 2 Cam 2 Feed">
                     <div class="events-container" id="events-container-4">
                         <div class="no-events-message" id="no-events-column-4">
                             Waiting for recognition events...
@@ -1240,10 +1240,10 @@
 
         // Define camera mappings
         const cameraMapping = {
-            31: { name: 'Travel Counter Out', column: 1 },
-            32: { name: 'Travel Counter In', column: 2 },
-            61: { name: 'Membership Counter Out', column: 3 },
-            62: { name: 'Membership Counter In', column: 4 }
+            2: { name: 'Paiza Gate 1 Cam 1', column: 1 },
+            1: { name: 'Paiza Gate 1 Cam 2', column: 2 },
+            4: { name: 'Paiza Gate 2 Cam 1', column: 3 },
+            3: { name: 'Paiza Gate 2 Cam 2', column: 4 }
         };
 
         // Variables
