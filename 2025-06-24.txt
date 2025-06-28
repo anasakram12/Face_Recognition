@@ -1,0 +1,1442 @@
+[2025-06-24 21:36:14] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:36:14] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:36:14] 📊 CPU: 81.7% | RAM: 99.0% | SWAP: 100.0% | Disk I/O: 5470.96 MB/s
+[2025-06-24 21:34:36] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 21:34:36] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 21:34:36] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 21:34:36] 🔁 Restarting all launch scripts...
+[2025-06-24 21:34:21] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 21:34:21] ✅ Total services killed: 29
+[2025-06-24 21:34:21] ❌ Killing PID=148065 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=148023 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=147987 | CMD=python Database_Web.py
+[2025-06-24 21:34:21] ❌ Killing PID=147986 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 21:34:21] ❌ Killing PID=147913 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=147908 | CMD=python flask_server.py
+[2025-06-24 21:34:21] ❌ Killing PID=147906 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 21:34:21] ❌ Killing PID=147859 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=147855 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 21:34:21] ❌ Killing PID=145831 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145768 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145767 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145704 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145703 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145547 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145546 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145545 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145544 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145543 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145511 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145404 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145341 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145340 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145308 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145261 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145184 | CMD=python Det_31_32.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145090 | CMD=python Paizaone.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145089 | CMD=python Det_61_62.pyc
+[2025-06-24 21:34:21] ❌ Killing PID=145088 | CMD=python Paizatwo.pyc
+[2025-06-24 21:34:21] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:34:21] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:34:21] 📊 CPU: 98.8% | RAM: 96.0% | SWAP: 64.9% | Disk I/O: 680.32 MB/s
+[2025-06-24 21:34:14] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 21:34:14] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 21:34:14] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 21:34:14] 🔁 Restarting all launch scripts...
+[2025-06-24 21:33:59] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 21:33:59] ✅ Total services killed: 24
+[2025-06-24 21:33:59] ❌ Killing PID=144898 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=144769 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=144767 | CMD=python Database_Web.py
+[2025-06-24 21:33:59] ❌ Killing PID=144764 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 21:33:59] ❌ Killing PID=144717 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=144714 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 21:33:59] ❌ Killing PID=144634 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=144631 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 21:33:59] ❌ Killing PID=142962 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142961 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142909 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142871 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142808 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142807 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142713 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142712 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142711 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142603 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142602 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142540 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142477 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142476 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142444 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:59] ❌ Killing PID=142412 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:59] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:33:59] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:33:59] 📊 CPU: 96.2% | RAM: 93.1% | SWAP: 8.3% | Disk I/O: 107.63 MB/s
+[2025-06-24 21:33:52] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 21:33:52] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 21:33:52] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 21:33:52] 🔁 Restarting all launch scripts...
+[2025-06-24 21:33:37] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 21:33:37] ✅ Total services killed: 22
+[2025-06-24 21:33:37] ❌ Killing PID=141901 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=141843 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=141793 | CMD=python Database_Web.py
+[2025-06-24 21:33:37] ❌ Killing PID=141792 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 21:33:37] ❌ Killing PID=141750 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=141715 | CMD=python flask_server.py
+[2025-06-24 21:33:37] ❌ Killing PID=141714 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 21:33:37] ❌ Killing PID=141667 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=141665 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=141661 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 21:33:37] ❌ Killing PID=140400 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140306 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140305 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140304 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140259 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140194 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140193 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140101 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140069 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=140037 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=139974 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:37] ❌ Killing PID=139973 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:37] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:33:37] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:33:37] 📊 CPU: 60.5% | RAM: 87.3% | SWAP: 6.7% | Disk I/O: 46.16 MB/s
+[2025-06-24 21:33:30] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 21:33:30] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 21:33:30] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 21:33:30] 🔁 Restarting all launch scripts...
+[2025-06-24 21:33:15] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 21:33:15] ✅ Total services killed: 18
+[2025-06-24 21:33:15] ❌ Killing PID=138215 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=138127 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=138076 | CMD=python Database_Web.py
+[2025-06-24 21:33:15] ❌ Killing PID=138075 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 21:33:15] ❌ Killing PID=138033 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=138029 | CMD=python flask_server.py
+[2025-06-24 21:33:15] ❌ Killing PID=138028 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 21:33:15] ❌ Killing PID=137949 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=137948 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=137945 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 21:33:15] ❌ Killing PID=137052 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136958 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136957 | CMD=python Det_61_62.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136956 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136893 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136892 | CMD=python Paizatwo.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136860 | CMD=python Det_31_32.pyc
+[2025-06-24 21:33:15] ❌ Killing PID=136828 | CMD=python Paizaone.pyc
+[2025-06-24 21:33:15] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:33:15] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:33:15] 📊 CPU: 31.5% | RAM: 87.6% | SWAP: 3.4% | Disk I/O: 229.58 MB/s
+[2025-06-24 21:33:08] 📊 CPU: 34.2% | RAM: 81.4% | SWAP: 2.7% | Disk I/O: 53.38 MB/s
+[2025-06-24 21:33:01] 📊 CPU: 45.5% | RAM: 76.3% | SWAP: 1.2% | Disk I/O: 36.09 MB/s
+[2025-06-24 21:32:54] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 21:32:54] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 21:32:54] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 21:32:54] 🔁 Restarting all launch scripts...
+[2025-06-24 21:32:39] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 21:32:39] ✅ Total services killed: 13
+[2025-06-24 21:32:39] ❌ Killing PID=68808 | CMD=python Paizatwo.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=68763 | CMD=python Paizaone.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=68687 | CMD=python Database_Web.py
+[2025-06-24 21:32:39] ❌ Killing PID=68685 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 21:32:39] ❌ Killing PID=68635 | CMD=python Det_61_62.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=68633 | CMD=python flask_server.py
+[2025-06-24 21:32:39] ❌ Killing PID=68630 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 21:32:39] ❌ Killing PID=68552 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 21:32:39] ❌ Killing PID=68548 | CMD=python Det_31_32.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=68046 | CMD=python Paizatwo.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=68045 | CMD=python Det_61_62.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=67982 | CMD=python Paizaone.pyc
+[2025-06-24 21:32:39] ❌ Killing PID=67981 | CMD=python Det_31_32.pyc
+[2025-06-24 21:32:39] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 21:32:39] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 21:32:39] 📊 CPU: 7.8% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 256.81 MB/s
+[2025-06-24 21:32:32] 📊 CPU: 7.8% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 0.50 MB/s
+[2025-06-24 21:32:25] 📊 CPU: 6.7% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:32:18] 📊 CPU: 7.9% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 12.23 MB/s
+[2025-06-24 21:32:11] 📊 CPU: 9.8% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 0.99 MB/s
+[2025-06-24 21:32:04] 📊 CPU: 8.5% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 0.17 MB/s
+[2025-06-24 21:31:57] 📊 CPU: 8.0% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:31:50] 📊 CPU: 9.0% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 0.37 MB/s
+[2025-06-24 21:31:43] 📊 CPU: 9.0% | RAM: 76.7% | SWAP: 1.2% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:31:36] 📊 CPU: 10.2% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.97 MB/s
+[2025-06-24 21:31:29] 📊 CPU: 7.8% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:31:22] 📊 CPU: 8.0% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:31:15] 📊 CPU: 7.5% | RAM: 76.5% | SWAP: 1.2% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:31:07] 📊 CPU: 7.5% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:31:00] 📊 CPU: 7.4% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 4.19 MB/s
+[2025-06-24 21:30:53] 📊 CPU: 6.9% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:30:46] 📊 CPU: 8.1% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:30:39] 📊 CPU: 8.8% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:30:32] 📊 CPU: 7.5% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:30:25] 📊 CPU: 8.3% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.31 MB/s
+[2025-06-24 21:30:18] 📊 CPU: 16.7% | RAM: 76.6% | SWAP: 1.2% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:30:11] 📊 CPU: 14.0% | RAM: 76.5% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:30:04] 📊 CPU: 11.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 4.36 MB/s
+[2025-06-24 21:29:57] 📊 CPU: 10.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:29:50] 📊 CPU: 10.3% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:29:43] 📊 CPU: 11.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:29:36] 📊 CPU: 10.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.41 MB/s
+[2025-06-24 21:29:29] 📊 CPU: 8.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:29:22] 📊 CPU: 7.8% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 21:29:15] 📊 CPU: 16.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.95 MB/s
+[2025-06-24 21:29:08] 📊 CPU: 12.5% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:29:01] 📊 CPU: 13.6% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:28:54] 📊 CPU: 7.7% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:28:47] 📊 CPU: 7.4% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.13 MB/s
+[2025-06-24 21:28:40] 📊 CPU: 9.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 21:28:33] 📊 CPU: 10.3% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.11 MB/s
+[2025-06-24 21:28:26] 📊 CPU: 11.9% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.91 MB/s
+[2025-06-24 21:28:19] 📊 CPU: 13.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:28:12] 📊 CPU: 9.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.45 MB/s
+[2025-06-24 21:28:05] 📊 CPU: 9.6% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 21:27:58] 📊 CPU: 10.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 21:27:51] 📊 CPU: 8.5% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.70 MB/s
+[2025-06-24 21:27:44] 📊 CPU: 10.4% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.33 MB/s
+[2025-06-24 21:27:37] 📊 CPU: 12.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:27:30] 📊 CPU: 11.9% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:27:23] 📊 CPU: 8.7% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:27:16] 📊 CPU: 12.3% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:27:09] 📊 CPU: 8.8% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:27:02] 📊 CPU: 8.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:26:55] 📊 CPU: 10.6% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 1.56 MB/s
+[2025-06-24 21:26:48] 📊 CPU: 8.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:26:41] 📊 CPU: 11.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:26:34] 📊 CPU: 9.9% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:26:27] 📊 CPU: 13.4% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:26:20] 📊 CPU: 9.9% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.39 MB/s
+[2025-06-24 21:26:13] 📊 CPU: 12.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.88 MB/s
+[2025-06-24 21:26:06] 📊 CPU: 12.6% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:25:59] 📊 CPU: 8.7% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 1.47 MB/s
+[2025-06-24 21:25:52] 📊 CPU: 8.3% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 5.64 MB/s
+[2025-06-24 21:25:45] 📊 CPU: 9.5% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:25:38] 📊 CPU: 11.4% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.02 MB/s
+[2025-06-24 21:25:31] 📊 CPU: 7.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 5.46 MB/s
+[2025-06-24 21:25:24] 📊 CPU: 9.5% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:25:17] 📊 CPU: 10.4% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 21:25:10] 📊 CPU: 12.5% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 1.64 MB/s
+[2025-06-24 21:25:03] 📊 CPU: 11.6% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 21:24:56] 📊 CPU: 8.2% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:24:49] 📊 CPU: 8.5% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 0.78 MB/s
+[2025-06-24 21:24:42] 📊 CPU: 10.8% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 21:24:35] 📊 CPU: 8.2% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.97 MB/s
+[2025-06-24 21:24:28] 📊 CPU: 8.0% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:24:21] 📊 CPU: 8.1% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.42 MB/s
+[2025-06-24 21:24:14] 📊 CPU: 8.1% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:24:07] 📊 CPU: 9.8% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:24:00] 📊 CPU: 9.8% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 2.00 MB/s
+[2025-06-24 21:23:53] 📊 CPU: 9.9% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.62 MB/s
+[2025-06-24 21:23:46] 📊 CPU: 10.4% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:23:39] 📊 CPU: 9.2% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 3.42 MB/s
+[2025-06-24 21:23:32] 📊 CPU: 11.7% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 1.18 MB/s
+[2025-06-24 21:23:25] 📊 CPU: 9.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:23:18] 📊 CPU: 9.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 21:23:11] 📊 CPU: 9.3% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:23:04] 📊 CPU: 11.1% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:22:57] 📊 CPU: 11.4% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.71 MB/s
+[2025-06-24 21:22:50] 📊 CPU: 9.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 21:22:43] 📊 CPU: 11.1% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:22:36] 📊 CPU: 15.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 21:22:29] 📊 CPU: 9.9% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 21:22:22] 📊 CPU: 12.5% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 2.17 MB/s
+[2025-06-24 21:22:15] 📊 CPU: 9.2% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:22:08] 📊 CPU: 11.8% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 21:22:01] 📊 CPU: 15.1% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:21:54] 📊 CPU: 11.1% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.35 MB/s
+[2025-06-24 21:21:47] 📊 CPU: 10.4% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:21:40] 📊 CPU: 9.7% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 2.67 MB/s
+[2025-06-24 21:21:33] 📊 CPU: 9.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:21:26] 📊 CPU: 8.8% | RAM: 75.9% | SWAP: 1.0% | Disk I/O: 0.41 MB/s
+[2025-06-24 21:21:19] 📊 CPU: 10.9% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:21:12] 📊 CPU: 11.0% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:21:05] 📊 CPU: 10.5% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 1.12 MB/s
+[2025-06-24 21:20:58] 📊 CPU: 10.8% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 1.11 MB/s
+[2025-06-24 21:20:51] 📊 CPU: 9.8% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 1.73 MB/s
+[2025-06-24 21:20:44] 📊 CPU: 11.9% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 21:20:37] 📊 CPU: 10.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 5.73 MB/s
+[2025-06-24 21:20:30] 📊 CPU: 10.5% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:20:23] 📊 CPU: 9.5% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.45 MB/s
+[2025-06-24 21:20:16] 📊 CPU: 9.6% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:20:09] 📊 CPU: 8.2% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:20:02] 📊 CPU: 9.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 21:19:55] 📊 CPU: 6.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 7.34 MB/s
+[2025-06-24 21:19:48] 📊 CPU: 7.3% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:19:41] 📊 CPU: 9.1% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.67 MB/s
+[2025-06-24 21:19:34] 📊 CPU: 9.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 21:19:27] 📊 CPU: 8.2% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:19:20] 📊 CPU: 7.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 21:19:13] 📊 CPU: 8.3% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 21:19:06] 📊 CPU: 8.7% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:18:59] 📊 CPU: 9.3% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 7.66 MB/s
+[2025-06-24 21:18:52] 📊 CPU: 9.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:18:45] 📊 CPU: 9.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.39 MB/s
+[2025-06-24 21:18:38] 📊 CPU: 8.5% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:18:31] 📊 CPU: 9.8% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.31 MB/s
+[2025-06-24 21:18:24] 📊 CPU: 8.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:18:17] 📊 CPU: 7.9% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:18:10] 📊 CPU: 10.5% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 21:18:03] 📊 CPU: 7.7% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:17:56] 📊 CPU: 8.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:17:49] 📊 CPU: 10.9% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:17:42] 📊 CPU: 10.4% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 14.12 MB/s
+[2025-06-24 21:17:35] 📊 CPU: 11.4% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 1.32 MB/s
+[2025-06-24 21:17:28] 📊 CPU: 9.0% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:17:21] 📊 CPU: 8.2% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:17:14] 📊 CPU: 7.5% | RAM: 76.0% | SWAP: 1.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 21:17:07] 📊 CPU: 9.5% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:17:00] 📊 CPU: 8.1% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:16:53] 📊 CPU: 7.5% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:16:46] 📊 CPU: 8.5% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 5.83 MB/s
+[2025-06-24 21:16:39] 📊 CPU: 7.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:16:32] 📊 CPU: 7.5% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.38 MB/s
+[2025-06-24 21:16:25] 📊 CPU: 7.5% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 4.30 MB/s
+[2025-06-24 21:16:18] 📊 CPU: 7.1% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:16:11] 📊 CPU: 9.0% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 21:16:04] 📊 CPU: 8.0% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:15:57] 📊 CPU: 8.0% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 21:15:50] 📊 CPU: 9.8% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:15:43] 📊 CPU: 10.5% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.92 MB/s
+[2025-06-24 21:15:36] 📊 CPU: 11.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:15:29] 📊 CPU: 9.7% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.70 MB/s
+[2025-06-24 21:15:22] 📊 CPU: 10.1% | RAM: 76.5% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:15:15] 📊 CPU: 8.8% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.43 MB/s
+[2025-06-24 21:15:08] 📊 CPU: 8.2% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:15:01] 📊 CPU: 9.8% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:14:54] 📊 CPU: 9.5% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:14:47] 📊 CPU: 8.4% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:14:40] 📊 CPU: 7.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:14:33] 📊 CPU: 8.5% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:14:26] 📊 CPU: 8.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 21:14:19] 📊 CPU: 8.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:14:12] 📊 CPU: 8.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 8.16 MB/s
+[2025-06-24 21:14:05] 📊 CPU: 7.3% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.53 MB/s
+[2025-06-24 21:13:58] 📊 CPU: 8.2% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 21:13:51] 📊 CPU: 8.3% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 21:13:44] 📊 CPU: 7.7% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 21:13:37] 📊 CPU: 11.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:13:30] 📊 CPU: 8.9% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.39 MB/s
+[2025-06-24 21:13:23] 📊 CPU: 8.8% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:13:16] 📊 CPU: 8.3% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 18.57 MB/s
+[2025-06-24 21:13:09] 📊 CPU: 8.6% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:13:02] 📊 CPU: 8.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:12:55] 📊 CPU: 7.8% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 10.45 MB/s
+[2025-06-24 21:12:48] 📊 CPU: 9.1% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:12:41] 📊 CPU: 8.7% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:12:34] 📊 CPU: 7.4% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:12:27] 📊 CPU: 7.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:12:20] 📊 CPU: 8.2% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:12:13] 📊 CPU: 7.8% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:12:06] 📊 CPU: 8.3% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:11:59] 📊 CPU: 7.6% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 4.17 MB/s
+[2025-06-24 21:11:52] 📊 CPU: 7.3% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:11:45] 📊 CPU: 8.7% | RAM: 76.2% | SWAP: 1.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 21:11:38] 📊 CPU: 7.9% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:11:31] 📊 CPU: 7.9% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:11:24] 📊 CPU: 8.2% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:11:17] 📊 CPU: 6.7% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:11:10] 📊 CPU: 7.8% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 21:11:03] 📊 CPU: 7.3% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:10:56] 📊 CPU: 9.1% | RAM: 76.4% | SWAP: 1.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 21:10:49] 📊 CPU: 9.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:10:42] 📊 CPU: 9.0% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 4.66 MB/s
+[2025-06-24 21:10:35] 📊 CPU: 9.4% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 1.05 MB/s
+[2025-06-24 21:10:28] 📊 CPU: 7.5% | RAM: 76.3% | SWAP: 1.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:10:21] 📊 CPU: 8.3% | RAM: 76.6% | SWAP: 1.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:10:14] 📊 CPU: 8.0% | RAM: 76.1% | SWAP: 1.0% | Disk I/O: 0.65 MB/s
+[2025-06-24 21:10:07] 📊 CPU: 6.6% | RAM: 75.8% | SWAP: 0.9% | Disk I/O: 9.82 MB/s
+[2025-06-24 21:10:00] 📊 CPU: 6.3% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:09:53] 📊 CPU: 8.6% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:09:46] 📊 CPU: 7.5% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:09:39] 📊 CPU: 10.9% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 3.59 MB/s
+[2025-06-24 21:09:32] 📊 CPU: 8.5% | RAM: 75.9% | SWAP: 0.8% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:09:25] 📊 CPU: 7.9% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.14 MB/s
+[2025-06-24 21:09:18] 📊 CPU: 8.3% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.68 MB/s
+[2025-06-24 21:09:11] 📊 CPU: 11.8% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 0.18 MB/s
+[2025-06-24 21:09:04] 📊 CPU: 7.7% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:08:57] 📊 CPU: 10.9% | RAM: 75.9% | SWAP: 0.8% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:08:50] 📊 CPU: 7.0% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 0.08 MB/s
+[2025-06-24 21:08:43] 📊 CPU: 7.0% | RAM: 76.0% | SWAP: 0.8% | Disk I/O: 0.98 MB/s
+[2025-06-24 21:08:36] 📊 CPU: 6.8% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 2.11 MB/s
+[2025-06-24 21:08:29] 📊 CPU: 6.5% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 0.08 MB/s
+[2025-06-24 21:08:22] 📊 CPU: 6.9% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:08:15] 📊 CPU: 8.9% | RAM: 75.5% | SWAP: 0.8% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:08:08] 📊 CPU: 10.1% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 0.42 MB/s
+[2025-06-24 21:08:01] 📊 CPU: 10.6% | RAM: 75.5% | SWAP: 0.8% | Disk I/O: 8.91 MB/s
+[2025-06-24 21:07:54] 📊 CPU: 11.5% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 1.35 MB/s
+[2025-06-24 21:07:47] 📊 CPU: 9.7% | RAM: 75.6% | SWAP: 0.8% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:07:40] 📊 CPU: 9.0% | RAM: 75.7% | SWAP: 0.8% | Disk I/O: 9.89 MB/s
+[2025-06-24 21:07:33] 📊 CPU: 8.5% | RAM: 75.8% | SWAP: 0.8% | Disk I/O: 1.21 MB/s
+[2025-06-24 21:07:26] 📊 CPU: 7.8% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.46 MB/s
+[2025-06-24 21:07:19] 📊 CPU: 7.5% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:07:12] 📊 CPU: 6.8% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.35 MB/s
+[2025-06-24 21:07:05] 📊 CPU: 8.3% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:06:58] 📊 CPU: 7.8% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 1.21 MB/s
+[2025-06-24 21:06:51] 📊 CPU: 7.3% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:06:44] 📊 CPU: 10.5% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:06:37] 📊 CPU: 7.5% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:06:30] 📊 CPU: 8.1% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:06:23] 📊 CPU: 9.7% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 1.27 MB/s
+[2025-06-24 21:06:16] 📊 CPU: 13.2% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:06:09] 📊 CPU: 20.4% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.15 MB/s
+[2025-06-24 21:06:02] 📊 CPU: 8.2% | RAM: 75.7% | SWAP: 0.7% | Disk I/O: 1.25 MB/s
+[2025-06-24 21:05:55] 📊 CPU: 11.6% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 1.15 MB/s
+[2025-06-24 21:05:48] 📊 CPU: 9.8% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 12.30 MB/s
+[2025-06-24 21:05:41] 📊 CPU: 9.5% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:05:34] 📊 CPU: 8.5% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.07 MB/s
+[2025-06-24 21:05:27] 📊 CPU: 16.5% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 8.58 MB/s
+[2025-06-24 21:05:20] 📊 CPU: 7.5% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:05:13] 📊 CPU: 8.0% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.10 MB/s
+[2025-06-24 21:05:06] 📊 CPU: 8.4% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 10.13 MB/s
+[2025-06-24 21:04:59] 📊 CPU: 9.9% | RAM: 75.6% | SWAP: 0.7% | Disk I/O: 0.27 MB/s
+[2025-06-24 21:04:52] 📊 CPU: 12.0% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:04:45] 📊 CPU: 9.2% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 1.44 MB/s
+[2025-06-24 21:04:38] 📊 CPU: 8.5% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:04:31] 📊 CPU: 7.9% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:04:24] 📊 CPU: 8.5% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:04:17] 📊 CPU: 9.8% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 1.51 MB/s
+[2025-06-24 21:04:10] 📊 CPU: 6.6% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 11.45 MB/s
+[2025-06-24 21:04:03] 📊 CPU: 8.2% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:03:56] 📊 CPU: 7.0% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:03:49] 📊 CPU: 7.6% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 10.79 MB/s
+[2025-06-24 21:03:42] 📊 CPU: 8.3% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 2.04 MB/s
+[2025-06-24 21:03:35] 📊 CPU: 8.4% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 1.77 MB/s
+[2025-06-24 21:03:28] 📊 CPU: 7.5% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:03:21] 📊 CPU: 8.9% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.28 MB/s
+[2025-06-24 21:03:14] 📊 CPU: 8.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 12.75 MB/s
+[2025-06-24 21:03:07] 📊 CPU: 7.0% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 21:03:00] 📊 CPU: 7.4% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 1.64 MB/s
+[2025-06-24 21:02:53] 📊 CPU: 10.7% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.11 MB/s
+[2025-06-24 21:02:46] 📊 CPU: 7.8% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 1.86 MB/s
+[2025-06-24 21:02:39] 📊 CPU: 7.2% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.16 MB/s
+[2025-06-24 21:02:32] 📊 CPU: 8.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 1.94 MB/s
+[2025-06-24 21:02:25] 📊 CPU: 15.6% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.09 MB/s
+[2025-06-24 21:02:18] 📊 CPU: 12.0% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.11 MB/s
+[2025-06-24 21:02:11] 📊 CPU: 9.8% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.08 MB/s
+[2025-06-24 21:02:04] 📊 CPU: 11.6% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 1.75 MB/s
+[2025-06-24 21:01:57] 📊 CPU: 8.7% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 12.23 MB/s
+[2025-06-24 21:01:50] 📊 CPU: 8.7% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.24 MB/s
+[2025-06-24 21:01:43] 📊 CPU: 10.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.26 MB/s
+[2025-06-24 21:01:36] 📊 CPU: 8.7% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 8.27 MB/s
+[2025-06-24 21:01:29] 📊 CPU: 12.3% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 1.27 MB/s
+[2025-06-24 21:01:22] 📊 CPU: 10.6% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.25 MB/s
+[2025-06-24 21:01:15] 📊 CPU: 8.6% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 21:01:08] 📊 CPU: 9.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.27 MB/s
+[2025-06-24 21:01:01] 📊 CPU: 13.9% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 21:00:54] 📊 CPU: 9.4% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 1.28 MB/s
+[2025-06-24 21:00:47] 📊 CPU: 8.4% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 1.00 MB/s
+[2025-06-24 21:00:40] 📊 CPU: 13.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 24.84 MB/s
+[2025-06-24 21:00:33] 📊 CPU: 9.3% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.20 MB/s
+[2025-06-24 21:00:26] 📊 CPU: 13.1% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.69 MB/s
+[2025-06-24 21:00:19] 📊 CPU: 9.3% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.06 MB/s
+[2025-06-24 21:00:12] 📊 CPU: 8.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 39.37 MB/s
+[2025-06-24 21:00:05] 📊 CPU: 8.0% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.01 MB/s
+[2025-06-24 20:59:58] 📊 CPU: 11.0% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:59:51] 📊 CPU: 7.3% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:59:44] 📊 CPU: 10.8% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 15.81 MB/s
+[2025-06-24 20:59:37] 📊 CPU: 14.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.94 MB/s
+[2025-06-24 20:59:30] 📊 CPU: 11.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:59:23] 📊 CPU: 12.6% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 1.60 MB/s
+[2025-06-24 20:59:16] 📊 CPU: 11.5% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:59:09] 📊 CPU: 12.6% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:59:02] 📊 CPU: 11.4% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:58:55] 📊 CPU: 9.8% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:58:48] 📊 CPU: 10.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:58:41] 📊 CPU: 12.7% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 3.59 MB/s
+[2025-06-24 20:58:34] 📊 CPU: 11.7% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:58:27] 📊 CPU: 10.4% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:58:20] 📊 CPU: 8.0% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.94 MB/s
+[2025-06-24 20:58:13] 📊 CPU: 9.4% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:58:06] 📊 CPU: 8.6% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 4.20 MB/s
+[2025-06-24 20:57:59] 📊 CPU: 9.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:57:52] 📊 CPU: 9.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:57:45] 📊 CPU: 8.7% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 3.70 MB/s
+[2025-06-24 20:57:38] 📊 CPU: 9.3% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.26 MB/s
+[2025-06-24 20:57:31] 📊 CPU: 10.2% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 7.09 MB/s
+[2025-06-24 20:57:24] 📊 CPU: 9.9% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:57:17] 📊 CPU: 8.5% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.65 MB/s
+[2025-06-24 20:57:10] 📊 CPU: 11.1% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 13.21 MB/s
+[2025-06-24 20:57:03] 📊 CPU: 9.0% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.06 MB/s
+[2025-06-24 20:56:56] 📊 CPU: 9.4% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:56:49] 📊 CPU: 9.8% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.70 MB/s
+[2025-06-24 20:56:42] 📊 CPU: 11.2% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:56:35] 📊 CPU: 9.9% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.25 MB/s
+[2025-06-24 20:56:28] 📊 CPU: 9.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 20:56:21] 📊 CPU: 9.3% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:56:14] 📊 CPU: 10.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 57.71 MB/s
+[2025-06-24 20:56:07] 📊 CPU: 9.1% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:56:00] 📊 CPU: 18.6% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:55:53] 📊 CPU: 15.3% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 30.79 MB/s
+[2025-06-24 20:55:46] 📊 CPU: 11.5% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:55:39] 📊 CPU: 16.4% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 20:55:32] 📊 CPU: 11.2% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.30 MB/s
+[2025-06-24 20:55:25] 📊 CPU: 12.8% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.25 MB/s
+[2025-06-24 20:55:18] 📊 CPU: 14.0% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 4.06 MB/s
+[2025-06-24 20:55:11] 📊 CPU: 12.3% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:55:04] 📊 CPU: 13.0% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:54:57] 📊 CPU: 12.8% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 5.52 MB/s
+[2025-06-24 20:54:50] 📊 CPU: 12.6% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:54:43] 📊 CPU: 4.9% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:54:36] 📊 CPU: 12.5% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 20:54:29] 📊 CPU: 12.3% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 3.47 MB/s
+[2025-06-24 20:54:22] 📊 CPU: 12.2% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 0.10 MB/s
+[2025-06-24 20:54:15] 📊 CPU: 13.2% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:54:08] 📊 CPU: 12.5% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:54:01] 📊 CPU: 12.9% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 1.88 MB/s
+[2025-06-24 20:53:54] 📊 CPU: 14.1% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:53:47] 📊 CPU: 10.6% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 1.08 MB/s
+[2025-06-24 20:53:40] 📊 CPU: 12.4% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 6.23 MB/s
+[2025-06-24 20:53:33] 📊 CPU: 10.6% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:53:26] 📊 CPU: 11.0% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:53:19] 📊 CPU: 9.8% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:53:12] 📊 CPU: 11.2% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 1.46 MB/s
+[2025-06-24 20:53:05] 📊 CPU: 11.6% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 5.87 MB/s
+[2025-06-24 20:52:58] 📊 CPU: 11.9% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.32 MB/s
+[2025-06-24 20:52:51] 📊 CPU: 10.2% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 0.24 MB/s
+[2025-06-24 20:52:44] 📊 CPU: 12.4% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 2.33 MB/s
+[2025-06-24 20:52:37] 📊 CPU: 11.9% | RAM: 75.0% | SWAP: 0.7% | Disk I/O: 0.23 MB/s
+[2025-06-24 20:52:30] 📊 CPU: 12.3% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.63 MB/s
+[2025-06-24 20:52:23] 📊 CPU: 9.8% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:52:16] 📊 CPU: 10.9% | RAM: 75.1% | SWAP: 0.7% | Disk I/O: 0.28 MB/s
+[2025-06-24 20:52:09] 📊 CPU: 12.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.28 MB/s
+[2025-06-24 20:52:02] 📊 CPU: 10.6% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.99 MB/s
+[2025-06-24 20:51:55] 📊 CPU: 11.0% | RAM: 75.2% | SWAP: 0.7% | Disk I/O: 0.38 MB/s
+[2025-06-24 20:51:48] 📊 CPU: 11.2% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.42 MB/s
+[2025-06-24 20:51:41] 📊 CPU: 10.9% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.48 MB/s
+[2025-06-24 20:51:34] 📊 CPU: 11.9% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.39 MB/s
+[2025-06-24 20:51:27] 📊 CPU: 11.2% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 9.00 MB/s
+[2025-06-24 20:51:20] 📊 CPU: 12.1% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:51:13] 📊 CPU: 12.9% | RAM: 75.3% | SWAP: 0.7% | Disk I/O: 0.08 MB/s
+[2025-06-24 20:51:06] 📊 CPU: 13.0% | RAM: 75.5% | SWAP: 0.7% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:50:58] 📊 CPU: 6.7% | RAM: 75.4% | SWAP: 0.7% | Disk I/O: 0.57 MB/s
+[2025-06-24 20:50:51] 📊 CPU: 6.8% | RAM: 75.6% | SWAP: 0.3% | Disk I/O: 28.48 MB/s
+[2025-06-24 20:50:44] 📊 CPU: 8.0% | RAM: 75.7% | SWAP: 0.3% | Disk I/O: 3.83 MB/s
+[2025-06-24 20:50:37] 📊 CPU: 6.8% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:50:30] 📊 CPU: 6.8% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 4.77 MB/s
+[2025-06-24 20:50:23] 📊 CPU: 6.5% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:50:16] 📊 CPU: 10.5% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.93 MB/s
+[2025-06-24 20:50:09] 📊 CPU: 5.9% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 3.15 MB/s
+[2025-06-24 20:50:02] 📊 CPU: 5.5% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:49:55] 📊 CPU: 6.6% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:49:48] 📊 CPU: 5.5% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:49:41] 📊 CPU: 5.5% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.79 MB/s
+[2025-06-24 20:49:34] 📊 CPU: 6.9% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:49:27] 📊 CPU: 6.5% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.88 MB/s
+[2025-06-24 20:49:20] 📊 CPU: 8.9% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:49:13] 📊 CPU: 7.0% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:49:06] 📊 CPU: 6.7% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.84 MB/s
+[2025-06-24 20:48:59] 📊 CPU: 6.9% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:48:52] 📊 CPU: 13.1% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:48:45] 📊 CPU: 7.8% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:48:38] 📊 CPU: 7.9% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:48:31] 📊 CPU: 8.6% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.51 MB/s
+[2025-06-24 20:48:24] 📊 CPU: 13.0% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:48:17] 📊 CPU: 8.2% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:48:10] 📊 CPU: 7.5% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.61 MB/s
+[2025-06-24 20:48:03] 📊 CPU: 7.6% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 20:47:56] 📊 CPU: 7.4% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:47:49] 📊 CPU: 10.5% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 2.64 MB/s
+[2025-06-24 20:47:42] 📊 CPU: 6.8% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:47:35] 📊 CPU: 6.6% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.90 MB/s
+[2025-06-24 20:47:28] 📊 CPU: 7.5% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 2.66 MB/s
+[2025-06-24 20:47:21] 📊 CPU: 11.9% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.31 MB/s
+[2025-06-24 20:47:14] 📊 CPU: 7.1% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.93 MB/s
+[2025-06-24 20:47:07] 📊 CPU: 6.3% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:47:00] 📊 CPU: 6.5% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:46:53] 📊 CPU: 6.4% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:46:46] 📊 CPU: 9.0% | RAM: 73.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:46:39] 📊 CPU: 8.3% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.86 MB/s
+[2025-06-24 20:46:32] 📊 CPU: 12.3% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:46:25] 📊 CPU: 7.3% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:46:18] 📊 CPU: 9.3% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:46:11] 📊 CPU: 7.9% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.81 MB/s
+[2025-06-24 20:46:04] 📊 CPU: 7.8% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:45:57] 📊 CPU: 7.1% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:45:50] 📊 CPU: 6.3% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:45:43] 📊 CPU: 7.2% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:45:36] 📊 CPU: 6.1% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:45:29] 📊 CPU: 5.9% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.40 MB/s
+[2025-06-24 20:45:22] 📊 CPU: 6.5% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 2.39 MB/s
+[2025-06-24 20:45:15] 📊 CPU: 6.1% | RAM: 73.3% | SWAP: 0.0% | Disk I/O: 0.66 MB/s
+[2025-06-24 20:45:08] 📊 CPU: 6.3% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:45:01] 📊 CPU: 5.7% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 2.35 MB/s
+[2025-06-24 20:44:54] 📊 CPU: 7.3% | RAM: 73.4% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:44:47] 📊 CPU: 9.8% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:44:40] 📊 CPU: 9.8% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.71 MB/s
+[2025-06-24 20:44:33] 📊 CPU: 8.1% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:44:26] 📊 CPU: 6.6% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 4.22 MB/s
+[2025-06-24 20:44:19] 📊 CPU: 6.5% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:44:12] 📊 CPU: 6.6% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:44:05] 📊 CPU: 8.0% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.87 MB/s
+[2025-06-24 20:43:58] 📊 CPU: 8.4% | RAM: 73.8% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:43:51] 📊 CPU: 6.7% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:43:44] 📊 CPU: 7.9% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 1.02 MB/s
+[2025-06-24 20:43:37] 📊 CPU: 10.6% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.39 MB/s
+[2025-06-24 20:43:30] 📊 CPU: 8.1% | RAM: 73.6% | SWAP: 0.0% | Disk I/O: 0.54 MB/s
+[2025-06-24 20:43:23] 📊 CPU: 10.0% | RAM: 73.4% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:43:16] 📊 CPU: 7.5% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:43:09] 📊 CPU: 9.6% | RAM: 73.7% | SWAP: 0.0% | Disk I/O: 0.98 MB/s
+[2025-06-24 20:43:02] 📊 CPU: 7.8% | RAM: 73.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:42:55] 📊 CPU: 5.6% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:42:48] 📊 CPU: 6.2% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:42:41] 📊 CPU: 14.2% | RAM: 73.5% | SWAP: 0.0% | Disk I/O: 4.27 MB/s
+[2025-06-24 20:42:34] 📊 CPU: 9.1% | RAM: 73.3% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:42:27] 📊 CPU: 12.0% | RAM: 73.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:42:20] 📊 CPU: 7.8% | RAM: 73.3% | SWAP: 0.0% | Disk I/O: 0.95 MB/s
+[2025-06-24 20:42:13] 📊 CPU: 6.6% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.35 MB/s
+[2025-06-24 20:42:06] 📊 CPU: 5.4% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:41:59] 📊 CPU: 9.2% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.83 MB/s
+[2025-06-24 20:41:52] 📊 CPU: 10.4% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:41:45] 📊 CPU: 7.3% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:41:38] 📊 CPU: 6.5% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.43 MB/s
+[2025-06-24 20:41:31] 📊 CPU: 9.3% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:41:24] 📊 CPU: 6.1% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.96 MB/s
+[2025-06-24 20:41:17] 📊 CPU: 6.8% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:41:10] 📊 CPU: 6.1% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 20:41:03] 📊 CPU: 7.6% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:40:56] 📊 CPU: 5.5% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.33 MB/s
+[2025-06-24 20:40:49] 📊 CPU: 9.1% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 1.26 MB/s
+[2025-06-24 20:40:42] 📊 CPU: 6.3% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:40:35] 📊 CPU: 6.8% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:40:28] 📊 CPU: 8.2% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:40:21] 📊 CPU: 8.9% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:40:14] 📊 CPU: 8.0% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 1.55 MB/s
+[2025-06-24 20:40:07] 📊 CPU: 7.4% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:40:00] 📊 CPU: 9.4% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:39:53] 📊 CPU: 7.8% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:39:46] 📊 CPU: 11.5% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 13.27 MB/s
+[2025-06-24 20:39:39] 📊 CPU: 6.8% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:39:32] 📊 CPU: 10.4% | RAM: 73.3% | SWAP: 0.0% | Disk I/O: 0.75 MB/s
+[2025-06-24 20:39:25] 📊 CPU: 11.5% | RAM: 73.3% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:39:18] 📊 CPU: 10.7% | RAM: 73.2% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:39:11] 📊 CPU: 12.3% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:39:04] 📊 CPU: 7.0% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:38:57] 📊 CPU: 7.2% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 1.44 MB/s
+[2025-06-24 20:38:50] 📊 CPU: 10.1% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.12 MB/s
+[2025-06-24 20:38:43] 📊 CPU: 6.6% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 20:38:36] 📊 CPU: 7.6% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:38:29] 📊 CPU: 7.5% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:38:22] 📊 CPU: 7.9% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 1.37 MB/s
+[2025-06-24 20:38:15] 📊 CPU: 7.8% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:38:08] 📊 CPU: 7.0% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:38:01] 📊 CPU: 7.5% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:37:54] 📊 CPU: 8.3% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:37:47] 📊 CPU: 7.6% | RAM: 72.7% | SWAP: 0.0% | Disk I/O: 1.48 MB/s
+[2025-06-24 20:37:40] 📊 CPU: 6.4% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:37:33] 📊 CPU: 5.8% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 8.61 MB/s
+[2025-06-24 20:37:26] 📊 CPU: 5.7% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:37:19] 📊 CPU: 6.0% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 1.51 MB/s
+[2025-06-24 20:37:12] 📊 CPU: 6.8% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:37:05] 📊 CPU: 6.7% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:36:58] 📊 CPU: 11.6% | RAM: 73.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:36:51] 📊 CPU: 6.0% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:36:44] 📊 CPU: 8.2% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 1.44 MB/s
+[2025-06-24 20:36:37] 📊 CPU: 8.1% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:36:30] 📊 CPU: 7.7% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:36:23] 📊 CPU: 10.3% | RAM: 72.9% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:36:16] 📊 CPU: 8.5% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:36:09] 📊 CPU: 10.6% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 1.12 MB/s
+[2025-06-24 20:36:02] 📊 CPU: 8.9% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:35:55] 📊 CPU: 8.9% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 1.22 MB/s
+[2025-06-24 20:35:48] 📊 CPU: 9.6% | RAM: 73.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:35:41] 📊 CPU: 10.9% | RAM: 72.8% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:35:34] 📊 CPU: 7.7% | RAM: 72.7% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:35:27] 📊 CPU: 9.2% | RAM: 72.6% | SWAP: 0.0% | Disk I/O: 1.13 MB/s
+[2025-06-24 20:35:20] 📊 CPU: 8.1% | RAM: 72.6% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:35:13] 📊 CPU: 8.0% | RAM: 72.7% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:35:06] 📊 CPU: 8.9% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:34:59] 📊 CPU: 8.9% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:34:52] 📊 CPU: 8.9% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 1.44 MB/s
+[2025-06-24 20:34:45] 📊 CPU: 11.2% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:34:38] 📊 CPU: 10.7% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 4.01 MB/s
+[2025-06-24 20:34:31] 📊 CPU: 7.7% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:34:24] 📊 CPU: 19.1% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:34:17] 📊 CPU: 11.4% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 5.99 MB/s
+[2025-06-24 20:34:10] 📊 CPU: 7.9% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:34:03] 📊 CPU: 8.8% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:33:56] 📊 CPU: 9.5% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:33:49] 📊 CPU: 18.4% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 1.42 MB/s
+[2025-06-24 20:33:42] 📊 CPU: 10.8% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 3.61 MB/s
+[2025-06-24 20:33:35] 📊 CPU: 12.1% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:33:28] 📊 CPU: 11.0% | RAM: 72.5% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:33:21] 📊 CPU: 15.1% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:33:14] 📊 CPU: 10.2% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.94 MB/s
+[2025-06-24 20:33:07] 📊 CPU: 12.2% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:33:00] 📊 CPU: 9.9% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:32:53] 📊 CPU: 11.1% | RAM: 72.3% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:32:46] 📊 CPU: 6.9% | RAM: 72.3% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:32:39] 📊 CPU: 8.2% | RAM: 72.4% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:32:32] 📊 CPU: 4.1% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.34 MB/s
+[2025-06-24 20:32:25] 📊 CPU: 10.6% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:32:18] 📊 CPU: 7.8% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 1.16 MB/s
+[2025-06-24 20:32:11] 📊 CPU: 8.1% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:32:04] 📊 CPU: 7.9% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:31:57] 📊 CPU: 9.0% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 1.16 MB/s
+[2025-06-24 20:31:50] 📊 CPU: 8.4% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:31:43] 📊 CPU: 7.6% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:31:36] 📊 CPU: 8.1% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:31:29] 📊 CPU: 7.6% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 2.29 MB/s
+[2025-06-24 20:31:22] 📊 CPU: 14.8% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 1.33 MB/s
+[2025-06-24 20:31:15] 📊 CPU: 11.3% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.54 MB/s
+[2025-06-24 20:31:08] 📊 CPU: 12.3% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 1.21 MB/s
+[2025-06-24 20:31:01] 📊 CPU: 10.1% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:30:54] 📊 CPU: 11.2% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:30:47] 📊 CPU: 8.2% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:30:40] 📊 CPU: 8.3% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:30:33] 📊 CPU: 11.5% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 1.25 MB/s
+[2025-06-24 20:30:26] 📊 CPU: 9.9% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.62 MB/s
+[2025-06-24 20:30:19] 📊 CPU: 11.2% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:30:12] 📊 CPU: 10.4% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 2.99 MB/s
+[2025-06-24 20:30:05] 📊 CPU: 9.6% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.12 MB/s
+[2025-06-24 20:29:58] 📊 CPU: 10.0% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.92 MB/s
+[2025-06-24 20:29:51] 📊 CPU: 9.7% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 2.68 MB/s
+[2025-06-24 20:29:44] 📊 CPU: 9.5% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 20:29:37] 📊 CPU: 8.2% | RAM: 72.2% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:29:30] 📊 CPU: 7.6% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.38 MB/s
+[2025-06-24 20:29:23] 📊 CPU: 8.4% | RAM: 72.0% | SWAP: 0.0% | Disk I/O: 7.29 MB/s
+[2025-06-24 20:29:16] 📊 CPU: 10.6% | RAM: 72.0% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:29:09] 📊 CPU: 11.3% | RAM: 72.0% | SWAP: 0.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:29:02] 📊 CPU: 10.3% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 4.31 MB/s
+[2025-06-24 20:28:55] 📊 CPU: 10.5% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:28:48] 📊 CPU: 11.0% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:28:41] 📊 CPU: 10.7% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:28:34] 📊 CPU: 11.0% | RAM: 72.3% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:28:27] 📊 CPU: 11.4% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:28:20] 📊 CPU: 9.6% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:28:13] 📊 CPU: 11.1% | RAM: 72.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:28:06] 📊 CPU: 13.0% | RAM: 71.9% | SWAP: 0.0% | Disk I/O: 0.53 MB/s
+[2025-06-24 20:27:59] 📊 CPU: 9.4% | RAM: 72.0% | SWAP: 0.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:27:52] 📊 CPU: 8.2% | RAM: 71.9% | SWAP: 0.0% | Disk I/O: 1.43 MB/s
+[2025-06-24 20:27:45] 📊 CPU: 8.6% | RAM: 71.9% | SWAP: 0.0% | Disk I/O: 9.94 MB/s
+[2025-06-24 20:27:38] 📊 CPU: 10.1% | RAM: 71.9% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:27:31] 📊 CPU: 9.8% | RAM: 71.6% | SWAP: 0.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 20:27:24] 📊 CPU: 9.1% | RAM: 71.6% | SWAP: 0.0% | Disk I/O: 6.41 MB/s
+[2025-06-24 20:27:17] 📊 CPU: 9.4% | RAM: 71.5% | SWAP: 0.0% | Disk I/O: 1.29 MB/s
+[2025-06-24 20:27:10] 📊 CPU: 12.6% | RAM: 71.5% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:27:03] 📊 CPU: 12.5% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 3.88 MB/s
+[2025-06-24 20:26:56] 📊 CPU: 9.4% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 1.22 MB/s
+[2025-06-24 20:26:49] 📊 CPU: 10.4% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:26:42] 📊 CPU: 11.0% | RAM: 71.6% | SWAP: 0.0% | Disk I/O: 5.07 MB/s
+[2025-06-24 20:26:35] 📊 CPU: 11.6% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 0.70 MB/s
+[2025-06-24 20:26:28] 📊 CPU: 9.2% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.12 MB/s
+[2025-06-24 20:26:21] 📊 CPU: 12.5% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.83 MB/s
+[2025-06-24 20:26:14] 📊 CPU: 9.3% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:26:07] 📊 CPU: 8.5% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:26:00] 📊 CPU: 9.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:25:53] 📊 CPU: 7.0% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:25:46] 📊 CPU: 9.7% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 1.91 MB/s
+[2025-06-24 20:25:39] 📊 CPU: 7.7% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:25:32] 📊 CPU: 9.2% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.30 MB/s
+[2025-06-24 20:25:25] 📊 CPU: 7.4% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 1.37 MB/s
+[2025-06-24 20:25:18] 📊 CPU: 8.8% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:25:11] 📊 CPU: 8.5% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:25:04] 📊 CPU: 7.7% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:57] 📊 CPU: 7.1% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.51 MB/s
+[2025-06-24 20:24:50] 📊 CPU: 7.6% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 20:24:43] 📊 CPU: 7.5% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:36] 📊 CPU: 7.2% | RAM: 71.6% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:24:29] 📊 CPU: 6.9% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:22] 📊 CPU: 7.2% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:15] 📊 CPU: 10.0% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:08] 📊 CPU: 7.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:24:01] 📊 CPU: 6.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:23:54] 📊 CPU: 9.4% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:23:47] 📊 CPU: 8.3% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:23:40] 📊 CPU: 8.5% | RAM: 71.8% | SWAP: 0.0% | Disk I/O: 7.86 MB/s
+[2025-06-24 20:23:33] 📊 CPU: 8.5% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.47 MB/s
+[2025-06-24 20:23:26] 📊 CPU: 10.0% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:23:19] 📊 CPU: 9.5% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 4.02 MB/s
+[2025-06-24 20:23:12] 📊 CPU: 7.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.12 MB/s
+[2025-06-24 20:23:05] 📊 CPU: 11.4% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:22:58] 📊 CPU: 7.8% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:22:51] 📊 CPU: 7.0% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:22:44] 📊 CPU: 9.0% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:22:37] 📊 CPU: 7.7% | RAM: 71.7% | SWAP: 0.0% | Disk I/O: 0.49 MB/s
+[2025-06-24 20:22:30] 📊 CPU: 9.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.58 MB/s
+[2025-06-24 20:22:23] 📊 CPU: 8.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 4.19 MB/s
+[2025-06-24 20:22:16] 📊 CPU: 9.5% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.55 MB/s
+[2025-06-24 20:22:09] 📊 CPU: 8.1% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:22:02] 📊 CPU: 8.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.34 MB/s
+[2025-06-24 20:21:55] 📊 CPU: 10.4% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:21:48] 📊 CPU: 9.0% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:21:41] 📊 CPU: 9.2% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.31 MB/s
+[2025-06-24 20:21:34] 📊 CPU: 8.1% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:21:27] 📊 CPU: 9.7% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:21:20] 📊 CPU: 7.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:21:13] 📊 CPU: 8.7% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:21:06] 📊 CPU: 9.0% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 11.56 MB/s
+[2025-06-24 20:20:59] 📊 CPU: 10.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:20:52] 📊 CPU: 9.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.63 MB/s
+[2025-06-24 20:20:45] 📊 CPU: 7.3% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:20:38] 📊 CPU: 9.6% | RAM: 71.5% | SWAP: 0.0% | Disk I/O: 0.31 MB/s
+[2025-06-24 20:20:31] 📊 CPU: 9.8% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.55 MB/s
+[2025-06-24 20:20:24] 📊 CPU: 8.1% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:20:17] 📊 CPU: 9.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 20:20:10] 📊 CPU: 8.7% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 14.04 MB/s
+[2025-06-24 20:20:03] 📊 CPU: 11.0% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:19:56] 📊 CPU: 9.8% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:19:49] 📊 CPU: 9.1% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:19:42] 📊 CPU: 8.1% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 20:19:35] 📊 CPU: 10.9% | RAM: 71.7% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:19:28] 📊 CPU: 9.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:19:21] 📊 CPU: 9.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:19:14] 📊 CPU: 9.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 8.82 MB/s
+[2025-06-24 20:19:07] 📊 CPU: 7.8% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:19:00] 📊 CPU: 9.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.62 MB/s
+[2025-06-24 20:18:53] 📊 CPU: 8.3% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:18:46] 📊 CPU: 8.8% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:18:39] 📊 CPU: 8.5% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.68 MB/s
+[2025-06-24 20:18:32] 📊 CPU: 9.0% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.52 MB/s
+[2025-06-24 20:18:25] 📊 CPU: 7.6% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:18:18] 📊 CPU: 7.4% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.52 MB/s
+[2025-06-24 20:18:11] 📊 CPU: 8.7% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:18:04] 📊 CPU: 8.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:17:57] 📊 CPU: 8.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.59 MB/s
+[2025-06-24 20:17:50] 📊 CPU: 8.8% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:17:43] 📊 CPU: 8.0% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:17:36] 📊 CPU: 8.6% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 4.00 MB/s
+[2025-06-24 20:17:29] 📊 CPU: 7.2% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:17:22] 📊 CPU: 7.6% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.92 MB/s
+[2025-06-24 20:17:15] 📊 CPU: 7.6% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.36 MB/s
+[2025-06-24 20:17:08] 📊 CPU: 7.6% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:17:01] 📊 CPU: 9.0% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 4.03 MB/s
+[2025-06-24 20:16:54] 📊 CPU: 7.7% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:16:47] 📊 CPU: 9.4% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:16:40] 📊 CPU: 8.2% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 13.14 MB/s
+[2025-06-24 20:16:33] 📊 CPU: 8.0% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:16:26] 📊 CPU: 7.3% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:16:19] 📊 CPU: 8.6% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:16:12] 📊 CPU: 7.3% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:16:05] 📊 CPU: 8.3% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:15:58] 📊 CPU: 7.7% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:15:51] 📊 CPU: 8.4% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:15:44] 📊 CPU: 8.3% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 13.39 MB/s
+[2025-06-24 20:15:37] 📊 CPU: 9.1% | RAM: 71.3% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:15:30] 📊 CPU: 8.8% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:15:23] 📊 CPU: 7.1% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 6.11 MB/s
+[2025-06-24 20:15:16] 📊 CPU: 8.2% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:15:09] 📊 CPU: 7.7% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:15:02] 📊 CPU: 8.3% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:14:55] 📊 CPU: 8.8% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:14:48] 📊 CPU: 10.6% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 0.08 MB/s
+[2025-06-24 20:14:41] 📊 CPU: 7.7% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:14:34] 📊 CPU: 8.8% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 0.91 MB/s
+[2025-06-24 20:14:27] 📊 CPU: 9.2% | RAM: 70.9% | SWAP: 0.0% | Disk I/O: 10.80 MB/s
+[2025-06-24 20:14:20] 📊 CPU: 8.2% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 20:14:13] 📊 CPU: 9.3% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 1.46 MB/s
+[2025-06-24 20:14:06] 📊 CPU: 8.3% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.30 MB/s
+[2025-06-24 20:13:59] 📊 CPU: 8.1% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:13:52] 📊 CPU: 7.0% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:13:45] 📊 CPU: 7.4% | RAM: 71.4% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:13:38] 📊 CPU: 9.1% | RAM: 71.7% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:13:31] 📊 CPU: 7.6% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 5.11 MB/s
+[2025-06-24 20:13:24] 📊 CPU: 10.9% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:13:17] 📊 CPU: 9.7% | RAM: 71.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:13:10] 📊 CPU: 7.8% | RAM: 71.0% | SWAP: 0.0% | Disk I/O: 12.14 MB/s
+[2025-06-24 20:13:03] 📊 CPU: 8.5% | RAM: 71.2% | SWAP: 0.0% | Disk I/O: 0.58 MB/s
+[2025-06-24 20:12:56] 📊 CPU: 11.3% | RAM: 72.3% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:12:49] 📊 CPU: 8.9% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 1.15 MB/s
+[2025-06-24 20:12:42] 📊 CPU: 9.8% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:12:35] 📊 CPU: 12.1% | RAM: 70.3% | SWAP: 0.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 20:12:28] 📊 CPU: 11.3% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:12:21] 📊 CPU: 8.6% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 20:12:14] 📊 CPU: 10.5% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 20:12:07] 📊 CPU: 9.4% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.64 MB/s
+[2025-06-24 20:12:00] 📊 CPU: 10.1% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 20:11:53] 📊 CPU: 10.3% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 20:11:46] 📊 CPU: 11.6% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.81 MB/s
+[2025-06-24 20:11:39] 📊 CPU: 7.9% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:11:32] 📊 CPU: 8.0% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:11:25] 📊 CPU: 7.5% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 20:11:18] 📊 CPU: 7.4% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:11:11] 📊 CPU: 9.3% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:11:04] 📊 CPU: 10.5% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:10:57] 📊 CPU: 8.6% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:10:50] 📊 CPU: 9.7% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.90 MB/s
+[2025-06-24 20:10:43] 📊 CPU: 12.7% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:10:36] 📊 CPU: 10.2% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 2.68 MB/s
+[2025-06-24 20:10:29] 📊 CPU: 8.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:10:22] 📊 CPU: 9.2% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:10:15] 📊 CPU: 7.3% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:10:08] 📊 CPU: 7.0% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 1.26 MB/s
+[2025-06-24 20:10:01] 📊 CPU: 8.1% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:09:54] 📊 CPU: 7.0% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:09:47] 📊 CPU: 7.5% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:09:40] 📊 CPU: 8.8% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:09:33] 📊 CPU: 10.0% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:09:26] 📊 CPU: 12.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 6.70 MB/s
+[2025-06-24 20:09:19] 📊 CPU: 9.7% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:09:12] 📊 CPU: 7.6% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:09:05] 📊 CPU: 7.6% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:08:58] 📊 CPU: 8.3% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:08:51] 📊 CPU: 9.1% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:08:44] 📊 CPU: 8.8% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:08:37] 📊 CPU: 7.0% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.27 MB/s
+[2025-06-24 20:08:30] 📊 CPU: 9.4% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 1.11 MB/s
+[2025-06-24 20:08:23] 📊 CPU: 8.2% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:08:16] 📊 CPU: 8.1% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.33 MB/s
+[2025-06-24 20:08:09] 📊 CPU: 7.6% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.75 MB/s
+[2025-06-24 20:08:02] 📊 CPU: 7.1% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.99 MB/s
+[2025-06-24 20:07:55] 📊 CPU: 7.5% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.72 MB/s
+[2025-06-24 20:07:48] 📊 CPU: 7.9% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:07:41] 📊 CPU: 8.7% | RAM: 70.3% | SWAP: 0.0% | Disk I/O: 0.98 MB/s
+[2025-06-24 20:07:34] 📊 CPU: 7.9% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:07:27] 📊 CPU: 7.3% | RAM: 70.3% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:07:20] 📊 CPU: 9.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:07:13] 📊 CPU: 7.9% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.71 MB/s
+[2025-06-24 20:07:06] 📊 CPU: 8.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:06:59] 📊 CPU: 10.0% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:06:52] 📊 CPU: 8.2% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:06:45] 📊 CPU: 8.7% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:06:38] 📊 CPU: 8.3% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.37 MB/s
+[2025-06-24 20:06:30] 📊 CPU: 7.2% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.11 MB/s
+[2025-06-24 20:06:23] 📊 CPU: 8.2% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:06:16] 📊 CPU: 8.1% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:06:09] 📊 CPU: 9.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 3.49 MB/s
+[2025-06-24 20:06:02] 📊 CPU: 7.9% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 20:05:55] 📊 CPU: 8.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:05:48] 📊 CPU: 7.7% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:05:41] 📊 CPU: 6.8% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:05:34] 📊 CPU: 9.7% | RAM: 70.7% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:05:27] 📊 CPU: 9.8% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 20:05:20] 📊 CPU: 8.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:05:13] 📊 CPU: 9.4% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:05:06] 📊 CPU: 9.8% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:04:59] 📊 CPU: 7.4% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 20:04:52] 📊 CPU: 8.9% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 1.29 MB/s
+[2025-06-24 20:04:45] 📊 CPU: 7.7% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:04:38] 📊 CPU: 7.2% | RAM: 70.2% | SWAP: 0.0% | Disk I/O: 1.34 MB/s
+[2025-06-24 20:04:31] 📊 CPU: 7.3% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:04:24] 📊 CPU: 8.1% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.47 MB/s
+[2025-06-24 20:04:17] 📊 CPU: 9.3% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:04:10] 📊 CPU: 8.4% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 2.17 MB/s
+[2025-06-24 20:04:03] 📊 CPU: 7.6% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 20:03:56] 📊 CPU: 9.1% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 20:03:49] 📊 CPU: 9.6% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 2.57 MB/s
+[2025-06-24 20:03:42] 📊 CPU: 10.3% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:03:35] 📊 CPU: 8.0% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 20:03:28] 📊 CPU: 7.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.30 MB/s
+[2025-06-24 20:03:21] 📊 CPU: 7.1% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:03:14] 📊 CPU: 7.6% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:03:07] 📊 CPU: 7.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:03:00] 📊 CPU: 7.3% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:02:53] 📊 CPU: 7.6% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 20:02:46] 📊 CPU: 6.9% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:02:39] 📊 CPU: 7.6% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 1.64 MB/s
+[2025-06-24 20:02:32] 📊 CPU: 9.4% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 20:02:25] 📊 CPU: 7.0% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:02:18] 📊 CPU: 8.8% | RAM: 70.1% | SWAP: 0.0% | Disk I/O: 0.73 MB/s
+[2025-06-24 20:02:11] 📊 CPU: 7.6% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:02:04] 📊 CPU: 11.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 20:01:57] 📊 CPU: 9.7% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:01:50] 📊 CPU: 9.4% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 20:01:43] 📊 CPU: 8.5% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 1.07 MB/s
+[2025-06-24 20:01:36] 📊 CPU: 8.0% | RAM: 70.0% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:01:29] 📊 CPU: 8.7% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 20:01:22] 📊 CPU: 6.9% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:01:15] 📊 CPU: 7.3% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.35 MB/s
+[2025-06-24 20:01:08] 📊 CPU: 8.4% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 20:01:01] 📊 CPU: 8.2% | RAM: 69.9% | SWAP: 0.0% | Disk I/O: 4.13 MB/s
+[2025-06-24 20:00:54] 📊 CPU: 7.4% | RAM: 69.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:00:47] 📊 CPU: 7.9% | RAM: 69.8% | SWAP: 0.0% | Disk I/O: 0.79 MB/s
+[2025-06-24 20:00:40] 📊 CPU: 7.9% | RAM: 69.7% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:00:33] 📊 CPU: 7.9% | RAM: 69.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 20:00:26] 📊 CPU: 7.8% | RAM: 69.6% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 20:00:19] 📊 CPU: 7.6% | RAM: 69.6% | SWAP: 0.0% | Disk I/O: 0.08 MB/s
+[2025-06-24 20:00:12] 📊 CPU: 7.1% | RAM: 69.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 20:00:05] 📊 CPU: 6.9% | RAM: 69.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:59:58] 📊 CPU: 8.1% | RAM: 69.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:59:51] 📊 CPU: 7.2% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:59:44] 📊 CPU: 7.1% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:59:37] 📊 CPU: 7.2% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:59:30] 📊 CPU: 6.7% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.36 MB/s
+[2025-06-24 19:59:23] 📊 CPU: 8.6% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:59:16] 📊 CPU: 7.4% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:59:09] 📊 CPU: 7.2% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:59:02] 📊 CPU: 7.6% | RAM: 69.5% | SWAP: 0.0% | Disk I/O: 0.24 MB/s
+[2025-06-24 19:58:55] 📊 CPU: 7.2% | RAM: 69.4% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:58:48] 📊 CPU: 7.8% | RAM: 69.4% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:58:41] 📊 CPU: 8.0% | RAM: 69.4% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:58:34] 📊 CPU: 10.4% | RAM: 69.3% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:58:27] 📊 CPU: 7.1% | RAM: 69.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:58:20] 📊 CPU: 7.4% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:58:13] 📊 CPU: 7.3% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:58:06] 📊 CPU: 7.0% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:57:59] 📊 CPU: 8.1% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:57:52] 📊 CPU: 7.6% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:57:45] 📊 CPU: 7.0% | RAM: 69.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:57:38] 📊 CPU: 7.1% | RAM: 69.0% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:57:31] 📊 CPU: 7.5% | RAM: 68.7% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:57:24] 📊 CPU: 6.8% | RAM: 68.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:57:17] 📊 CPU: 8.5% | RAM: 68.7% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:57:10] 📊 CPU: 8.6% | RAM: 67.8% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:57:03] 📊 CPU: 6.7% | RAM: 67.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:56:56] 📊 CPU: 28.1% | RAM: 65.5% | SWAP: 0.0% | Disk I/O: 0.36 MB/s
+[2025-06-24 19:56:49] 📊 CPU: 16.4% | RAM: 59.1% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:56:42] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:56:42] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:56:42] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:56:42] 🔁 Restarting all launch scripts...
+[2025-06-24 19:56:27] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:56:27] ✅ Total services killed: 10
+[2025-06-24 19:56:27] ❌ Killing PID=51963 | CMD=python Paizatwo.pyc
+[2025-06-24 19:56:27] ❌ Killing PID=51910 | CMD=python Paizaone.pyc
+[2025-06-24 19:56:27] ❌ Killing PID=51870 | CMD=python Det_61_62.pyc
+[2025-06-24 19:56:27] ❌ Killing PID=51827 | CMD=python Det_31_32.pyc
+[2025-06-24 19:56:27] ❌ Killing PID=50218 | CMD=python Database_Web.py
+[2025-06-24 19:56:27] ❌ Killing PID=50217 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:56:27] ❌ Killing PID=50210 | CMD=python flask_server.py
+[2025-06-24 19:56:27] ❌ Killing PID=50209 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:56:27] ❌ Killing PID=50170 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:56:27] ❌ Killing PID=50168 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:56:27] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:56:27] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:56:27] 📊 CPU: 3.4% | RAM: 53.9% | SWAP: 0.0% | Disk I/O: 301.37 MB/s
+[2025-06-24 19:56:20] 📊 CPU: 3.2% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 1.22 MB/s
+[2025-06-24 19:56:13] 📊 CPU: 2.8% | RAM: 53.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:56:06] 📊 CPU: 2.7% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:55:59] 📊 CPU: 2.4% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:55:52] 📊 CPU: 2.9% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:55:45] 📊 CPU: 3.7% | RAM: 54.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:55:38] 📊 CPU: 2.7% | RAM: 54.3% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:55:31] 📊 CPU: 2.9% | RAM: 53.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:55:24] 📊 CPU: 3.8% | RAM: 53.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:55:17] 📊 CPU: 2.5% | RAM: 53.9% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:55:10] 📊 CPU: 2.9% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 8.45 MB/s
+[2025-06-24 19:55:03] 📊 CPU: 2.8% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:54:56] 📊 CPU: 3.1% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:54:49] 📊 CPU: 2.8% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:54:42] 📊 CPU: 2.7% | RAM: 54.1% | SWAP: 0.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 19:54:35] 📊 CPU: 3.0% | RAM: 54.3% | SWAP: 0.0% | Disk I/O: 8.18 MB/s
+[2025-06-24 19:54:28] 📊 CPU: 2.5% | RAM: 54.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:54:21] 📊 CPU: 2.4% | RAM: 54.1% | SWAP: 0.0% | Disk I/O: 0.28 MB/s
+[2025-06-24 19:54:14] 📊 CPU: 2.7% | RAM: 54.2% | SWAP: 0.0% | Disk I/O: 4.04 MB/s
+[2025-06-24 19:54:07] 📊 CPU: 2.4% | RAM: 54.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:54:00] 📊 CPU: 6.8% | RAM: 54.3% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:53:53] 📊 CPU: 3.4% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 19:53:46] 📊 CPU: 3.2% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:53:39] 📊 CPU: 4.1% | RAM: 53.5% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:53:32] 📊 CPU: 3.3% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.43 MB/s
+[2025-06-24 19:53:25] 📊 CPU: 3.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:53:18] 📊 CPU: 4.3% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:53:11] 📊 CPU: 3.8% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.42 MB/s
+[2025-06-24 19:53:04] 📊 CPU: 4.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:52:57] 📊 CPU: 3.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:52:50] 📊 CPU: 3.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 1.41 MB/s
+[2025-06-24 19:52:43] 📊 CPU: 4.8% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:52:36] 📊 CPU: 2.7% | RAM: 53.4% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:52:29] 📊 CPU: 2.6% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:52:22] 📊 CPU: 2.8% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:52:15] 📊 CPU: 2.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:52:08] 📊 CPU: 2.9% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:52:01] 📊 CPU: 2.8% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:51:54] 📊 CPU: 2.9% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:51:47] 📊 CPU: 3.3% | RAM: 53.4% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:51:40] 📊 CPU: 6.0% | RAM: 53.4% | SWAP: 0.0% | Disk I/O: 4.09 MB/s
+[2025-06-24 19:51:33] 📊 CPU: 3.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:51:26] 📊 CPU: 4.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:51:19] 📊 CPU: 3.3% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 1.16 MB/s
+[2025-06-24 19:51:12] 📊 CPU: 4.1% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 19:51:05] 📊 CPU: 3.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:50:58] 📊 CPU: 5.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.77 MB/s
+[2025-06-24 19:50:51] 📊 CPU: 4.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:50:44] 📊 CPU: 6.6% | RAM: 53.5% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:50:37] 📊 CPU: 6.2% | RAM: 53.5% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:50:30] 📊 CPU: 6.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.56 MB/s
+[2025-06-24 19:50:23] 📊 CPU: 9.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 8.02 MB/s
+[2025-06-24 19:50:16] 📊 CPU: 6.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:50:09] 📊 CPU: 5.4% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:50:02] 📊 CPU: 7.2% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 4.84 MB/s
+[2025-06-24 19:49:55] 📊 CPU: 5.2% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:49:48] 📊 CPU: 3.4% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.94 MB/s
+[2025-06-24 19:49:41] 📊 CPU: 4.9% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 1.68 MB/s
+[2025-06-24 19:49:34] 📊 CPU: 6.2% | RAM: 53.7% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:49:27] 📊 CPU: 4.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:49:20] 📊 CPU: 4.5% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.71 MB/s
+[2025-06-24 19:49:13] 📊 CPU: 3.5% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.40 MB/s
+[2025-06-24 19:49:06] 📊 CPU: 3.8% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:48:59] 📊 CPU: 3.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:48:52] 📊 CPU: 3.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.70 MB/s
+[2025-06-24 19:48:45] 📊 CPU: 3.8% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.44 MB/s
+[2025-06-24 19:48:38] 📊 CPU: 4.8% | RAM: 53.4% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 19:48:31] 📊 CPU: 4.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:48:24] 📊 CPU: 4.7% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:48:17] 📊 CPU: 4.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:48:10] 📊 CPU: 4.1% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 1.00 MB/s
+[2025-06-24 19:48:03] 📊 CPU: 6.0% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:47:56] 📊 CPU: 4.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 4.18 MB/s
+[2025-06-24 19:47:49] 📊 CPU: 4.8% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:47:42] 📊 CPU: 4.8% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:47:35] 📊 CPU: 7.6% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:47:28] 📊 CPU: 5.6% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:47:21] 📊 CPU: 5.9% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 4.42 MB/s
+[2025-06-24 19:47:14] 📊 CPU: 5.7% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 1.36 MB/s
+[2025-06-24 19:47:07] 📊 CPU: 4.2% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:47:00] 📊 CPU: 4.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 2.52 MB/s
+[2025-06-24 19:46:53] 📊 CPU: 3.5% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:46:46] 📊 CPU: 5.3% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:46:39] 📊 CPU: 3.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.86 MB/s
+[2025-06-24 19:46:32] 📊 CPU: 5.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:46:25] 📊 CPU: 3.7% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:46:18] 📊 CPU: 5.1% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:46:11] 📊 CPU: 4.6% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.06 MB/s
+[2025-06-24 19:46:04] 📊 CPU: 4.0% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 5.11 MB/s
+[2025-06-24 19:45:57] 📊 CPU: 5.2% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:45:50] 📊 CPU: 4.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:45:43] 📊 CPU: 3.3% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.35 MB/s
+[2025-06-24 19:45:36] 📊 CPU: 4.2% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.08 MB/s
+[2025-06-24 19:45:29] 📊 CPU: 3.5% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:45:22] 📊 CPU: 3.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:45:15] 📊 CPU: 3.5% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 1.68 MB/s
+[2025-06-24 19:45:08] 📊 CPU: 3.0% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:45:01] 📊 CPU: 4.7% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.39 MB/s
+[2025-06-24 19:44:54] 📊 CPU: 4.1% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 19:44:47] 📊 CPU: 3.7% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.93 MB/s
+[2025-06-24 19:44:40] 📊 CPU: 4.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:44:33] 📊 CPU: 4.5% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:44:26] 📊 CPU: 3.4% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 2.49 MB/s
+[2025-06-24 19:44:19] 📊 CPU: 3.9% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.86 MB/s
+[2025-06-24 19:44:12] 📊 CPU: 3.6% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:44:05] 📊 CPU: 5.3% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 3.77 MB/s
+[2025-06-24 19:43:58] 📊 CPU: 4.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 1.62 MB/s
+[2025-06-24 19:43:51] 📊 CPU: 4.2% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:43:44] 📊 CPU: 3.8% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:43:37] 📊 CPU: 4.6% | RAM: 53.4% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:43:30] 📊 CPU: 4.0% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:43:23] 📊 CPU: 3.9% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.77 MB/s
+[2025-06-24 19:43:16] 📊 CPU: 3.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:43:09] 📊 CPU: 3.5% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 1.57 MB/s
+[2025-06-24 19:43:02] 📊 CPU: 3.6% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:42:55] 📊 CPU: 3.3% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 19:42:48] 📊 CPU: 3.5% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:42:41] 📊 CPU: 3.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:42:34] 📊 CPU: 6.2% | RAM: 53.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:42:27] 📊 CPU: 3.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.89 MB/s
+[2025-06-24 19:42:20] 📊 CPU: 3.8% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 1.32 MB/s
+[2025-06-24 19:42:13] 📊 CPU: 3.5% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:42:06] 📊 CPU: 2.9% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:41:59] 📊 CPU: 3.5% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.51 MB/s
+[2025-06-24 19:41:52] 📊 CPU: 4.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:41:45] 📊 CPU: 4.2% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:41:38] 📊 CPU: 3.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:41:31] 📊 CPU: 4.0% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:41:24] 📊 CPU: 3.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:41:17] 📊 CPU: 5.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 9.86 MB/s
+[2025-06-24 19:41:10] 📊 CPU: 4.6% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 1.04 MB/s
+[2025-06-24 19:41:03] 📊 CPU: 4.2% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:40:56] 📊 CPU: 4.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 1.21 MB/s
+[2025-06-24 19:40:49] 📊 CPU: 4.1% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:40:42] 📊 CPU: 3.4% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:40:35] 📊 CPU: 4.1% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 2.47 MB/s
+[2025-06-24 19:40:28] 📊 CPU: 4.5% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:40:21] 📊 CPU: 3.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.07 MB/s
+[2025-06-24 19:40:14] 📊 CPU: 3.8% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 2.54 MB/s
+[2025-06-24 19:40:07] 📊 CPU: 3.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:40:00] 📊 CPU: 3.0% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:39:53] 📊 CPU: 3.4% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:39:46] 📊 CPU: 3.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:39:39] 📊 CPU: 3.3% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:39:32] 📊 CPU: 3.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.52 MB/s
+[2025-06-24 19:39:25] 📊 CPU: 3.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 2.01 MB/s
+[2025-06-24 19:39:18] 📊 CPU: 2.8% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 1.22 MB/s
+[2025-06-24 19:39:11] 📊 CPU: 3.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:39:04] 📊 CPU: 2.8% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:38:57] 📊 CPU: 3.0% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:38:50] 📊 CPU: 2.9% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:38:43] 📊 CPU: 3.0% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:38:36] 📊 CPU: 3.1% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:38:29] 📊 CPU: 3.0% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:38:22] 📊 CPU: 2.9% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:38:15] 📊 CPU: 2.8% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:38:08] 📊 CPU: 2.9% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:38:01] 📊 CPU: 2.5% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:37:54] 📊 CPU: 3.1% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:37:47] 📊 CPU: 2.9% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:37:40] 📊 CPU: 3.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:37:33] 📊 CPU: 3.9% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.01 MB/s
+[2025-06-24 19:37:26] 📊 CPU: 4.1% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.45 MB/s
+[2025-06-24 19:37:19] 📊 CPU: 4.2% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.81 MB/s
+[2025-06-24 19:37:12] 📊 CPU: 3.4% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:37:05] 📊 CPU: 3.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 2.73 MB/s
+[2025-06-24 19:36:58] 📊 CPU: 4.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.94 MB/s
+[2025-06-24 19:36:51] 📊 CPU: 4.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:36:44] 📊 CPU: 3.9% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 2.27 MB/s
+[2025-06-24 19:36:37] 📊 CPU: 3.8% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:36:30] 📊 CPU: 2.8% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:36:23] 📊 CPU: 3.7% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 2.39 MB/s
+[2025-06-24 19:36:16] 📊 CPU: 3.2% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:36:09] 📊 CPU: 4.0% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:36:02] 📊 CPU: 4.7% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 1.57 MB/s
+[2025-06-24 19:35:55] 📊 CPU: 3.4% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:35:48] 📊 CPU: 3.8% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 3.02 MB/s
+[2025-06-24 19:35:41] 📊 CPU: 4.2% | RAM: 53.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:35:34] 📊 CPU: 5.1% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:35:27] 📊 CPU: 3.8% | RAM: 52.8% | SWAP: 0.0% | Disk I/O: 2.37 MB/s
+[2025-06-24 19:35:20] 📊 CPU: 3.2% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:35:13] 📊 CPU: 3.5% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:35:06] 📊 CPU: 4.6% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 6.83 MB/s
+[2025-06-24 19:34:59] 📊 CPU: 4.1% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.09 MB/s
+[2025-06-24 19:34:52] 📊 CPU: 4.0% | RAM: 52.9% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:34:45] 📊 CPU: 3.8% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.84 MB/s
+[2025-06-24 19:34:38] 📊 CPU: 3.5% | RAM: 53.3% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:34:31] 📊 CPU: 4.5% | RAM: 53.2% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:34:24] 📊 CPU: 5.5% | RAM: 54.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:34:17] 📊 CPU: 6.3% | RAM: 53.0% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:34:10] 📊 CPU: 4.4% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 3.04 MB/s
+[2025-06-24 19:34:03] 📊 CPU: 4.6% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:33:56] 📊 CPU: 4.5% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:33:49] 📊 CPU: 4.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 3.90 MB/s
+[2025-06-24 19:33:42] 📊 CPU: 2.3% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:33:35] 📊 CPU: 6.0% | RAM: 50.9% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:33:28] 📊 CPU: 3.0% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 6.20 MB/s
+[2025-06-24 19:33:21] 📊 CPU: 5.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:33:14] 📊 CPU: 4.9% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.22 MB/s
+[2025-06-24 19:33:07] 📊 CPU: 5.0% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:33:00] 📊 CPU: 6.2% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 1.50 MB/s
+[2025-06-24 19:32:53] 📊 CPU: 5.6% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:32:46] 📊 CPU: 5.1% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 1.65 MB/s
+[2025-06-24 19:32:39] 📊 CPU: 4.4% | RAM: 50.9% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:32:32] 📊 CPU: 4.4% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 1.01 MB/s
+[2025-06-24 19:32:25] 📊 CPU: 4.7% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:32:18] 📊 CPU: 5.0% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:32:11] 📊 CPU: 4.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 1.26 MB/s
+[2025-06-24 19:32:04] 📊 CPU: 3.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:31:57] 📊 CPU: 4.2% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:31:50] 📊 CPU: 4.6% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:31:43] 📊 CPU: 4.6% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:31:36] 📊 CPU: 4.9% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 1.23 MB/s
+[2025-06-24 19:31:29] 📊 CPU: 4.5% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:31:22] 📊 CPU: 4.9% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:31:15] 📊 CPU: 4.4% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:31:08] 📊 CPU: 4.7% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:31:01] 📊 CPU: 4.8% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 1.42 MB/s
+[2025-06-24 19:30:54] 📊 CPU: 4.9% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 15.11 MB/s
+[2025-06-24 19:30:47] 📊 CPU: 5.2% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:30:40] 📊 CPU: 5.4% | RAM: 50.9% | SWAP: 0.0% | Disk I/O: 1.57 MB/s
+[2025-06-24 19:30:33] 📊 CPU: 4.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 19:30:26] 📊 CPU: 4.8% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.56 MB/s
+[2025-06-24 19:30:19] 📊 CPU: 5.1% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:30:12] 📊 CPU: 3.5% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:30:05] 📊 CPU: 3.1% | RAM: 50.5% | SWAP: 0.0% | Disk I/O: 0.57 MB/s
+[2025-06-24 19:29:58] 📊 CPU: 3.1% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:29:51] 📊 CPU: 3.4% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 1.96 MB/s
+[2025-06-24 19:29:44] 📊 CPU: 3.3% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:29:37] 📊 CPU: 3.1% | RAM: 50.9% | SWAP: 0.0% | Disk I/O: 0.02 MB/s
+[2025-06-24 19:29:30] 📊 CPU: 3.4% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:29:23] 📊 CPU: 4.0% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:29:16] 📊 CPU: 3.1% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:29:09] 📊 CPU: 3.3% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:29:02] 📊 CPU: 3.8% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:28:55] 📊 CPU: 3.0% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.23 MB/s
+[2025-06-24 19:28:48] 📊 CPU: 3.2% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:28:41] 📊 CPU: 3.2% | RAM: 51.0% | SWAP: 0.0% | Disk I/O: 2.78 MB/s
+[2025-06-24 19:28:34] 📊 CPU: 4.6% | RAM: 51.5% | SWAP: 0.0% | Disk I/O: 0.13 MB/s
+[2025-06-24 19:28:27] 📊 CPU: 3.8% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:28:20] 📊 CPU: 3.0% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:28:13] 📊 CPU: 3.8% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.80 MB/s
+[2025-06-24 19:28:06] 📊 CPU: 2.9% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:27:59] 📊 CPU: 2.9% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:27:52] 📊 CPU: 3.5% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.91 MB/s
+[2025-06-24 19:27:45] 📊 CPU: 3.0% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:27:38] 📊 CPU: 2.6% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:27:31] 📊 CPU: 2.9% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:27:24] 📊 CPU: 2.8% | RAM: 50.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:27:17] 📊 CPU: 3.7% | RAM: 51.0% | SWAP: 0.0% | Disk I/O: 1.06 MB/s
+[2025-06-24 19:27:10] 📊 CPU: 4.3% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:27:03] 📊 CPU: 3.9% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:26:56] 📊 CPU: 3.6% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.04 MB/s
+[2025-06-24 19:26:49] 📊 CPU: 3.0% | RAM: 50.7% | SWAP: 0.0% | Disk I/O: 0.93 MB/s
+[2025-06-24 19:26:42] 📊 CPU: 3.9% | RAM: 50.5% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:26:35] 📊 CPU: 3.4% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:26:28] 📊 CPU: 3.2% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 5.07 MB/s
+[2025-06-24 19:26:21] 📊 CPU: 3.1% | RAM: 50.6% | SWAP: 0.0% | Disk I/O: 0.83 MB/s
+[2025-06-24 19:26:14] 📊 CPU: 3.4% | RAM: 50.3% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:26:07] 📊 CPU: 3.0% | RAM: 50.4% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:26:00] 📊 CPU: 3.0% | RAM: 50.3% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:25:53] 📊 CPU: 4.1% | RAM: 50.3% | SWAP: 0.0% | Disk I/O: 9.66 MB/s
+[2025-06-24 19:25:46] 📊 CPU: 3.8% | RAM: 50.4% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:25:39] 📊 CPU: 4.1% | RAM: 50.4% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:25:32] 📊 CPU: 3.7% | RAM: 49.9% | SWAP: 0.0% | Disk I/O: 4.36 MB/s
+[2025-06-24 19:25:25] 📊 CPU: 4.8% | RAM: 49.8% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:25:18] 📊 CPU: 4.2% | RAM: 49.6% | SWAP: 0.0% | Disk I/O: 0.32 MB/s
+[2025-06-24 19:25:11] 📊 CPU: 3.6% | RAM: 49.5% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:25:04] 📊 CPU: 3.6% | RAM: 49.6% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:24:57] 📊 CPU: 3.3% | RAM: 49.8% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:24:50] 📊 CPU: 3.6% | RAM: 50.0% | SWAP: 0.0% | Disk I/O: 0.82 MB/s
+[2025-06-24 19:24:43] 📊 CPU: 5.9% | RAM: 49.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:24:36] 📊 CPU: 3.6% | RAM: 36.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:24:29] 📊 CPU: 19.4% | RAM: 24.1% | SWAP: 0.0% | Disk I/O: 0.19 MB/s
+[2025-06-24 19:24:22] 📊 CPU: 10.0% | RAM: 18.8% | SWAP: 0.0% | Disk I/O: 0.36 MB/s
+[2025-06-24 19:24:15] 📊 CPU: 1.0% | RAM: 10.2% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:24:08] 📊 CPU: 0.2% | RAM: 10.2% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:24:06] 🟢 Monitoring started.
+[2025-06-24 19:22:56] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:22:56] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:22:56] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:22:56] 🔁 Restarting all launch scripts...
+[2025-06-24 19:22:41] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:22:41] ✅ Total services killed: 14
+[2025-06-24 19:22:41] ❌ Killing PID=45533 | CMD=python Paizatwo.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=45448 | CMD=python Paizaone.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=45412 | CMD=python Database_Web.py
+[2025-06-24 19:22:41] ❌ Killing PID=45410 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:22:41] ❌ Killing PID=45368 | CMD=python Det_61_62.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=45363 | CMD=python flask_server.py
+[2025-06-24 19:22:41] ❌ Killing PID=45362 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:22:41] ❌ Killing PID=45285 | CMD=python Det_31_32.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=45283 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=45279 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:22:41] ❌ Killing PID=44805 | CMD=python Det_61_62.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=44742 | CMD=python Paizatwo.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=44741 | CMD=python Det_31_32.pyc
+[2025-06-24 19:22:41] ❌ Killing PID=44709 | CMD=python Paizaone.pyc
+[2025-06-24 19:22:41] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:22:41] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:22:41] 📊 CPU: 25.3% | RAM: 59.4% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:22:34] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:22:34] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:22:34] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:22:34] 🔁 Restarting all launch scripts...
+[2025-06-24 19:22:19] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:22:19] ✅ Total services killed: 12
+[2025-06-24 19:22:19] ❌ Killing PID=43056 | CMD=python Paizatwo.pyc
+[2025-06-24 19:22:19] ❌ Killing PID=43001 | CMD=python Paizaone.pyc
+[2025-06-24 19:22:19] ❌ Killing PID=42930 | CMD=python Det_61_62.pyc
+[2025-06-24 19:22:19] ❌ Killing PID=42889 | CMD=python Det_31_32.pyc
+[2025-06-24 19:22:19] ❌ Killing PID=41866 | CMD=/mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/python Database_Web.py
+[2025-06-24 19:22:19] ❌ Killing PID=41797 | CMD=/mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/python flask_server.py
+[2025-06-24 19:22:19] ❌ Killing PID=41796 | CMD=python Database_Web.py
+[2025-06-24 19:22:19] ❌ Killing PID=41795 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:22:19] ❌ Killing PID=41788 | CMD=python flask_server.py
+[2025-06-24 19:22:19] ❌ Killing PID=41787 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:22:19] ❌ Killing PID=41748 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:22:19] ❌ Killing PID=41747 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:22:19] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:22:19] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:22:19] 📊 CPU: 3.4% | RAM: 50.1% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:22:17] 🟢 Monitoring started.
+[2025-06-24 19:20:13] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:20:13] ✅ Total services killed: 10
+[2025-06-24 19:20:13] ❌ Killing PID=40348 | CMD=python Paizatwo.pyc
+[2025-06-24 19:20:13] ❌ Killing PID=40261 | CMD=python Paizaone.pyc
+[2025-06-24 19:20:13] ❌ Killing PID=40260 | CMD=python Database_Web.py
+[2025-06-24 19:20:13] ❌ Killing PID=40257 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:20:13] ❌ Killing PID=40212 | CMD=python flask_server.py
+[2025-06-24 19:20:13] ❌ Killing PID=40211 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:20:13] ❌ Killing PID=40210 | CMD=python Det_61_62.pyc
+[2025-06-24 19:20:13] ❌ Killing PID=40161 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:20:13] ❌ Killing PID=40159 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:20:13] ❌ Killing PID=40126 | CMD=python Det_31_32.pyc
+[2025-06-24 19:20:13] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:20:13] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:20:13] 📊 CPU: 14.3% | RAM: 40.0% | SWAP: 0.0% | Disk I/O: 3.21 MB/s
+[2025-06-24 19:20:06] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:20:06] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:20:06] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:20:06] 🔁 Restarting all launch scripts...
+[2025-06-24 19:19:51] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:19:51] ✅ Total services killed: 0
+[2025-06-24 19:19:51] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:19:51] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:19:51] 📊 CPU: 0.5% | RAM: 10.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:19:49] 🟢 Monitoring started.
+[2025-06-24 19:18:41] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:18:41] ✅ Total services killed: 16
+[2025-06-24 19:18:41] ❌ Killing PID=37826 | CMD=python Paizatwo.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=37691 | CMD=python Paizaone.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=37689 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:18:41] ❌ Killing PID=37642 | CMD=python Det_61_62.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=37639 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:18:41] ❌ Killing PID=37564 | CMD=python Det_31_32.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=37557 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=37555 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:18:41] ❌ Killing PID=36632 | CMD=python Paizatwo.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36630 | CMD=python Det_61_62.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36536 | CMD=python Paizatwo.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36535 | CMD=python Det_31_32.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36534 | CMD=python Paizaone.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36471 | CMD=python Det_61_62.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36470 | CMD=python Det_31_32.pyc
+[2025-06-24 19:18:41] ❌ Killing PID=36438 | CMD=python Paizaone.pyc
+[2025-06-24 19:18:41] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:18:41] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:18:41] 📊 CPU: 39.6% | RAM: 77.1% | SWAP: 0.0% | Disk I/O: 2.07 MB/s
+[2025-06-24 19:18:34] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:18:34] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:18:34] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:18:34] 🔁 Restarting all launch scripts...
+[2025-06-24 19:18:19] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:18:19] ✅ Total services killed: 13
+[2025-06-24 19:18:19] ❌ Killing PID=35948 | CMD=python Paizatwo.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35826 | CMD=python Paizaone.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35825 | CMD=python Database_Web.py
+[2025-06-24 19:18:19] ❌ Killing PID=35823 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:18:19] ❌ Killing PID=35810 | CMD=python flask_server.py
+[2025-06-24 19:18:19] ❌ Killing PID=35809 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:18:19] ❌ Killing PID=35775 | CMD=python Det_61_62.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35695 | CMD=python Det_31_32.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35692 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:18:19] ❌ Killing PID=35195 | CMD=python Det_31_32.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35194 | CMD=python Det_61_62.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35131 | CMD=python Paizatwo.pyc
+[2025-06-24 19:18:19] ❌ Killing PID=35130 | CMD=python Paizaone.pyc
+[2025-06-24 19:18:19] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:18:19] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:18:19] 📊 CPU: 18.7% | RAM: 58.6% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:18:12] ✅ Recovery complete. Monitoring continues...
+
+[2025-06-24 19:18:12] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/run_all_S.sh
+[2025-06-24 19:18:12] ✅ Restarted: /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_Sentinel_Det/run_all.sh
+[2025-06-24 19:18:12] 🔁 Restarting all launch scripts...
+[2025-06-24 19:17:57] ⏳ Waiting 15 seconds to let system settle...
+[2025-06-24 19:17:57] ✅ Total services killed: 12
+[2025-06-24 19:17:57] ❌ Killing PID=5895 | CMD=/mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/python Database_Web.py
+[2025-06-24 19:17:57] ❌ Killing PID=5859 | CMD=/mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/python flask_server.py
+[2025-06-24 19:17:57] ❌ Killing PID=5827 | CMD=python Database_Web.py
+[2025-06-24 19:17:57] ❌ Killing PID=5826 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Database_Web.py; exec bash
+[2025-06-24 19:17:57] ❌ Killing PID=5788 | CMD=python flask_server.py
+[2025-06-24 19:17:57] ❌ Killing PID=5787 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python flask_server.py; exec bash
+[2025-06-24 19:17:57] ❌ Killing PID=5777 | CMD=python Mod_Sentinel_server_Det.pyc
+[2025-06-24 19:17:57] ❌ Killing PID=5776 | CMD=bash -c cd /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server && source /mnt/276f2d17-0ff4-4471-9c54-9d7a9352918f/SmartFace_sentinel_Server/venv/bin/activate && python Mod_Sentinel_server_Det.pyc; exec bash
+[2025-06-24 19:17:57] ❌ Killing PID=5255 | CMD=python Paizatwo.pyc
+[2025-06-24 19:17:57] ❌ Killing PID=5215 | CMD=python Paizaone.pyc
+[2025-06-24 19:17:57] ❌ Killing PID=5175 | CMD=python Det_61_62.pyc
+[2025-06-24 19:17:57] ❌ Killing PID=5132 | CMD=python Det_31_32.pyc
+[2025-06-24 19:17:57] ⚠️ Resource spike detected. Killing all monitored services...
+[2025-06-24 19:17:57] 🚨 Threshold exceeded. Beginning recovery...
+[2025-06-24 19:17:57] 📊 CPU: 3.0% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:17:55] 🟢 Monitoring started.
+[2025-06-24 19:17:49] 📊 CPU: 3.4% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.05 MB/s
+[2025-06-24 19:17:42] 📊 CPU: 3.4% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.00 MB/s
+[2025-06-24 19:17:35] 📊 CPU: 8.2% | RAM: 62.5% | SWAP: 0.0% | Disk I/O: 2.56 MB/s
+[2025-06-24 19:17:28] 📊 CPU: 4.2% | RAM: 62.1% | SWAP: 0.0% | Disk I/O: 0.03 MB/s
+[2025-06-24 19:17:21] 📊 CPU: 3.7% | RAM: 62.1% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:17:14] 📊 CPU: 4.2% | RAM: 62.1% | SWAP: 0.0% | Disk I/O: 0.38 MB/s
+[2025-06-24 19:17:07] 📊 CPU: 3.2% | RAM: 62.1% | SWAP: 0.0% | Disk I/O: 0.29 MB/s
+[2025-06-24 19:17:00] 📊 CPU: 3.9% | RAM: 62.1% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:16:53] 📊 CPU: 3.4% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:16:46] 📊 CPU: 3.8% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.20 MB/s
+[2025-06-24 19:16:39] 📊 CPU: 5.0% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.33 MB/s
+[2025-06-24 19:16:32] 📊 CPU: 3.9% | RAM: 62.6% | SWAP: 0.0% | Disk I/O: 0.57 MB/s
+[2025-06-24 19:16:25] 📊 CPU: 3.7% | RAM: 62.7% | SWAP: 0.0% | Disk I/O: 0.18 MB/s
+[2025-06-24 19:16:18] 📊 CPU: 3.4% | RAM: 62.6% | SWAP: 0.0% | Disk I/O: 0.84 MB/s
+[2025-06-24 19:16:11] 📊 CPU: 3.4% | RAM: 62.6% | SWAP: 0.0% | Disk I/O: 0.15 MB/s
+[2025-06-24 19:16:04] 📊 CPU: 3.6% | RAM: 62.6% | SWAP: 0.0% | Disk I/O: 0.16 MB/s
+[2025-06-24 19:15:57] 📊 CPU: 3.6% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 1.44 MB/s
+[2025-06-24 19:15:50] 📊 CPU: 3.9% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.21 MB/s
+[2025-06-24 19:15:43] 📊 CPU: 3.3% | RAM: 62.5% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:15:36] 📊 CPU: 4.0% | RAM: 62.6% | SWAP: 0.0% | Disk I/O: 0.14 MB/s
+[2025-06-24 19:15:29] 📊 CPU: 3.6% | RAM: 62.4% | SWAP: 0.0% | Disk I/O: 0.17 MB/s
+[2025-06-24 19:15:27] 🟢 Monitoring started.
